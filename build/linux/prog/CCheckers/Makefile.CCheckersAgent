@@ -10,7 +10,7 @@ LOCAL_AGENT_SELECT := AgentProgramSelect.cpp
 LOCAL_SRC := \
 	$(LOCAL_AGENT_SELECT) \
 	BoostExport.cpp \
-	CA_Test.cpp
+	CCheckersAgent.cpp
 
 LOCAL_HEADERS := 
 
