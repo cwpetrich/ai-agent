@@ -48,22 +48,30 @@ $(OBJ_BASE) $(AI_LIB_DIR) $(AI_BIN_DIR):
 clean:
 	-rm -f $(CXX_SRC_DEPS)
 	-rm -f $(TARGET_OBJS)
-	-if [ -d $(OBJ_BASE) ]; then if [ `ls -A $(OBJ_BASE) | wc -l` = "0" ]; then rmdir $(OBJ_BASE); fi; fi
+	-d=$(OBJ_BASE); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
 	-rm -f *~
 	-rm -f $(LOCAL_INC_DIR)/*~
 	-rm -f $(LOCAL_SRC_DIR)/*~
 	-rm -f $(INC_DIR)/*~
 
+ifeq ($(strip $(LOCAL_SPOTLESS)),)
 spotless: clean
+else
+spotless: clean local_spotless
+endif
 	-rm -f $(CXX_SRC_DEPS)
 	-rm -f $(TARGET_LIB)
-	-if [ -d $(AI_LIB_DIR) ]; then if [ `ls -A $(AI_LIB_DIR) | wc -l` = "0" ]; then rmdir $(AI_LIB_DIR); fi; fi
+	-d=$(AI_LIB_DIR); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
+	-d=$(AI_PREFIX_DIR)/lib; if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
 	-rm -f $(TARGET_PROG)
-	-if [ -d $(AI_BIN_DIR) ]; then if [ `ls -A $(AI_BIN_DIR) | wc -l` = "0" ]; then rmdir $(AI_BIN_DIR); fi; fi
+	-d=$(AI_BIN_DIR); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
+	-d=$(AI_PREFIX_DIR)/bin; if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
 	-rm -f $(TARGET_HEADERS)
-	-if [ -d $(AI_INC_DIR)/$(LOCAL_PART) ]; then if [ `ls -A $(AI_INC_DIR)/$(LOCAL_PART) | wc -l` = "0" ]; then rmdir $(AI_INC_DIR)/$(LOCAL_PART); fi; fi
+	-d=$(AI_INC_DIR)/$(LOCAL_PART); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
+	-d=$(AI_INC_DIR); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
+	-d=$(AI_PREFIX_DIR)/include; if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
 	-rm -f $(TARGET_OBJS)
-	-if [ -d $(OBJ_BASE) ]; then if [ `ls -A $(OBJ_BASE) | wc -l` = "0" ]; then rmdir $(OBJ_BASE); fi; fi
+	-d=$(OBJ_BASE); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
 
 ifneq ($(strip $(LOCAL_AGENT_SELECT)),)
 Makefile.agents $(LOCAL_SRC_DIR)/$(LOCAL_AGENT_SELECT): $(UTIL_DIR)/AddAgentPrograms.pl $(LOCAL_SRC_DIR)/AgentPrograms.pm
