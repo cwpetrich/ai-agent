@@ -1,0 +1,3 @@
+CXX_SRC := $(CXX_SRC) aiSampleManual.cpp aiSampleRandom.cpp aiSampleMaximum.cpp aiSampleMinimax.cpp 
+CXX_HEADERS := $(CXX_HEADERS) 
+REMOTE_SRC := $(REMOTE_SRC) 

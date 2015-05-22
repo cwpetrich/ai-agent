@@ -1,0 +1,78 @@
+MAKE_CONFIG := Makefile.config
+MAKE_CONFIG_IN := $(MAKE_CONFIG).in
+
+-include $(MAKE_DIR)/$(MAKE_CONFIG)
+
+#
+# directory locations
+# 
+AI_BIN_DIR       := $(AI_PREFIX_DIR)/bin
+AI_LIB_DIR       := $(AI_PREFIX_DIR)/lib
+AI_SRC_DIR       := $(AI_PREFIX_DIR)/src
+AI_PROG_DIR      := $(AI_PREFIX_DIR)/prog
+AI_INC_DIR       := $(AI_PREFIX_DIR)/include
+AI_THIRD_DIR     := $(AI_PREFIX_DIR)/third
+AI_BUILD_DIR     := $(AI_PREFIX_DIR)/build/linux
+AI_UTIL_DIR      := $(AI_PREFIX_DIR)/prog/utils
+
+SRC_DIR          := $(PREFIX_DIR)/src
+PROG_DIR         := $(PREFIX_DIR)/prog
+INC_DIR          := $(PREFIX_DIR)/include
+THIRD_DIR        := $(PREFIX_DIR)/third
+BUILD_DIR        := $(PREFIX_DIR)/build/linux
+UTIL_DIR         := $(PREFIX_DIR)/prog/utils
+OBJ_BASE         := 00obj
+LIB_BASE         := 00lib
+BIN_BASE         := 00bin
+
+#
+# debug, release, profile
+#
+CXX_DRP     := 
+DIR_POSTFIX :=
+ifeq ($(strip $(B_OPTIMIZE)),1)
+CXX_DRP := $(CXX_DRP) -O2
+DIR_POSTFIX := $(DIR_POSTFIX)o
+endif
+ifeq ($(strip $(B_DEBUG)),1)
+CXX_DRP := $(CXX_DRP) -g
+DIR_POSTFIX := $(DIR_POSTFIX)g
+endif
+ifeq ($(strip $(B_PROFILE)),1)
+CXX_DRP := $(CXX_DRP) -pg
+DIR_POSTFIX := $(DIR_POSTFIX)p
+endif
+
+ifneq ($(strip $(DIR_POSTFIX)),)
+OBJ_BASE   := $(OBJ_BASE)-$(DIR_POSTFIX)
+AI_LIB_DIR := $(AI_LIB_DIR)/$(LIB_BASE)-$(DIR_POSTFIX)
+AI_BIN_DIR := $(AI_BIN_DIR)/$(BIN_BASE)-$(DIR_POSTFIX)
+endif
+
+LIB_FILES        := \
+	$(AI_LIB_DIR)/libaienvironment.a \
+	$(AI_LIB_DIR)/libaiagent.a \
+	$(AI_LIB_DIR)/libaisearch.a \
+	$(AI_LIB_DIR)/libailocalsearch.a \
+	$(AI_LIB_DIR)/libaicsp.a \
+	$(AI_LIB_DIR)/libaipl.a \
+	$(AI_LIB_DIR)/libaifol.a
+
+#
+# compiler values
+#
+LDFLAGS  := -L$(AI_LIB_DIR) -laienvironment -laiagent -laisearch -lailocalsearch -laicsp -laipl -laifol -lglut -lGLU -lGL -lpthread -lboost_serialization
+CXXFLAGS    := -I$(AI_INC_DIR)              -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11
+DEPCXXFLAGS := -I$(INC_DIR) -I$(AI_INC_DIR) -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11
+CXX      := g++
+CC       := gcc
+
+#
+# required libraries
+#
+UBUNTU_PACKAGES := libglu1-mesa-dev mesa-common-dev libxext-dev g++ libxxf86vm-dev libxi-dev libboost-serialization-dev freeglut3-dev
+UBUNTU_PACKAGE_COUNT := 8
+
+# Local Variables:
+# mode:makefile
+# End:

@@ -1,0 +1,3 @@
+CXX_SRC := $(CXX_SRC) Snorlax.cpp Manual.cpp 
+CXX_HEADERS := $(CXX_HEADERS) 
+REMOTE_SRC := $(REMOTE_SRC) 
