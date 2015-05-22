@@ -5,7 +5,7 @@ PROJECT_LIST  := WumpusAgent
 
 all install clean spotless:
 	for d in $(PROJECT_LIST); do \
-		$(MAKE) -f Makefile.$$d $@ ; \
+		$(MAKE) $(MAKE_FLAGS) -f Makefile.$$d $@ ; \
 	done
 
 $(PROJECT_LIST):

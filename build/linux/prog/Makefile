@@ -6,7 +6,7 @@ PROJECT_LIST  :=  utils ScavengerWorld WumpusWorld PLTest FOLTest Rectangle Cand
 
 all install clean spotless:
 	for d in $(PROJECT_LIST); do \
-		(cd $$d; $(MAKE) -j $@) \
+		(cd $$d; $(MAKE) $@) \
 	done
 
 include $(MAKE_DIR)/Makefile.dep
