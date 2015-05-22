@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Launch the game server
+./RunProg ./CCheckersServer &
+sleep 3
+
+# Launch the display
+./RunProg ./CCheckersDisplay &
+
+# Launch Dumbo1 as first player
+./RunProg ./CCheckersAgent -a d -t 0 &
+
+# Launch RandomPick as second player
+./RunProg ./CCheckersAgent -a r -t 0 &
+
+
+#
+# The Smarty agent shows how to pass command line arguments
+# into your agent.
+#

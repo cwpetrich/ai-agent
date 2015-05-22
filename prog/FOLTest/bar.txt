@@ -1,0 +1,48 @@
+
+
+forall x 
+( 
+  ( forall y 
+    ( 
+      ( 
+        ( person/1(x/v) & ruler/1(y/v) 
+        ) & 
+        tryassassinate/2(x/v, y/v) 
+      ) 
+    ) => 
+    ( !loyalto/2(x/v, y/c) 
+    ) 
+  ) 
+)
+
+forall x 
+( 
+  forall y 
+  ( 
+    ( 
+      ( 
+        ( person/1(x/v) & ruler/1(y/v) 
+        ) & 
+        tryassassinate/2(x/v, y/v) 
+      ) => 
+      ( !loyalto/2(x/v, y/v) 
+      ) 
+    ) 
+  ) 
+)
+
+
+forall x 
+( forall y 
+  ( 
+    ( 
+      ( 
+        ( person/1(x/v) & ruler/1(y/v) 
+        ) & 
+        tryassassinate/2(x/v, y/v) 
+      ) => 
+      ( !loyalto/2(x/v, y/v) 
+      ) 
+    ) 
+  ) 
+)

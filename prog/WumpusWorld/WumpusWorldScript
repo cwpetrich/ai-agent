@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# This script belongs in ai/bin.
+# It must be run from the same diretory.
+# You must configure the script to run correctly.
+
+#
+# Sample script to run the Wumpus Game
+#
+#
+
+delay_between_moves=0
+pause_after_game=1
+run_count=100
+do_display=1
+height=4
+width=4
+env_trace=0
+port=5412   # YOU choose a different port!
+seed="--seed 2817239181"
+
+# YOU change this letter to match the one you put in AgentPrograms.pm.
+player_one="b"
+player_one_trace="0"
+player_one_args="--user5 ${width} --user6 ${height}"
+
+# This runs the optimized version of your code.  Change the directory
+# below to run the debugging verion.
+player_one_dir=00bin-o
+player_one_prog=WumpusAgent
+player_one_options="--agent ${player_one} --port ${port} --trace ${player_one_trace} ${player_one_args}"
+
+# Always runs the optimized version of the server
+env_dir=00bin-o
+env_prog=WumpusWorld
+env_options="--agents 1 --delay ${delay_between_moves} --displays ${do_display} --width ${width} --height ${height} --port ${port} --runs ${run_count} --sleep ${pause_after_game} --trace ${env_trace} ${seed} --drwho 0 --nirvana 0"
+
+# Always runs the optimized version of the display
+display_dir=00bin-o
+display_prog=WumpusDisplay
+display_options="--port ${port}"
+
+# Actually run the programs
+${env_dir}/RunProg ${env_dir}/${env_prog} ${env_options} &
+sleep 2
+if [ "${do_display}" == "1" ]; then
+    ${display_dir}/RunProg ${display_dir}/${display_prog} ${display_options} &
+fi
+${player_one_dir}/RunProg ${player_one_dir}/${player_one_prog} ${player_one_options}
+

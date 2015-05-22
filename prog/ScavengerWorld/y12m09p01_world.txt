@@ -1,0 +1,1338 @@
+
+#          title damage energy traversable is_fall
+Interface: plain      0      0           1       0
+Interface: rocks      1      0           1       0
+Interface: mud        0      1           1       0
+Interface: wall      10      1           0       0
+Interface: cliff      0      0           1       1
+Cell:   50 -15000.00 -15000.00    521.53   51    0  502    0  plain   wall  rocks   wall
+Object: OBJ1 50 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Object: OBJ2 50 pPl -16.00 mineral 19.10 46.66 pink pyramid large 
+Object: OBJ3 50 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ4 50 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ5 50 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Cell:   51 -15000.00 -14000.00    388.48   52   50 1646    0  rocks  plain  plain   wall
+Object: OBJ6 51 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ7 51 gSm -24.00 mineral 8.97 27.84 green sphere medium 
+Object: OBJ8 51 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ9 51 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ10 51 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Cell:   52 -15000.00 -13000.00    252.77 2343   51 3738    0  rocks  rocks  cliff   wall
+Object: OBJ11 52 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ12 52 gcs -14.00 mineral 3.60 10.95 green cone small 
+Object: OBJ13 52 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ14 52 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ15 52 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Cell: 2343 -15000.00 -12000.00    441.30 1071   52 1647    0   wall  rocks  plain   wall
+Object: OBJ16 2343 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ17 2343 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ18 2343 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ19 2343 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ20 2343 gcl -18.00 mineral 12.75 77.56 green cone large 
+Cell: 1071 -15000.00 -11000.00    975.37 1072 2343   55    0  cliff  cliff  plain   wall
+Object: OBJ21 1071 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ22 1071 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ23 1071 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Object: OBJ24 1071 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ25 1071 prl -17.00 mineral 19.21 91.65 pink rock large 
+Cell: 1072 -15000.00 -10000.00    433.75    0 1071   56    0   wall   wall  plain   wall
+Object: OBJ26 1072 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Object: OBJ27 1072 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ28 1072 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ29 1072 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ30 1072 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Cell:   53 -15000.00  -8000.00    790.28 3341    0   58    0  rocks   wall  rocks   wall
+Object: OBJ31 53 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Object: OBJ32 53 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ33 53 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ34 53 gQs -17.00 mineral 4.60 1.69 green cube small 
+Object: OBJ35 53 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Cell: 3341 -15000.00  -7000.00    721.47    0   53   59    0   wall  rocks  rocks   wall
+Object: OBJ36 3341 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ37 3341 rcs -8.00 mineral 7.62 10.26 red cone small 
+Object: OBJ38 3341 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ39 3341 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ40 3341 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Cell: 3962 -15000.00  -5000.00    643.43 1300    0   61    0  rocks   wall  rocks   wall
+Object: OBJ41 3962 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ42 3962 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Object: OBJ43 3962 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Object: OBJ44 3962 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ45 3962 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Cell: 1300 -15000.00  -4000.00    153.74 1645 3962 3349    0  rocks  rocks  rocks   wall
+Object: OBJ46 1300 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ47 1300 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ48 1300 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ49 1300 gqt -12.00 mineral 0.14 0.80 green box tiny 
+Object: OBJ50 1300 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Cell: 1645 -15000.00  -3000.00    421.50 1301 1300 2851    0  plain  rocks  plain   wall
+Object: OBJ51 1645 gQl -21.00 mineral 11.99 69.41 green cube large 
+Object: OBJ52 1645 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Object: OBJ53 1645 gqs -14.00 mineral 5.86 6.29 green box small 
+Object: OBJ54 1645 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ55 1645 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Cell: 1301 -15000.00  -2000.00    707.35   54 1645 1820    0  rocks  plain  rocks   wall
+Object: OBJ56 1301 pPm -14.00 mineral 11.99 22.25 pink pyramid medium 
+Object: OBJ57 1301 prs -13.00 mineral 2.51 13.40 pink rock small 
+Object: OBJ58 1301 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ59 1301 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ60 1301 mPt -10.00 mineral 0.96 1.57 magenta pyramid tiny 
+Cell:   54 -15000.00  -1000.00    790.51    0 1301 1310    0   wall  rocks  rocks   wall
+Object: OBJ61 54 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ62 54 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ63 54 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ64 54 pcs -6.00 mineral 7.22 7.05 pink cone small 
+Object: OBJ65 54 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Cell:  502 -14000.00 -15000.00    490.12 1646    0  285   50  rocks   wall  rocks  rocks
+Object: OBJ66 502 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Object: OBJ67 502 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Object: OBJ68 502 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ69 502 rPs -14.00 mineral 7.04 12.46 red pyramid small 
+Object: OBJ70 502 grl -25.00 mineral 19.66 46.85 green rock large 
+Cell: 1646 -14000.00 -14000.00    432.97 3738  502  286   51  cliff  rocks  plain  plain
+Object: OBJ71 1646 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Object: OBJ72 1646 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ73 1646 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Object: OBJ74 1646 mSt -12.00 mineral 0.58 0.45 magenta sphere tiny 
+Object: OBJ75 1646 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Cell: 3738 -14000.00 -13000.00   -344.49 1647 1646 3351   52   wall   wall   wall   wall
+Object: OBJ76 3738 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ77 3738 mrl -17.00 mineral 24.63 61.85 magenta rock large 
+Object: OBJ78 3738 grt -19.00 mineral 0.88 1.10 green rock tiny 
+Object: OBJ79 3738 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ80 3738 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Cell: 1647 -14000.00 -12000.00    329.24   55 3738   62 2343  rocks  cliff  rocks  plain
+Object: OBJ81 1647 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Object: OBJ82 1647 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ83 1647 brl -24.00 mineral 24.72 58.21 blue rock large 
+Object: OBJ84 1647 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ85 1647 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Cell:   55 -14000.00 -11000.00    740.82   56 1647   63 1071  plain  rocks  plain  plain
+Object: OBJ86 55 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Object: OBJ87 55 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ88 55 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Object: OBJ89 55 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ90 55 prl -17.00 mineral 19.21 91.65 pink rock large 
+Cell:   56 -14000.00 -10000.00    748.14   57   55   64 1072  plain  plain  rocks  plain
+Object: OBJ91 56 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ92 56 bSt -19.00 mineral 0.93 0.16 blue sphere tiny 
+Object: OBJ93 56 rrm -17.00 mineral 10.85 11.37 red rock medium 
+Object: OBJ94 56 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ95 56 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Cell:   57 -14000.00  -9000.00    683.21   58   56   65    0  rocks  plain  rocks   wall
+Object: OBJ96 57 rql -12.00 mineral 20.86 73.84 red box large 
+Object: OBJ97 57 mrl -17.00 mineral 24.63 61.85 magenta rock large 
+Object: OBJ98 57 rPs -14.00 mineral 7.04 12.46 red pyramid small 
+Object: OBJ99 57 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Object: OBJ100 57 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Cell:   58 -14000.00  -8000.00    803.68   59   57   66   53  plain  rocks  rocks  rocks
+Object: OBJ101 58 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ102 58 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ103 58 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ104 58 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ105 58 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Cell:   59 -14000.00  -7000.00    758.94   60   58   67 3341  plain  plain  rocks  rocks
+Object: OBJ106 59 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Object: OBJ107 59 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ108 59 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ109 59 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ110 59 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Cell:   60 -14000.00  -6000.00    726.22   61   59   68    0  rocks  plain  rocks   wall
+Object: OBJ111 60 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ112 60 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ113 60 grl -25.00 mineral 19.66 46.85 green rock large 
+Object: OBJ114 60 gPl -24.00 mineral 18.45 35.94 green pyramid large 
+Object: OBJ115 60 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Cell:   61 -14000.00  -5000.00    757.30 3349   60   69 3962  plain  rocks  rocks  rocks
+Object: OBJ116 61 gCm -23.00 mineral 14.11 28.72 green cylinder medium 
+Object: OBJ117 61 bqs -13.00 mineral 6.82 13.00 blue box small 
+Object: OBJ118 61 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ119 61 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ120 61 pPl -16.00 mineral 19.10 46.66 pink pyramid large 
+Cell: 3349 -14000.00  -4000.00    448.85 2851   61   70 1300  plain  plain  plain  rocks
+Object: OBJ121 3349 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ122 3349 gCl -25.00 mineral 16.45 83.14 green cylinder large 
+Object: OBJ123 3349 rPm -16.00 mineral 5.46 25.15 red pyramid medium 
+Object: OBJ124 3349 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ125 3349 gQl -21.00 mineral 11.99 69.41 green cube large 
+Cell: 2851 -14000.00  -3000.00    345.19 1820 3349  520 1645    mud  plain  cliff  plain
+Object: OBJ126 2851 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ127 2851 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ128 2851 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ129 2851 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ130 2851 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Cell: 1820 -14000.00  -2000.00    444.72 1310 2851 1320 1301   wall    mud  plain  rocks
+Object: OBJ131 1820 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ132 1820 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ133 1820 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ134 1820 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ135 1820 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Cell: 1310 -14000.00  -1000.00   1000.00    0 1820 3985   54   wall  cliff  rocks  rocks
+Object: OBJ136 1310 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Object: OBJ137 1310 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ138 1310 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ139 1310 mrs -13.00 mineral 5.92 14.52 magenta rock small 
+Object: OBJ140 1310 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Cell:  285 -13000.00 -15000.00    155.72  286    0  296  502  plain   wall  plain  rocks
+Object: OBJ141 285 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ142 285 pPm -14.00 mineral 11.99 22.25 pink pyramid medium 
+Object: OBJ143 285 pPm -14.00 mineral 11.99 22.25 pink pyramid medium 
+Object: OBJ144 285 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ145 285 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Cell:  286 -13000.00 -14000.00    518.94 3351  285 2861 1646  rocks  plain  rocks  plain
+Object: OBJ146 286 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ147 286 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ148 286 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ149 286 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ150 286 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Cell: 3351 -13000.00 -13000.00    398.16   62  286   71 3738  plain  rocks  plain  cliff
+Object: OBJ151 3351 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ152 3351 bCm -22.00 mineral 5.23 11.74 blue cylinder medium 
+Object: OBJ153 3351 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Object: OBJ154 3351 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ155 3351 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Cell:   62 -13000.00 -12000.00    685.64   63 3351   72 1647  plain  plain  rocks  rocks
+Object: OBJ156 62 gPt -18.00 mineral 0.56 1.72 green pyramid tiny 
+Object: OBJ157 62 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ158 62 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ159 62 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ160 62 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Cell:   63 -13000.00 -11000.00    754.77   64   62   73   55  rocks  plain  rocks  plain
+Object: OBJ161 63 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ162 63 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ163 63 pcs -6.00 mineral 7.22 7.05 pink cone small 
+Object: OBJ164 63 pct -4.00 mineral 0.41 0.18 pink cone tiny 
+Object: OBJ165 63 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Cell:   64 -13000.00 -10000.00    877.48   65   63   74   56  rocks  rocks  rocks  rocks
+Object: OBJ166 64 gQt -15.00 mineral 0.81 0.23 green cube tiny 
+Object: OBJ167 64 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ168 64 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Object: OBJ169 64 bqs -13.00 mineral 6.82 13.00 blue box small 
+Object: OBJ170 64 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Cell:   65 -13000.00  -9000.00    741.74   66   64   75   57  rocks  rocks  rocks  rocks
+Object: OBJ171 65 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ172 65 grm -23.00 mineral 12.27 15.64 green rock medium 
+Object: OBJ173 65 pPl -16.00 mineral 19.10 46.66 pink pyramid large 
+Object: OBJ174 65 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ175 65 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Cell:   66 -13000.00  -8000.00    673.99   67   65   76   58  rocks  rocks  rocks  rocks
+Object: OBJ176 66 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ177 66 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ178 66 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ179 66 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ180 66 pql -10.00 mineral 10.89 63.44 pink box large 
+Cell:   67 -13000.00  -7000.00    647.82   68   66   77   59  plain  rocks  rocks  rocks
+Object: OBJ181 67 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Object: OBJ182 67 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Object: OBJ183 67 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ184 67 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ185 67 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Cell:   68 -13000.00  -6000.00    469.01   69   67   78   60  rocks  plain  plain  rocks
+Object: OBJ186 68 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ187 68 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ188 68 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ189 68 rPs -14.00 mineral 7.04 12.46 red pyramid small 
+Object: OBJ190 68 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Cell:   69 -13000.00  -5000.00    698.48   70   68   79   61  rocks  rocks  rocks  rocks
+Object: OBJ191 69 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ192 69 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ193 69 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ194 69 gqt -12.00 mineral 0.14 0.80 green box tiny 
+Object: OBJ195 69 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Cell:   70 -13000.00  -4000.00    701.85  520   69   80 3349  cliff  rocks  rocks  plain
+Object: OBJ196 70 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ197 70 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ198 70 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Object: OBJ199 70 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ200 70 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Cell:  520 -13000.00  -3000.00   -257.52 1320   70   81 2851  plain   wall   wall   wall
+Object: OBJ201 520 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Object: OBJ202 520 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ203 520 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Object: OBJ204 520 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ205 520 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Cell: 1320 -13000.00  -2000.00    196.91 3985  520 1676 1820   wall  plain  rocks  plain
+Object: OBJ206 1320 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ207 1320 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ208 1320 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ209 1320 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Object: OBJ210 1320 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Cell: 3985 -13000.00  -1000.00    705.57    0 1320 1842 1310   wall  cliff  cliff  rocks
+Object: OBJ211 3985 grm -23.00 mineral 12.27 15.64 green rock medium 
+Object: OBJ212 3985 brl -24.00 mineral 24.72 58.21 blue rock large 
+Object: OBJ213 3985 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Object: OBJ214 3985 gQl -21.00 mineral 11.99 69.41 green cube large 
+Object: OBJ215 3985 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Cell:  296 -12000.00 -15000.00     80.38 2861    0 2149  285  plain   wall  plain  plain
+Object: OBJ216 296 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ217 296 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ218 296 prl -17.00 mineral 19.21 91.65 pink rock large 
+Object: OBJ219 296 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ220 296 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Cell: 2861 -12000.00 -14000.00    346.15   71  296   82  286    mud  plain    mud  rocks
+Object: OBJ221 2861 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ222 2861 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ223 2861 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Object: OBJ224 2861 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ225 2861 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Cell:   71 -12000.00 -13000.00    584.22   72 2861   83 3351  plain    mud  rocks  plain
+Object: OBJ226 71 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Object: OBJ227 71 gPl -24.00 mineral 18.45 35.94 green pyramid large 
+Object: OBJ228 71 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ229 71 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ230 71 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Cell:   72 -12000.00 -12000.00    874.07   73   71   84   62  plain  plain  rocks  rocks
+Object: OBJ231 72 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ232 72 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ233 72 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ234 72 mql -10.00 mineral 12.53 86.97 magenta box large 
+Object: OBJ235 72 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Cell:   73 -12000.00 -11000.00    855.95   74   72   85   63  plain  plain  plain  rocks
+Object: OBJ236 73 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ237 73 gcs -14.00 mineral 3.60 10.95 green cone small 
+Object: OBJ238 73 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ239 73 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ240 73 pPl -16.00 mineral 19.10 46.66 pink pyramid large 
+Cell:   74 -12000.00 -10000.00    785.73   75   73   86   64  rocks  plain  rocks  rocks
+Object: OBJ241 74 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ242 74 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ243 74 brs -20.00 mineral 7.73 11.59 blue rock small 
+Object: OBJ244 74 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ245 74 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Cell:   75 -12000.00  -9000.00    752.66   76   74   87   65  rocks  rocks  plain  rocks
+Object: OBJ246 75 pPl -16.00 mineral 19.10 46.66 pink pyramid large 
+Object: OBJ247 75 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ248 75 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Object: OBJ249 75 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ250 75 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Cell:   76 -12000.00  -8000.00    698.10   77   75   88   66  rocks  rocks    mud  rocks
+Object: OBJ251 76 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ252 76 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ253 76 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ254 76 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ255 76 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Cell:   77 -12000.00  -7000.00    433.17   78   76   89   67  plain  rocks  rocks  rocks
+Object: OBJ256 77 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ257 77 mct -4.00 mineral 0.95 1.75 magenta cone tiny 
+Object: OBJ258 77 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Object: OBJ259 77 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ260 77 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Cell:   78 -12000.00  -6000.00    736.57   79   77   90   68  plain  plain  rocks  plain
+Object: OBJ261 78 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ262 78 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ263 78 gQl -21.00 mineral 11.99 69.41 green cube large 
+Object: OBJ264 78 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ265 78 bPt -17.00 mineral 0.38 0.87 blue pyramid tiny 
+Cell:   79 -12000.00  -5000.00    564.71   80   78   91   69  rocks  plain  plain  rocks
+Object: OBJ266 79 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ267 79 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ268 79 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ269 79 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ270 79 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Cell:   80 -12000.00  -4000.00    546.40   81   79   92   70  plain  rocks    mud  rocks
+Object: OBJ271 80 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ272 80 pPt -10.00 mineral 0.58 0.84 pink pyramid tiny 
+Object: OBJ273 80 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ274 80 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Object: OBJ275 80 rSs -16.00 mineral 3.05 5.03 red sphere small 
+Cell:   81 -12000.00  -3000.00    662.12 1676   80   93  520  cliff  plain  plain  cliff
+Object: OBJ276 81 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ277 81 grs -21.00 mineral 3.31 8.93 green rock small 
+Object: OBJ278 81 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Object: OBJ279 81 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ280 81 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Cell: 1676 -12000.00  -2000.00     24.17 1842   81   94 1320  plain   wall   wall  rocks
+Object: OBJ281 1676 prs -13.00 mineral 2.51 13.40 pink rock small 
+Object: OBJ282 1676 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ283 1676 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ284 1676 mrs -13.00 mineral 5.92 14.52 magenta rock small 
+Object: OBJ285 1676 pql -10.00 mineral 10.89 63.44 pink box large 
+Cell: 1842 -12000.00  -1000.00    116.14    0 1676 2613 3985   wall  plain  plain   wall
+Object: OBJ286 1842 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ287 1842 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ288 1842 gCs -21.00 mineral 5.26 7.02 green cylinder small 
+Object: OBJ289 1842 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Object: OBJ290 1842 pct -4.00 mineral 0.41 0.18 pink cone tiny 
+Cell: 2149 -11000.00 -15000.00   -174.50   82    0 1345  296   wall   wall   wall  plain
+Object: OBJ291 2149 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ292 2149 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ293 2149 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ294 2149 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ295 2149 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Cell:   82 -11000.00 -14000.00    620.82   83 2149   95 2861  rocks  cliff  rocks    mud
+Object: OBJ296 82 gQs -17.00 mineral 4.60 1.69 green cube small 
+Object: OBJ297 82 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ298 82 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Object: OBJ299 82 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Object: OBJ300 82 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Cell:   83 -11000.00 -13000.00    768.62   84   82   96   71  rocks  rocks  plain  rocks
+Object: OBJ301 83 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ302 83 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ303 83 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Object: OBJ304 83 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ305 83 rqs -8.00 mineral 6.35 2.35 red box small 
+Cell:   84 -11000.00 -12000.00    817.31   85   83   97   72  rocks  rocks  rocks  rocks
+Object: OBJ306 84 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ307 84 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ308 84 gSm -24.00 mineral 8.97 27.84 green sphere medium 
+Object: OBJ309 84 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ310 84 rPm -16.00 mineral 5.46 25.15 red pyramid medium 
+Cell:   85 -11000.00 -11000.00    770.42   86   84   98   73  plain  rocks  rocks  plain
+Object: OBJ311 85 rSs -16.00 mineral 3.05 5.03 red sphere small 
+Object: OBJ312 85 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ313 85 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ314 85 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ315 85 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Cell:   86 -11000.00 -10000.00    636.60   87   85   99   74  plain  plain  rocks  rocks
+Object: OBJ316 86 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ317 86 bcl -17.00 mineral 21.48 64.80 blue cone large 
+Object: OBJ318 86 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Object: OBJ319 86 bCm -22.00 mineral 5.23 11.74 blue cylinder medium 
+Object: OBJ320 86 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Cell:   87 -11000.00  -9000.00    662.62   88   86  100   75  rocks  plain  rocks  plain
+Object: OBJ321 87 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Object: OBJ322 87 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ323 87 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ324 87 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ325 87 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Cell:   88 -11000.00  -8000.00    720.89   89   87  101   76  plain  rocks  rocks    mud
+Object: OBJ326 88 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ327 88 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ328 88 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ329 88 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ330 88 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Cell:   89 -11000.00  -7000.00    741.62   90   88  102   77  rocks  plain  plain  rocks
+Object: OBJ331 89 rQm -13.00 mineral 11.12 11.92 red cube medium 
+Object: OBJ332 89 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ333 89 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ334 89 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ335 89 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Cell:   90 -11000.00  -6000.00    374.44   91   89  103   78  rocks  rocks  rocks  rocks
+Object: OBJ336 90 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ337 90 grm -23.00 mineral 12.27 15.64 green rock medium 
+Object: OBJ338 90 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ339 90 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Object: OBJ340 90 gCl -25.00 mineral 16.45 83.14 green cylinder large 
+Cell:   91 -11000.00  -5000.00    417.74   92   90  104   79  rocks  rocks  rocks  plain
+Object: OBJ341 91 mql -10.00 mineral 12.53 86.97 magenta box large 
+Object: OBJ342 91 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ343 91 gPt -18.00 mineral 0.56 1.72 green pyramid tiny 
+Object: OBJ344 91 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ345 91 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Cell:   92 -11000.00  -4000.00    537.34   93   91  105   80  rocks  rocks  rocks    mud
+Object: OBJ346 92 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ347 92 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ348 92 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ349 92 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ350 92 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Cell:   93 -11000.00  -3000.00    502.05   94   92  106   81  rocks  rocks    mud  plain
+Object: OBJ351 93 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Object: OBJ352 93 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ353 93 brm -22.00 mineral 10.70 26.09 blue rock medium 
+Object: OBJ354 93 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ355 93 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Cell:   94 -11000.00  -2000.00    786.11 2613   93  107 1676  cliff  rocks    mud  cliff
+Object: OBJ356 94 brm -22.00 mineral 10.70 26.09 blue rock medium 
+Object: OBJ357 94 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Object: OBJ358 94 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ359 94 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ360 94 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Cell: 2613 -11000.00  -1000.00     76.90    0   94  962 1842   wall   wall   wall  plain
+Object: OBJ361 2613 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ362 2613 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ363 2613 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Object: OBJ364 2613 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ365 2613 rrs -15.00 mineral 3.96 1.70 red rock small 
+Cell: 1345 -10000.00 -15000.00    964.12   95    0 2043 2149  plain   wall  plain  cliff
+Object: OBJ366 1345 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ367 1345 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ368 1345 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ369 1345 rQs -11.00 mineral 4.13 6.62 red cube small 
+Object: OBJ370 1345 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Cell:   95 -10000.00 -14000.00    641.61   96 1345  108   82  rocks  plain  rocks  rocks
+Object: OBJ371 95 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Object: OBJ372 95 pcs -6.00 mineral 7.22 7.05 pink cone small 
+Object: OBJ373 95 gCm -23.00 mineral 14.11 28.72 green cylinder medium 
+Object: OBJ374 95 rql -12.00 mineral 20.86 73.84 red box large 
+Object: OBJ375 95 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Cell:   96 -10000.00 -13000.00    891.25   97   95  109   83  rocks  rocks  plain  plain
+Object: OBJ376 96 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Object: OBJ377 96 gCl -25.00 mineral 16.45 83.14 green cylinder large 
+Object: OBJ378 96 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ379 96 mPt -10.00 mineral 0.96 1.57 magenta pyramid tiny 
+Object: OBJ380 96 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Cell:   97 -10000.00 -12000.00    860.07   98   96  110   84  rocks  rocks  plain  rocks
+Object: OBJ381 97 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Object: OBJ382 97 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ383 97 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Object: OBJ384 97 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Object: OBJ385 97 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Cell:   98 -10000.00 -11000.00    867.02   99   97  111   85  plain  rocks  plain  rocks
+Object: OBJ386 98 rcs -8.00 mineral 7.62 10.26 red cone small 
+Object: OBJ387 98 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ388 98 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Object: OBJ389 98 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ390 98 pql -10.00 mineral 10.89 63.44 pink box large 
+Cell:   99 -10000.00 -10000.00    811.40  100   98  112   86  rocks  plain  rocks  rocks
+Object: OBJ391 99 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Object: OBJ392 99 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ393 99 mct -4.00 mineral 0.95 1.75 magenta cone tiny 
+Object: OBJ394 99 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ395 99 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Cell:  100 -10000.00  -9000.00    656.87  101   99  113   87  rocks  rocks  rocks  rocks
+Object: OBJ396 100 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ397 100 brm -22.00 mineral 10.70 26.09 blue rock medium 
+Object: OBJ398 100 pql -10.00 mineral 10.89 63.44 pink box large 
+Object: OBJ399 100 prs -13.00 mineral 2.51 13.40 pink rock small 
+Object: OBJ400 100 grm -23.00 mineral 12.27 15.64 green rock medium 
+Cell:  101 -10000.00  -8000.00    726.38  102  100  114   88  rocks  rocks  plain  rocks
+Object: OBJ401 101 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ402 101 rcs -8.00 mineral 7.62 10.26 red cone small 
+Object: OBJ403 101 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ404 101 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ405 101 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Cell:  102 -10000.00  -7000.00    700.82  103  101  115   89  rocks  rocks  rocks  plain
+Object: OBJ406 102 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ407 102 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ408 102 gQs -17.00 mineral 4.60 1.69 green cube small 
+Object: OBJ409 102 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ410 102 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Cell:  103 -10000.00  -6000.00    507.37  104  102  116   90    mud  rocks  plain  rocks
+Object: OBJ411 103 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ412 103 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Object: OBJ413 103 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ414 103 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ415 103 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Cell:  104 -10000.00  -5000.00    458.51  105  103  117   91  rocks    mud    mud  rocks
+Object: OBJ416 104 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ417 104 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ418 104 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ419 104 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ420 104 rQl -15.00 mineral 22.67 83.37 red cube large 
+Cell:  105 -10000.00  -4000.00    466.47  106  104  118   92  plain  rocks  plain  rocks
+Object: OBJ421 105 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Object: OBJ422 105 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ423 105 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ424 105 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ425 105 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Cell:  106 -10000.00  -3000.00    467.13  107  105  119   93  rocks  plain  rocks    mud
+Object: OBJ426 106 gQs -17.00 mineral 4.60 1.69 green cube small 
+Object: OBJ427 106 grl -25.00 mineral 19.66 46.85 green rock large 
+Object: OBJ428 106 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ429 106 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Object: OBJ430 106 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Cell:  107 -10000.00  -2000.00    682.16  962  106  120   94  rocks  rocks  rocks    mud
+Object: OBJ431 107 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ432 107 gPt -18.00 mineral 0.56 1.72 green pyramid tiny 
+Object: OBJ433 107 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ434 107 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ435 107 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Cell:  962 -10000.00  -1000.00    731.33    0  107  973 2613   wall  rocks  plain  cliff
+Object: OBJ436 962 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Object: OBJ437 962 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Object: OBJ438 962 rQm -13.00 mineral 11.12 11.92 red cube medium 
+Object: OBJ439 962 rrm -17.00 mineral 10.85 11.37 red rock medium 
+Object: OBJ440 962 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Cell: 2043  -9000.00 -15000.00    911.76  108    0  121 1345  plain   wall  plain  plain
+Object: OBJ441 2043 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ442 2043 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ443 2043 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ444 2043 brl -24.00 mineral 24.72 58.21 blue rock large 
+Object: OBJ445 2043 rcl -12.00 mineral 19.01 75.28 red cone large 
+Cell:  108  -9000.00 -14000.00    779.56  109 2043  122   95  plain  plain  rocks  rocks
+Object: OBJ446 108 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ447 108 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ448 108 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Object: OBJ449 108 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ450 108 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Cell:  109  -9000.00 -13000.00    884.74  110  108  123   96  rocks  plain  plain  plain
+Object: OBJ451 109 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ452 109 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ453 109 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ454 109 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ455 109 rQl -15.00 mineral 22.67 83.37 red cube large 
+Cell:  110  -9000.00 -12000.00    890.53  111  109  124   97  plain  rocks  rocks  plain
+Object: OBJ456 110 gQl -21.00 mineral 11.99 69.41 green cube large 
+Object: OBJ457 110 bPt -17.00 mineral 0.38 0.87 blue pyramid tiny 
+Object: OBJ458 110 mct -4.00 mineral 0.95 1.75 magenta cone tiny 
+Object: OBJ459 110 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ460 110 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Cell:  111  -9000.00 -11000.00    849.33  112  110  125   98  rocks  plain  plain  plain
+Object: OBJ461 111 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ462 111 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ463 111 mrl -17.00 mineral 24.63 61.85 magenta rock large 
+Object: OBJ464 111 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ465 111 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Cell:  112  -9000.00 -10000.00    664.17  113  111  126   99  plain  rocks  plain  rocks
+Object: OBJ466 112 brs -20.00 mineral 7.73 11.59 blue rock small 
+Object: OBJ467 112 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ468 112 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ469 112 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ470 112 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Cell:  113  -9000.00  -9000.00    772.12  114  112  127  100  plain  plain  plain  rocks
+Object: OBJ471 113 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Object: OBJ472 113 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ473 113 pcm -8.00 mineral 12.91 28.99 pink cone medium 
+Object: OBJ474 113 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ475 113 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Cell:  114  -9000.00  -8000.00    676.96  115  113  128  101  plain  plain  plain  plain
+Object: OBJ476 114 gqt -12.00 mineral 0.14 0.80 green box tiny 
+Object: OBJ477 114 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ478 114 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ479 114 gQt -15.00 mineral 0.81 0.23 green cube tiny 
+Object: OBJ480 114 bqs -13.00 mineral 6.82 13.00 blue box small 
+Cell:  115  -9000.00  -7000.00    658.08  116  114  129  102  rocks  plain  plain  rocks
+Object: OBJ481 115 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ482 115 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ483 115 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ484 115 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Object: OBJ485 115 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Cell:  116  -9000.00  -6000.00    639.17  117  115  130  103  rocks  rocks  rocks  plain
+Object: OBJ486 116 pPt -10.00 mineral 0.58 0.84 pink pyramid tiny 
+Object: OBJ487 116 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ488 116 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Object: OBJ489 116 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ490 116 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Cell:  117  -9000.00  -5000.00    464.01  118  116  131  104  rocks  rocks  rocks    mud
+Object: OBJ491 117 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ492 117 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ493 117 rrm -17.00 mineral 10.85 11.37 red rock medium 
+Object: OBJ494 117 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ495 117 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Cell:  118  -9000.00  -4000.00    506.15  119  117  132  105  rocks  rocks  rocks  plain
+Object: OBJ496 118 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ497 118 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ498 118 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ499 118 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ500 118 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Cell:  119  -9000.00  -3000.00    440.82  120  118  133  106  rocks  rocks  plain  rocks
+Object: OBJ501 119 gSm -24.00 mineral 8.97 27.84 green sphere medium 
+Object: OBJ502 119 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Object: OBJ503 119 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ504 119 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ505 119 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Cell:  120  -9000.00  -2000.00    453.58  973  119  134  107    mud  rocks  rocks  rocks
+Object: OBJ506 120 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ507 120 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ508 120 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ509 120 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ510 120 rcs -8.00 mineral 7.62 10.26 red cone small 
+Cell:  973  -9000.00  -1000.00    816.74    0  120  135  962   wall    mud    mud  plain
+Object: OBJ511 973 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ512 973 grt -19.00 mineral 0.88 1.10 green rock tiny 
+Object: OBJ513 973 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Object: OBJ514 973 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Object: OBJ515 973 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Cell:  121  -8000.00 -15000.00    629.51  122    0 2058 2043  rocks   wall  rocks  plain
+Object: OBJ516 121 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ517 121 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ518 121 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ519 121 grs -21.00 mineral 3.31 8.93 green rock small 
+Object: OBJ520 121 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Cell:  122  -8000.00 -14000.00    563.77  123  121    1  108  plain  rocks  rocks  rocks
+Object: OBJ521 122 brs -20.00 mineral 7.73 11.59 blue rock small 
+Object: OBJ522 122 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ523 122 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ524 122 mrl -17.00 mineral 24.63 61.85 magenta rock large 
+Object: OBJ525 122 gCl -25.00 mineral 16.45 83.14 green cylinder large 
+Cell:  123  -8000.00 -13000.00    775.85  124  122  137  109  rocks  plain  rocks  plain
+Object: OBJ526 123 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Object: OBJ527 123 gcs -14.00 mineral 3.60 10.95 green cone small 
+Object: OBJ528 123 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ529 123 bql -17.00 mineral 13.34 81.28 blue box large 
+Object: OBJ530 123 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Cell:  124  -8000.00 -12000.00    776.82  125  123  138  110  rocks  rocks  rocks  rocks
+Object: OBJ531 124 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Object: OBJ532 124 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ533 124 pPt -10.00 mineral 0.58 0.84 pink pyramid tiny 
+Object: OBJ534 124 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Object: OBJ535 124 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Cell:  125  -8000.00 -11000.00    907.70  126  124    2  111  rocks  rocks  rocks  plain
+Object: OBJ536 125 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ537 125 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Object: OBJ538 125 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ539 125 pql -10.00 mineral 10.89 63.44 pink box large 
+Object: OBJ540 125 rSs -16.00 mineral 3.05 5.03 red sphere small 
+Cell:  126  -8000.00 -10000.00    798.32  127  125  140  112  plain  rocks  plain  plain
+Object: OBJ541 126 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ542 126 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ543 126 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ544 126 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ545 126 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Cell:  127  -8000.00  -9000.00    643.50  128  126  141  113    mud  plain  plain  plain
+Object: OBJ546 127 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Object: OBJ547 127 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ548 127 bqt -11.00 mineral 0.14 0.99 blue box tiny 
+Object: OBJ549 127 prl -17.00 mineral 19.21 91.65 pink rock large 
+Object: OBJ550 127 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Cell:  128  -8000.00  -8000.00    800.90  129  127    3  114  plain    mud  plain  plain
+Object: OBJ551 128 gPl -24.00 mineral 18.45 35.94 green pyramid large 
+Object: OBJ552 128 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Object: OBJ553 128 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ554 128 gCl -25.00 mineral 16.45 83.14 green cylinder large 
+Object: OBJ555 128 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Cell:  129  -8000.00  -7000.00    679.08  130  128  143  115  plain  plain  plain  plain
+Object: OBJ556 129 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ557 129 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ558 129 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Object: OBJ559 129 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ560 129 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Cell:  130  -8000.00  -6000.00    516.17  131  129  144  116  rocks  plain  rocks  rocks
+Object: OBJ561 130 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ562 130 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ563 130 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ564 130 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ565 130 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Cell:  131  -8000.00  -5000.00    459.40  132  130  145  117    mud  rocks  rocks  rocks
+Object: OBJ566 131 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ567 131 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Object: OBJ568 131 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ569 131 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ570 131 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Cell:  132  -8000.00  -4000.00    430.88  133  131  146  118  plain    mud    mud  rocks
+Object: OBJ571 132 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ572 132 grs -21.00 mineral 3.31 8.93 green rock small 
+Object: OBJ573 132 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Object: OBJ574 132 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Object: OBJ575 132 gql -18.00 mineral 20.08 82.19 green box large 
+Cell:  133  -8000.00  -3000.00    447.77  134  132  147  119  plain  plain  rocks  plain
+Object: OBJ576 133 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ577 133 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ578 133 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ579 133 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ580 133 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Cell:  134  -8000.00  -2000.00    742.76  135  133  148  120  rocks  plain  rocks  rocks
+Object: OBJ581 134 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ582 134 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ583 134 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ584 134 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Object: OBJ585 134 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Cell:  135  -8000.00  -1000.00    725.23    0  134 5242  973   wall  rocks  plain    mud
+Object: OBJ586 135 brm -22.00 mineral 10.70 26.09 blue rock medium 
+Object: OBJ587 135 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ588 135 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ589 135 mct -4.00 mineral 0.95 1.75 magenta cone tiny 
+Object: OBJ590 135 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Cell: 2058  -7000.00 -15000.00    829.09    1    0 2217  121  plain   wall  cliff  rocks
+Object: OBJ591 2058 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ592 2058 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ593 2058 rrm -17.00 mineral 10.85 11.37 red rock medium 
+Object: OBJ594 2058 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ595 2058 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Cell:    1  -7000.00 -14000.00    606.55  137 2058    4  122  rocks  plain  plain  rocks
+Object: OBJ596 1 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ597 1 mql -10.00 mineral 12.53 86.97 magenta box large 
+Object: OBJ598 1 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ599 1 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Object: OBJ600 1 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Cell:  137  -7000.00 -13000.00    875.33  138    1    5  123  rocks  rocks  plain  rocks
+Object: OBJ601 137 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ602 137 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ603 137 gCl -25.00 mineral 16.45 83.14 green cylinder large 
+Object: OBJ604 137 rrm -17.00 mineral 10.85 11.37 red rock medium 
+Object: OBJ605 137 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Cell:  138  -7000.00 -12000.00    800.36    2  137    6  124  rocks  rocks  rocks  rocks
+Object: OBJ606 138 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ607 138 bCm -22.00 mineral 5.23 11.74 blue cylinder medium 
+Object: OBJ608 138 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ609 138 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ610 138 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Cell:    2  -7000.00 -11000.00    856.60  140  138    7  125  rocks  rocks  rocks  rocks
+Object: OBJ611 2 rQs -11.00 mineral 4.13 6.62 red cube small 
+Object: OBJ612 2 rSs -16.00 mineral 3.05 5.03 red sphere small 
+Object: OBJ613 2 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ614 2 rrm -17.00 mineral 10.85 11.37 red rock medium 
+Object: OBJ615 2 rQl -15.00 mineral 22.67 83.37 red cube large 
+Cell:  140  -7000.00 -10000.00    883.16  141    2    8  126  plain  rocks  plain  plain
+Object: OBJ616 140 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ617 140 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Object: OBJ618 140 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ619 140 bqt -11.00 mineral 0.14 0.99 blue box tiny 
+Object: OBJ620 140 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Cell:  141  -7000.00  -9000.00    817.11    3  140    9  127  rocks  plain  plain  plain
+Object: OBJ621 141 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ622 141 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Object: OBJ623 141 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ624 141 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ625 141 rqm -10.00 mineral 10.94 11.56 red box medium 
+Cell:    3  -7000.00  -8000.00    713.06  143  141   10  128  plain  rocks    mud  plain
+Object: OBJ626 3 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ627 3 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ628 3 pct -4.00 mineral 0.41 0.18 pink cone tiny 
+Object: OBJ629 3 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Object: OBJ630 3 grm -23.00 mineral 12.27 15.64 green rock medium 
+Cell:  143  -7000.00  -7000.00    656.30  144    3  156  129    mud  plain  plain  plain
+Object: OBJ631 143 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ632 143 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Object: OBJ633 143 gCm -23.00 mineral 14.11 28.72 green cylinder medium 
+Object: OBJ634 143 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ635 143 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Cell:  144  -7000.00  -6000.00    463.75  145  143  157  130  plain    mud  rocks  rocks
+Object: OBJ636 144 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ637 144 mSt -12.00 mineral 0.58 0.45 magenta sphere tiny 
+Object: OBJ638 144 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ639 144 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ640 144 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Cell:  145  -7000.00  -5000.00    477.97  146  144  158  131  plain  plain  plain  rocks
+Object: OBJ641 145 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ642 145 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ643 145 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ644 145 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Object: OBJ645 145 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Cell:  146  -7000.00  -4000.00    522.69  147  145  159  132    mud  plain  rocks    mud
+Object: OBJ646 146 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ647 146 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ648 146 grm -23.00 mineral 12.27 15.64 green rock medium 
+Object: OBJ649 146 mrs -13.00 mineral 5.92 14.52 magenta rock small 
+Object: OBJ650 146 mql -10.00 mineral 12.53 86.97 magenta box large 
+Cell:  147  -7000.00  -3000.00    477.64  148  146  160  133    mud    mud  plain  rocks
+Object: OBJ651 147 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Object: OBJ652 147 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ653 147 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Object: OBJ654 147 gQs -17.00 mineral 4.60 1.69 green cube small 
+Object: OBJ655 147 bcl -17.00 mineral 21.48 64.80 blue cone large 
+Cell:  148  -7000.00  -2000.00    420.26 5242  147  161  134  rocks    mud  plain  rocks
+Object: OBJ656 148 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ657 148 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ658 148 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ659 148 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ660 148 prl -17.00 mineral 19.21 91.65 pink rock large 
+Cell: 5242  -7000.00  -1000.00    841.33    0  148 1002  135   wall  rocks  rocks  plain
+Object: OBJ661 5242 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ662 5242 rrs -15.00 mineral 3.96 1.70 red rock small 
+Object: OBJ663 5242 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ664 5242 gCm -23.00 mineral 14.11 28.72 green cylinder medium 
+Object: OBJ665 5242 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Cell: 2217  -6000.00 -15000.00   -134.66    4    0 1184 2058   wall   wall  plain   wall
+Object: OBJ666 2217 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Object: OBJ667 2217 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ668 2217 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ669 2217 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ670 2217 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Cell:    4  -6000.00 -14000.00    714.89    5 2217   11    1  plain  cliff  rocks  plain
+Object: OBJ671 4 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Object: OBJ672 4 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ673 4 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ674 4 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ675 4 prs -13.00 mineral 2.51 13.40 pink rock small 
+Cell:    5  -6000.00 -13000.00    658.23    6    4   12  137  rocks  plain  plain  plain
+Object: OBJ676 5 gQt -15.00 mineral 0.81 0.23 green cube tiny 
+Object: OBJ677 5 rSs -16.00 mineral 3.05 5.03 red sphere small 
+Object: OBJ678 5 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ679 5 mPt -10.00 mineral 0.96 1.57 magenta pyramid tiny 
+Object: OBJ680 5 brm -22.00 mineral 10.70 26.09 blue rock medium 
+Cell:    6  -6000.00 -12000.00    845.46    7    5   13  138  plain  rocks  rocks  rocks
+Object: OBJ681 6 rql -12.00 mineral 20.86 73.84 red box large 
+Object: OBJ682 6 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ683 6 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ684 6 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ685 6 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Cell:    7  -6000.00 -11000.00    823.94    8    6   14    2  plain  plain  rocks  rocks
+Object: OBJ686 7 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Object: OBJ687 7 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ688 7 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Object: OBJ689 7 bql -17.00 mineral 13.34 81.28 blue box large 
+Object: OBJ690 7 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Cell:    8  -6000.00 -10000.00    758.87    9    7   15  140  rocks  plain  rocks  plain
+Object: OBJ691 8 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ692 8 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ693 8 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Object: OBJ694 8 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ695 8 rqs -8.00 mineral 6.35 2.35 red box small 
+Cell:    9  -6000.00  -9000.00    871.56   10    8   16  141  rocks  rocks  rocks  plain
+Object: OBJ696 9 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ697 9 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ698 9 gQt -15.00 mineral 0.81 0.23 green cube tiny 
+Object: OBJ699 9 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ700 9 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Cell:   10  -6000.00  -8000.00    691.53  156    9  168    3  plain  rocks  plain    mud
+Object: OBJ701 10 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ702 10 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Object: OBJ703 10 grt -19.00 mineral 0.88 1.10 green rock tiny 
+Object: OBJ704 10 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ705 10 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Cell:  156  -6000.00  -7000.00    391.58  157   10  169  143  rocks  plain  rocks  plain
+Object: OBJ706 156 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ707 156 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ708 156 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Object: OBJ709 156 bPt -17.00 mineral 0.38 0.87 blue pyramid tiny 
+Object: OBJ710 156 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Cell:  157  -6000.00  -6000.00    683.45  158  156  170  144  rocks  rocks    mud  rocks
+Object: OBJ711 157 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ712 157 bSt -19.00 mineral 0.93 0.16 blue sphere tiny 
+Object: OBJ713 157 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ714 157 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ715 157 rcl -12.00 mineral 19.01 75.28 red cone large 
+Cell:  158  -6000.00  -5000.00    414.56  159  157  171  145  rocks  rocks  rocks  plain
+Object: OBJ716 158 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Object: OBJ717 158 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ718 158 bqs -13.00 mineral 6.82 13.00 blue box small 
+Object: OBJ719 158 brs -20.00 mineral 7.73 11.59 blue rock small 
+Object: OBJ720 158 pct -4.00 mineral 0.41 0.18 pink cone tiny 
+Cell:  159  -6000.00  -4000.00    501.25  160  158  172  146  plain  rocks  rocks  rocks
+Object: OBJ721 159 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ722 159 bSt -19.00 mineral 0.93 0.16 blue sphere tiny 
+Object: OBJ723 159 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ724 159 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ725 159 brl -24.00 mineral 24.72 58.21 blue rock large 
+Cell:  160  -6000.00  -3000.00    716.08  161  159  173  147  rocks  plain  rocks  plain
+Object: OBJ726 160 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Object: OBJ727 160 gqm -16.00 mineral 9.24 22.42 green box medium 
+Object: OBJ728 160 rct -6.00 mineral 0.35 1.11 red cone tiny 
+Object: OBJ729 160 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Object: OBJ730 160 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Cell:  161  -6000.00  -2000.00    536.09 1002  160  174  148  rocks  rocks  rocks  plain
+Object: OBJ731 161 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ732 161 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ733 161 bcs -13.00 mineral 2.30 10.94 blue cone small 
+Object: OBJ734 161 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Object: OBJ735 161 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Cell: 1002  -6000.00  -1000.00   1000.00    0  161 4657 5242   wall  rocks  cliff  rocks
+Object: OBJ736 1002 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ737 1002 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ738 1002 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ739 1002 mrs -13.00 mineral 5.92 14.52 magenta rock small 
+Object: OBJ740 1002 mrl -17.00 mineral 24.63 61.85 magenta rock large 
+Cell: 1184  -5000.00 -15000.00    140.48   11    0  175 2217   wall   wall  plain  plain
+Object: OBJ741 1184 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ742 1184 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Object: OBJ743 1184 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ744 1184 bPm -21.00 mineral 14.07 21.08 blue pyramid medium 
+Object: OBJ745 1184 grs -21.00 mineral 3.31 8.93 green rock small 
+Cell:   11  -5000.00 -14000.00    672.58   12 1184   17    4  rocks  cliff  rocks  rocks
+Object: OBJ746 11 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ747 11 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Object: OBJ748 11 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ749 11 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ750 11 rql -12.00 mineral 20.86 73.84 red box large 
+Cell:   12  -5000.00 -13000.00    669.69   13   11   18    5  rocks  rocks  plain  plain
+Object: OBJ751 12 gCt -19.00 mineral 0.47 0.98 green cylinder tiny 
+Object: OBJ752 12 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ753 12 gcs -14.00 mineral 3.60 10.95 green cone small 
+Object: OBJ754 12 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ755 12 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Cell:   13  -5000.00 -12000.00    556.63   14   12   19    6  rocks  rocks  rocks  rocks
+Object: OBJ756 13 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Object: OBJ757 13 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ758 13 bSt -19.00 mineral 0.93 0.16 blue sphere tiny 
+Object: OBJ759 13 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ760 13 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Cell:   14  -5000.00 -11000.00    715.55   15   13   20    7  rocks  rocks  rocks  rocks
+Object: OBJ761 14 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ762 14 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ763 14 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Object: OBJ764 14 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Object: OBJ765 14 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Cell:   15  -5000.00 -10000.00    684.19   16   14   21    8  rocks  rocks  rocks  rocks
+Object: OBJ766 15 pPm -14.00 mineral 11.99 22.25 pink pyramid medium 
+Object: OBJ767 15 mql -10.00 mineral 12.53 86.97 magenta box large 
+Object: OBJ768 15 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ769 15 gSm -24.00 mineral 8.97 27.84 green sphere medium 
+Object: OBJ770 15 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Cell:   16  -5000.00  -9000.00    730.96  168   15   22    9  plain  rocks  plain  rocks
+Object: OBJ771 16 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ772 16 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ773 16 grm -23.00 mineral 12.27 15.64 green rock medium 
+Object: OBJ774 16 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ775 16 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Cell:  168  -5000.00  -8000.00    845.18  169   16   23   10  rocks  plain  plain  plain
+Object: OBJ776 168 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Object: OBJ777 168 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ778 168 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ779 168 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Object: OBJ780 168 bql -17.00 mineral 13.34 81.28 blue box large 
+Cell:  169  -5000.00  -7000.00    756.55  170  168  182  156  rocks  rocks  plain  rocks
+Object: OBJ781 169 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ782 169 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ783 169 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ784 169 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ785 169 rQm -13.00 mineral 11.12 11.92 red cube medium 
+Cell:  170  -5000.00  -6000.00    482.55  171  169  183  157  plain  rocks  rocks    mud
+Object: OBJ786 170 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ787 170 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ788 170 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Object: OBJ789 170 gct -12.00 mineral 0.86 0.92 green cone tiny 
+Object: OBJ790 170 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Cell:  171  -5000.00  -5000.00    691.20  172  170  184  158  rocks  plain  rocks  rocks
+Object: OBJ791 171 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ792 171 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ793 171 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ794 171 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ795 171 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Cell:  172  -5000.00  -4000.00    495.99  173  171  185  159  rocks  rocks  rocks  rocks
+Object: OBJ796 172 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Object: OBJ797 172 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ798 172 grt -19.00 mineral 0.88 1.10 green rock tiny 
+Object: OBJ799 172 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Object: OBJ800 172 gcl -18.00 mineral 12.75 77.56 green cone large 
+Cell:  173  -5000.00  -3000.00    415.01  174  172  186  160  rocks  rocks  rocks  rocks
+Object: OBJ801 173 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ802 173 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ803 173 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ804 173 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ805 173 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Cell:  174  -5000.00  -2000.00    763.16 4657  173 1020  161  cliff  rocks  rocks  rocks
+Object: OBJ806 174 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Object: OBJ807 174 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ808 174 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Object: OBJ809 174 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Object: OBJ810 174 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Cell: 4657  -5000.00  -1000.00    260.52    0  174 1603 1002   wall   wall   wall   wall
+Object: OBJ811 4657 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ812 4657 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ813 4657 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ814 4657 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ815 4657 rQl -15.00 mineral 22.67 83.37 red cube large 
+Cell:  175  -4000.00 -15000.00    254.75   17    0  412 1184  plain   wall  plain  plain
+Object: OBJ816 175 pCt -11.00 mineral 0.66 1.23 pink cylinder tiny 
+Object: OBJ817 175 rrl -19.00 mineral 19.89 71.61 red rock large 
+Object: OBJ818 175 gSm -24.00 mineral 8.97 27.84 green sphere medium 
+Object: OBJ819 175 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ820 175 rQl -15.00 mineral 22.67 83.37 red cube large 
+Cell:   17  -4000.00 -14000.00    686.94   18  175   24   11  plain  plain  cliff  rocks
+Object: OBJ821 17 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Object: OBJ822 17 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ823 17 mPt -10.00 mineral 0.96 1.57 magenta pyramid tiny 
+Object: OBJ824 17 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ825 17 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Cell:   18  -4000.00 -13000.00    571.79   19   17   25   12  rocks  plain  cliff  plain
+Object: OBJ826 18 prl -17.00 mineral 19.21 91.65 pink rock large 
+Object: OBJ827 18 grl -25.00 mineral 19.66 46.85 green rock large 
+Object: OBJ828 18 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ829 18 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ830 18 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Cell:   19  -4000.00 -12000.00    661.08   20   18   26   13  rocks  rocks  plain  rocks
+Object: OBJ831 19 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Object: OBJ832 19 brm -22.00 mineral 10.70 26.09 blue rock medium 
+Object: OBJ833 19 pPm -14.00 mineral 11.99 22.25 pink pyramid medium 
+Object: OBJ834 19 mPt -10.00 mineral 0.96 1.57 magenta pyramid tiny 
+Object: OBJ835 19 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Cell:   20  -4000.00 -11000.00    622.99   21   19   27   14  plain  rocks  rocks  rocks
+Object: OBJ836 20 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ837 20 rPm -16.00 mineral 5.46 25.15 red pyramid medium 
+Object: OBJ838 20 rQs -11.00 mineral 4.13 6.62 red cube small 
+Object: OBJ839 20 pSt -12.00 mineral 0.83 0.31 pink sphere tiny 
+Object: OBJ840 20 gql -18.00 mineral 20.08 82.19 green box large 
+Cell:   21  -4000.00 -10000.00    681.70   22   20   28   15  plain  plain  rocks  rocks
+Object: OBJ841 21 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ842 21 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ843 21 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ844 21 rCs -15.00 mineral 1.07 14.88 red cylinder small 
+Object: OBJ845 21 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Cell:   22  -4000.00  -9000.00    549.41   23   21   29   16  rocks  plain  rocks  plain
+Object: OBJ846 22 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ847 22 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ848 22 bPt -17.00 mineral 0.38 0.87 blue pyramid tiny 
+Object: OBJ849 22 brt -18.00 mineral 0.59 1.19 blue rock tiny 
+Object: OBJ850 22 bql -17.00 mineral 13.34 81.28 blue box large 
+Cell:   23  -4000.00  -8000.00    610.81  182   22  191  168  rocks  rocks  plain  plain
+Object: OBJ851 23 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ852 23 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ853 23 gPt -18.00 mineral 0.56 1.72 green pyramid tiny 
+Object: OBJ854 23 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ855 23 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Cell:  182  -4000.00  -7000.00    573.36  183   23  192  169  rocks  rocks  plain  plain
+Object: OBJ856 182 pct -4.00 mineral 0.41 0.18 pink cone tiny 
+Object: OBJ857 182 grt -19.00 mineral 0.88 1.10 green rock tiny 
+Object: OBJ858 182 mCl -17.00 mineral 15.36 59.19 magenta cylinder large 
+Object: OBJ859 182 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ860 182 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Cell:  183  -4000.00  -6000.00    802.19  184  182  193  170  plain  rocks  plain  rocks
+Object: OBJ861 183 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ862 183 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ863 183 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ864 183 rPs -14.00 mineral 7.04 12.46 red pyramid small 
+Object: OBJ865 183 gqt -12.00 mineral 0.14 0.80 green box tiny 
+Cell:  184  -4000.00  -5000.00    766.55  185  183  194  171  rocks  plain  rocks  rocks
+Object: OBJ866 184 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ867 184 mql -10.00 mineral 12.53 86.97 magenta box large 
+Object: OBJ868 184 mct -4.00 mineral 0.95 1.75 magenta cone tiny 
+Object: OBJ869 184 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ870 184 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Cell:  185  -4000.00  -4000.00    742.40  186  184  195  172  plain  rocks  rocks  rocks
+Object: OBJ871 185 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ872 185 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Object: OBJ873 185 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ874 185 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Object: OBJ875 185 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Cell:  186  -4000.00  -3000.00    672.78 1020  185 1028  173  rocks  plain  rocks  rocks
+Object: OBJ876 186 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Object: OBJ877 186 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ878 186 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ879 186 grm -23.00 mineral 12.27 15.64 green rock medium 
+Object: OBJ880 186 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Cell: 1020  -4000.00  -2000.00    906.31 1603  186 1029  174  plain  rocks  plain  rocks
+Object: OBJ881 1020 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ882 1020 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ883 1020 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Object: OBJ884 1020 prt -11.00 mineral 0.99 0.76 pink rock tiny 
+Object: OBJ885 1020 pqs -6.00 mineral 2.37 13.61 pink box small 
+Cell: 1603  -4000.00  -1000.00    977.40    0 1020  422 4657   wall  plain  cliff  cliff
+Object: OBJ886 1603 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ887 1603 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ888 1603 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ889 1603 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ890 1603 gQt -15.00 mineral 0.81 0.23 green cube tiny 
+Cell:  412  -3000.00 -15000.00    721.36   24    0  196  175  cliff   wall  cliff  plain
+Object: OBJ891 412 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ892 412 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ893 412 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ894 412 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ895 412 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Cell:   24  -3000.00 -14000.00    -47.38   25  412  423   17  plain   wall  plain   wall
+Object: OBJ896 24 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ897 24 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ898 24 rSm -18.00 mineral 12.93 25.97 red sphere medium 
+Object: OBJ899 24 gcl -18.00 mineral 12.75 77.56 green cone large 
+Object: OBJ900 24 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Cell:   25  -3000.00 -13000.00    -75.84   26   24   30   18   wall  plain  plain   wall
+Object: OBJ901 25 bSl -25.00 mineral 18.27 77.40 blue sphere large 
+Object: OBJ902 25 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Object: OBJ903 25 rqs -8.00 mineral 6.35 2.35 red box small 
+Object: OBJ904 25 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ905 25 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Cell:   26  -3000.00 -12000.00    695.55   27   25   31   19  rocks  cliff  cliff  plain
+Object: OBJ906 26 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Object: OBJ907 26 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ908 26 rPm -16.00 mineral 5.46 25.15 red pyramid medium 
+Object: OBJ909 26 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ910 26 gqs -14.00 mineral 5.86 6.29 green box small 
+Cell:   27  -3000.00 -11000.00    660.94   28   26   32   20  rocks  rocks  rocks  rocks
+Object: OBJ911 27 bqs -13.00 mineral 6.82 13.00 blue box small 
+Object: OBJ912 27 pPt -10.00 mineral 0.58 0.84 pink pyramid tiny 
+Object: OBJ913 27 pSm -16.00 mineral 11.50 25.08 pink sphere medium 
+Object: OBJ914 27 bSt -19.00 mineral 0.93 0.16 blue sphere tiny 
+Object: OBJ915 27 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Cell:   28  -3000.00 -10000.00    564.81   29   27   33   21  rocks  rocks  rocks  rocks
+Object: OBJ916 28 gQl -21.00 mineral 11.99 69.41 green cube large 
+Object: OBJ917 28 mrs -13.00 mineral 5.92 14.52 magenta rock small 
+Object: OBJ918 28 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ919 28 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ920 28 rrl -19.00 mineral 19.89 71.61 red rock large 
+Cell:   29  -3000.00  -9000.00    701.77  191   28   34   22  plain  rocks  rocks  rocks
+Object: OBJ921 29 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ922 29 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Object: OBJ923 29 mPt -10.00 mineral 0.96 1.57 magenta pyramid tiny 
+Object: OBJ924 29 pQm 11.00 mineral 11.94 18.71 pink cube medium 
+Object: OBJ925 29 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Cell:  191  -3000.00  -8000.00    656.58  192   29  200   23  plain  plain  plain  plain
+Object: OBJ926 191 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ927 191 gQs -17.00 mineral 4.60 1.69 green cube small 
+Object: OBJ928 191 bCs -20.00 mineral 3.53 12.36 blue cylinder small 
+Object: OBJ929 191 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Object: OBJ930 191 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Cell:  192  -3000.00  -7000.00    783.85  193  191  201  182  plain  plain  rocks  plain
+Object: OBJ931 192 pPs -12.00 mineral 7.19 9.82 pink pyramid small 
+Object: OBJ932 192 gPl -24.00 mineral 18.45 35.94 green pyramid large 
+Object: OBJ933 192 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ934 192 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ935 192 pqs -6.00 mineral 2.37 13.61 pink box small 
+Cell:  193  -3000.00  -6000.00    652.82  194  192  202  183  plain  plain  rocks  plain
+Object: OBJ936 193 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ937 193 brs -20.00 mineral 7.73 11.59 blue rock small 
+Object: OBJ938 193 mPl -16.00 mineral 23.72 66.34 magenta pyramid large 
+Object: OBJ939 193 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Object: OBJ940 193 mCm -15.00 mineral 11.96 13.67 magenta cylinder medium 
+Cell:  194  -3000.00  -5000.00    572.70  195  193  203  184  rocks  plain  rocks  rocks
+Object: OBJ941 194 mSt -12.00 mineral 0.58 0.45 magenta sphere tiny 
+Object: OBJ942 194 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Object: OBJ943 194 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ944 194 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ945 194 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Cell:  195  -3000.00  -4000.00    633.75 1028  194 1035  185  rocks  rocks  rocks  rocks
+Object: OBJ946 195 prm -15.00 mineral 9.40 15.80 pink rock medium 
+Object: OBJ947 195 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ948 195 bQl -20.00 mineral 22.81 73.89 blue cube large 
+Object: OBJ949 195 pcs -6.00 mineral 7.22 7.05 pink cone small 
+Object: OBJ950 195 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Cell: 1028  -3000.00  -3000.00    769.18 1029  195  654  186  rocks  rocks  cliff  rocks
+Object: OBJ951 1028 mQs -9.00 mineral 1.15 1.96 magenta cube small 
+Object: OBJ952 1028 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ953 1028 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ954 1028 bct -11.00 mineral 0.59 1.95 blue cone tiny 
+Object: OBJ955 1028 gcs -14.00 mineral 3.60 10.95 green cone small 
+Cell: 1029  -3000.00  -2000.00    730.99  422 1028 1456 1020  cliff  rocks  plain  plain
+Object: OBJ956 1029 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Object: OBJ957 1029 pPt -10.00 mineral 0.58 0.84 pink pyramid tiny 
+Object: OBJ958 1029 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ959 1029 mCs -13.00 mineral 6.63 3.83 magenta cylinder small 
+Object: OBJ960 1029 bCm -22.00 mineral 5.23 11.74 blue cylinder medium 
+Cell:  422  -3000.00  -1000.00   -309.12    0 1029  204 1603   wall   wall   wall   wall
+Object: OBJ961 422 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ962 422 rrl -19.00 mineral 19.89 71.61 red rock large 
+Object: OBJ963 422 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ964 422 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ965 422 rQl -15.00 mineral 22.67 83.37 red cube large 
+Cell:  196  -2000.00 -15000.00    -24.07  423    0  205  412  plain   wall    mud   wall
+Object: OBJ966 196 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ967 196 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ968 196 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ969 196 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ970 196 rPs -14.00 mineral 7.04 12.46 red pyramid small 
+Cell:  423  -2000.00 -14000.00   -384.43   30  196  206   24   wall  plain   wall  plain
+Object: OBJ971 423 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Object: OBJ972 423 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ973 423 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ974 423 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ975 423 gSt -20.00 mineral 0.18 1.59 green sphere tiny 
+Cell:   30  -2000.00 -13000.00    139.63   31  423  656   25  plain  cliff  plain  plain
+Object: OBJ976 30 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Object: OBJ977 30 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ978 30 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ979 30 rQm -13.00 mineral 11.12 11.92 red cube medium 
+Object: OBJ980 30 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Cell:   31  -2000.00 -12000.00    173.79   32   30 4991   26  plain  plain  plain   wall
+Object: OBJ981 31 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ982 31 bSs -21.00 mineral 3.26 10.70 blue sphere small 
+Object: OBJ983 31 rqm -10.00 mineral 10.94 11.56 red box medium 
+Object: OBJ984 31 mcs -6.00 mineral 5.86 1.35 magenta cone small 
+Object: OBJ985 31 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Cell:   32  -2000.00 -11000.00    662.38   33   31   35   27  plain  plain  rocks  rocks
+Object: OBJ986 32 gPl -24.00 mineral 18.45 35.94 green pyramid large 
+Object: OBJ987 32 brs -20.00 mineral 7.73 11.59 blue rock small 
+Object: OBJ988 32 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ989 32 bCm -22.00 mineral 5.23 11.74 blue cylinder medium 
+Object: OBJ990 32 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Cell:   33  -2000.00 -10000.00    730.73   34   32    0   28  plain  plain   wall  rocks
+Object: OBJ991 33 grl -25.00 mineral 19.66 46.85 green rock large 
+Object: OBJ992 33 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Object: OBJ993 33 grs -21.00 mineral 3.31 8.93 green rock small 
+Object: OBJ994 33 rrt -13.00 mineral 0.17 0.28 red rock tiny 
+Object: OBJ995 33 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Cell:   34  -2000.00  -9000.00    614.67  200   33 1038   29  rocks  plain  plain  rocks
+Object: OBJ996 34 bQs -16.00 mineral 2.62 2.98 blue cube small 
+Object: OBJ997 34 gQm -19.00 mineral 8.44 19.43 green cube medium 
+Object: OBJ998 34 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ999 34 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ1000 34 bcl -17.00 mineral 21.48 64.80 blue cone large 
+Cell:  200  -2000.00  -8000.00    720.87  201   34  207  191  rocks  rocks  rocks  plain
+Object: OBJ1001 200 rcs -8.00 mineral 7.62 10.26 red cone small 
+Object: OBJ1002 200 bCl -24.00 mineral 11.41 95.05 blue cylinder large 
+Object: OBJ1003 200 bSm -23.00 mineral 11.58 15.05 blue sphere medium 
+Object: OBJ1004 200 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ1005 200 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Cell:  201  -2000.00  -7000.00    782.86  202  200    0  192  rocks  rocks   wall  rocks
+Object: OBJ1006 201 bQm -18.00 mineral 9.92 24.68 blue cube medium 
+Object: OBJ1007 201 mcl -10.00 mineral 24.43 61.80 magenta cone large 
+Object: OBJ1008 201 rCl -19.00 mineral 14.22 30.92 red cylinder large 
+Object: OBJ1009 201 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Object: OBJ1010 201 rcs -8.00 mineral 7.62 10.26 red cone small 
+Cell:  202  -2000.00  -6000.00    619.04  203  201 1039  193    mud  rocks  rocks  rocks
+Object: OBJ1011 202 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Object: OBJ1012 202 pQs 9.00 mineral 3.08 7.72 pink cube small 
+Object: OBJ1013 202 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Object: OBJ1014 202 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ1015 202 rSs -16.00 mineral 3.05 5.03 red sphere small 
+Cell:  203  -2000.00  -5000.00    765.84 1035  202 4994  194  rocks    mud  cliff  rocks
+Object: OBJ1016 203 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ1017 203 pPt -10.00 mineral 0.58 0.84 pink pyramid tiny 
+Object: OBJ1018 203 mqt -4.00 mineral 0.31 1.53 magenta box tiny 
+Object: OBJ1019 203 mSs -14.00 mineral 7.15 11.80 magenta sphere small 
+Object: OBJ1020 203 pqt -4.00 mineral 0.41 1.51 pink box tiny 
+Cell: 1035  -2000.00  -4000.00    729.10  654  203  877  195  cliff  rocks  plain  rocks
+Object: OBJ1021 1035 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ1022 1035 rcs -8.00 mineral 7.62 10.26 red cone small 
+Object: OBJ1023 1035 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ1024 1035 bcl -17.00 mineral 21.48 64.80 blue cone large 
+Object: OBJ1025 1035 pSs -14.00 mineral 3.39 14.90 pink sphere small 
+Cell:  654  -2000.00  -3000.00     90.55 1456 1035  658 1028   wall   wall  plain   wall
+Object: OBJ1026 654 rSl -20.00 mineral 20.80 84.08 red sphere large 
+Object: OBJ1027 654 gcm -16.00 mineral 11.70 21.06 green cone medium 
+Object: OBJ1028 654 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ1029 654 bPl -23.00 mineral 19.13 57.06 blue pyramid large 
+Object: OBJ1030 654 mPs -12.00 mineral 2.93 2.14 magenta pyramid small 
+Cell: 1456  -2000.00  -2000.00    811.86  204  654 1040 1029  plain  cliff  plain  plain
+Object: OBJ1031 1456 gqs -14.00 mineral 5.86 6.29 green box small 
+Object: OBJ1032 1456 mcm -8.00 mineral 9.37 15.52 magenta cone medium 
+Object: OBJ1033 1456 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ1034 1456 mrt -11.00 mineral 0.73 1.83 magenta rock tiny 
+Object: OBJ1035 1456 prs -13.00 mineral 2.51 13.40 pink rock small 
+Cell:  204  -2000.00  -1000.00    829.46    0 1456  208  422   wall  plain  cliff  cliff
+Object: OBJ1036 204 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ1037 204 bQt -14.00 mineral 0.40 0.73 blue cube tiny 
+Object: OBJ1038 204 pcl -10.00 mineral 21.44 64.87 pink cone large 
+Object: OBJ1039 204 gQt -15.00 mineral 0.81 0.23 green cube tiny 
+Object: OBJ1040 204 gqs -14.00 mineral 5.86 6.29 green box small 
+Cell:  205  -1000.00 -15000.00    265.03  206    0    0  196  plain   wall   wall    mud
+Object: OBJ1041 205 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ1042 205 pCs -13.00 mineral 2.11 14.03 pink cylinder small 
+Object: OBJ1043 205 mrs -13.00 mineral 5.92 14.52 magenta rock small 
+Object: OBJ1044 205 bCt -18.00 mineral 0.57 1.04 blue cylinder tiny 
+Object: OBJ1045 205 rPt -12.00 mineral 0.18 0.83 red pyramid tiny 
+Cell:  206  -1000.00 -14000.00    431.88  656  205    0  423    mud  plain   wall  cliff
+Object: OBJ1046 206 mQt -7.00 mineral 0.78 0.22 magenta cube tiny 
+Object: OBJ1047 206 pPm -14.00 mineral 11.99 22.25 pink pyramid medium 
+Object: OBJ1048 206 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Object: OBJ1049 206 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ1050 206 grm -23.00 mineral 12.27 15.64 green rock medium 
+Cell:  656  -1000.00 -13000.00     22.90 4991  206    0   30  plain    mud   wall  plain
+Object: OBJ1051 656 pqs -6.00 mineral 2.37 13.61 pink box small 
+Object: OBJ1052 656 rrl -19.00 mineral 19.89 71.61 red rock large 
+Object: OBJ1053 656 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ1054 656 mqs -6.00 mineral 7.02 9.12 magenta box small 
+Object: OBJ1055 656 gPs -20.00 mineral 2.40 11.24 green pyramid small 
+Cell: 4991  -1000.00 -12000.00    241.83   35  656    0   31  plain  plain   wall  plain
+Object: OBJ1056 4991 gSl -26.00 mineral 22.08 91.36 green sphere large 
+Object: OBJ1057 4991 rPm -16.00 mineral 5.46 25.15 red pyramid medium 
+Object: OBJ1058 4991 pqm -8.00 mineral 13.90 25.70 pink box medium 
+Object: OBJ1059 4991 bqm -15.00 mineral 8.73 14.39 blue box medium 
+Object: OBJ1060 4991 gPt -18.00 mineral 0.56 1.72 green pyramid tiny 
+Cell:   35  -1000.00 -11000.00    238.85    0 4991    0   32   wall  plain   wall  rocks
+Object: OBJ1061 35 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Object: OBJ1062 35 rQt -9.00 mineral 0.56 1.88 red cube tiny 
+Object: OBJ1063 35 mSt -12.00 mineral 0.58 0.45 magenta sphere tiny 
+Object: OBJ1064 35 mCt -11.00 mineral 0.73 0.29 magenta cylinder tiny 
+Object: OBJ1065 35 mQm -11.00 mineral 14.14 21.60 magenta cube medium 
+Cell: 1038  -1000.00  -9000.00    710.60  207    0    0   34  plain   wall   wall  plain
+Object: OBJ1066 1038 rCm -17.00 mineral 14.44 23.67 red cylinder medium 
+Object: OBJ1067 1038 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Object: OBJ1068 1038 pcs -6.00 mineral 7.22 7.05 pink cone small 
+Object: OBJ1069 1038 rcl -12.00 mineral 19.01 75.28 red cone large 
+Object: OBJ1070 1038 rCt -13.00 mineral 0.58 1.10 red cylinder tiny 
+Cell:  207  -1000.00  -8000.00    717.59    0 1038    0  200   wall  plain   wall  rocks
+Object: OBJ1071 207 gSs -22.00 mineral 1.35 6.51 green sphere small 
+Object: OBJ1072 207 rQl -15.00 mineral 22.67 83.37 red cube large 
+Object: OBJ1073 207 pCm -15.00 mineral 6.74 27.26 pink cylinder medium 
+Object: OBJ1074 207 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ1075 207 rcl -12.00 mineral 19.01 75.28 red cone large 
+Cell: 1039  -1000.00  -6000.00   1000.00 4994    0    0  202  cliff   wall   wall  rocks
+Object: OBJ1076 1039 pSl -18.00 mineral 13.71 60.49 pink sphere large 
+Object: OBJ1077 1039 rqt -6.00 mineral 0.61 0.21 red box tiny 
+Object: OBJ1078 1039 rcm -10.00 mineral 14.08 20.88 red cone medium 
+Object: OBJ1079 1039 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ1080 1039 gCm -23.00 mineral 14.11 28.72 green cylinder medium 
+Cell: 4994  -1000.00  -5000.00    233.63  877 1039    0  203  plain   wall   wall   wall
+Object: OBJ1081 4994 mSm -16.00 mineral 13.38 29.80 magenta sphere medium 
+Object: OBJ1082 4994 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ1083 4994 mPm -14.00 mineral 7.58 17.36 magenta pyramid medium 
+Object: OBJ1084 4994 rPl -18.00 mineral 22.38 75.76 red pyramid large 
+Object: OBJ1085 4994 mrl -17.00 mineral 24.63 61.85 magenta rock large 
+Cell:  877  -1000.00  -4000.00    523.78  658 4994    0 1035  cliff  plain   wall  plain
+Object: OBJ1086 877 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ1087 877 gQl -21.00 mineral 11.99 69.41 green cube large 
+Object: OBJ1088 877 gPm -22.00 mineral 12.72 13.81 green pyramid medium 
+Object: OBJ1089 877 rSt -14.00 mineral 0.60 1.27 red sphere tiny 
+Object: OBJ1090 877 grl -25.00 mineral 19.66 46.85 green rock large 
+Cell:  658  -1000.00  -3000.00   -318.03 1040  877    0  654   wall   wall   wall  plain
+Object: OBJ1091 658 gql -18.00 mineral 20.08 82.19 green box large 
+Object: OBJ1092 658 mqm -8.00 mineral 8.14 20.17 magenta box medium 
+Object: OBJ1093 658 mSl -18.00 mineral 19.73 97.81 magenta sphere large 
+Object: OBJ1094 658 pCl -17.00 mineral 23.69 67.63 pink cylinder large 
+Object: OBJ1095 658 mQl -13.00 mineral 18.06 49.13 magenta cube large 
+Cell: 1040  -1000.00  -2000.00    675.44  208  658    0 1456  rocks  cliff   wall  plain
+Object: OBJ1096 1040 pQt 7.00 mineral 0.86 0.45 pink cube tiny 
+Object: OBJ1097 1040 bcm -15.00 mineral 13.71 11.03 blue cone medium 
+Object: OBJ1098 1040 mrm -15.00 mineral 10.39 25.99 magenta rock medium 
+Object: OBJ1099 1040 grl -25.00 mineral 19.66 46.85 green rock large 
+Object: OBJ1100 1040 gQl -21.00 mineral 11.99 69.41 green cube large 
+Cell:  208  -1000.00  -1000.00    316.76    0 1040    0  204   wall  rocks   wall   wall
+Object: OBJ1101 208 rcs -8.00 mineral 7.62 10.26 red cone small 
+Object: OBJ1102 208 gqs -14.00 mineral 5.86 6.29 green box small 
+Object: OBJ1103 208 pQl 13.00 mineral 17.94 67.63 pink cube large 
+Object: OBJ1104 208 bPs -19.00 mineral 6.90 14.24 blue pyramid small 
+Object: OBJ1105 208 gQs -17.00 mineral 4.60 1.69 green cube small 
+Base: 185
+Base: 80
+Base: 19
+Base: 72
+Goal: 128
