@@ -1,0 +1,5 @@
+*~
+*.o
+.depend*
+00obj*
+third
