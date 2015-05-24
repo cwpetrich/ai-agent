@@ -61,17 +61,17 @@ LIB_FILES        := \
 #
 # compiler values
 #
-LDFLAGS  := -L$(AI_LIB_DIR) -laienvironment -laiagent -laisearch -lailocalsearch -laicsp -laipl -laifol -lglut -lGLU -lGL -lpthread -lboost_serialization
-CXXFLAGS    := -I$(AI_INC_DIR)              -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11
-DEPCXXFLAGS := -I$(INC_DIR) -I$(AI_INC_DIR) -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11
+LDFLAGS  := -L$(AI_LIB_DIR) -laienvironment -laiagent -laisearch -lailocalsearch -laicsp -laipl -laifol -lglut -lGLU -lGL -lpthread
+CXXFLAGS    := -I$(AI_INC_DIR)              -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11 -DDEBUG_LEVEL=15
+DEPCXXFLAGS := -I$(INC_DIR) -I$(AI_INC_DIR) -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11 -DDEBUG_LEVEL=15
 CXX      := g++
 CC       := gcc
 
 #
 # required libraries
 #
-UBUNTU_PACKAGES := libglu1-mesa-dev mesa-common-dev libxext-dev g++ libxxf86vm-dev libxi-dev libboost-serialization-dev freeglut3-dev
-UBUNTU_PACKAGE_COUNT := 8
+UBUNTU_PACKAGES := libglu1-mesa-dev mesa-common-dev libxext-dev g++ libxxf86vm-dev libxi-dev freeglut3-dev
+UBUNTU_PACKAGE_COUNT := 7
 
 #
 # make values
