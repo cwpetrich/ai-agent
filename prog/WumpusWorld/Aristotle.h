@@ -14,7 +14,7 @@ namespace ai
       Aristotle();
       ~Aristotle();
       virtual ai::Agent::Action * Program(const ai::Agent::Percept * percept);
-      
+
     protected:
       /* Things I know */
       ai::PL::KnowledgeBase kb;
