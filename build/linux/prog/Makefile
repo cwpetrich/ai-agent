@@ -3,7 +3,7 @@ include $(MAKE_DIR)/Makefile.top
 
 #PROJECT_LIST  :=  utils ScavengerWorld WumpusWorld PLTest FOLTest Rectangle Candy \
 #	CCheckers TicTacToe Mancala Numbers Maze
-PROJECT_LIST  :=  utils WumpusWorld TicTacToe
+PROJECT_LIST  :=  utils WumpusWorld TicTacToe Candy
 
 all install clean spotless:
 	for d in $(PROJECT_LIST); do \

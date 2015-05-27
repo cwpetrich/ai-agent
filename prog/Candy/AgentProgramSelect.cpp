@@ -19,8 +19,8 @@ namespace ai
         default:
           std::cout << "Unknown agent program " << std::endl
                     << "A : Augustus" << std::endl
-      
-		    << std::endl;
+
+                    << std::endl;
           exit(1);
           break;
         }
