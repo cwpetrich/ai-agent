@@ -6,7 +6,7 @@ namespace ai
   namespace Sample
   {
     const double MY_INFINITY = 1.e10;
-    
+
     AlphaBeta::AlphaBeta(ai::Agent::Options *opts)
       : max_depth(3)
     {
@@ -19,22 +19,22 @@ namespace ai
         std::sprintf(buf, "AlphaBeta-%d", this->max_depth);
         SetName(buf);
       }
-      
+
       std::cout << "Options:" << std::endl;
       std::cout << "-U num : maximum search depth (in ply)." << std::endl;
     }
-    
+
     AlphaBeta::~AlphaBeta()
     {
     }
-    
+
     ai::Agent::Action * AlphaBeta::Program(const ai::Agent::Percept * percept)
     {
       ai::Mancala::Action *action = new ai::Mancala::Action;
-      
+
       std::string board_str = percept->GetAtom("BOARD").GetValue();
       ai::Mancala::Board board(board_str);
-      
+
       int player = atoi(percept->GetAtom("PLAYER_NUMBER").GetValue().c_str());
 
       PlyData ply_data = this->PickMove(board, player);
@@ -90,10 +90,10 @@ namespace ai
                 }
             }
         }
-      
+
       return ply_data;
     }
-    
+
     PlyData AlphaBeta::Min(const ai::Mancala::Board &board, int player, int depth, double alpha, double beta)
     {
       PlyData ply_data(MY_INFINITY);
@@ -102,7 +102,7 @@ namespace ai
           ply_data.utility = this->Evaluate(board, player);
           return ply_data;
         }
-      
+
       int other_player = (player == 1) ? 2 : 1;
       ai::Mancala::Board my_board(board);
       const std::vector<ai::Mancala::MoveData> & moves = my_board.DetermineLegalMoves(other_player);
@@ -127,7 +127,7 @@ namespace ai
                 }
             }
         }
-      
+
       return ply_data;
     }
 

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x CCheckersServer ]; then
+    echo "CCheckersServer is missing"
+    exit 1
+fi
+if [ ! -x CCheckersDisplay ]; then
+    echo "CCheckersDisplay is missing"
+    exit 1
+fi
+if [ ! -x CCheckersAgent ]; then
+    echo "CCheckersAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./CCheckersServer -d 0 -s 150 -a2 -T 1 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./CCheckersDisplay >display.log 2>display.err &
+
+# Launch Dumbo1 as first player
+./CCheckersAgent -a d -t 0 >agent1.log 2>agent1.err &
+
+# Launch RandomPick as second player
+./CCheckersAgent -a r -t 0 >agent2.log 2>agent2.err &
+

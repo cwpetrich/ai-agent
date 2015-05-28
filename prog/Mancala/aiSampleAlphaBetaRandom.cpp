@@ -6,7 +6,7 @@ namespace ai
   namespace Sample
   {
     const double MY_INFINITY = 1.e10;
-    
+
     AlphaBetaRandom::AlphaBetaRandom(ai::Agent::Options *opts)
       : max_depth(3)
     {
@@ -19,22 +19,22 @@ namespace ai
         std::sprintf(buf, "AlphaBetaRandom-%d", this->max_depth);
         SetName(buf);
       }
-      
+
       std::cout << "Options:" << std::endl;
       std::cout << "-U num : maximum search depth (in ply)." << std::endl;
     }
-    
+
     AlphaBetaRandom::~AlphaBetaRandom()
     {
     }
-    
+
     ai::Agent::Action * AlphaBetaRandom::Program(const ai::Agent::Percept * percept)
     {
       ai::Mancala::Action *action = new ai::Mancala::Action;
-      
+
       std::string board_str = percept->GetAtom("BOARD").GetValue();
       ai::Mancala::Board board(board_str);
-      
+
       int player = atoi(percept->GetAtom("PLAYER_NUMBER").GetValue().c_str());
 
       PlyData ply_data = this->PickMove(board, player);
@@ -81,7 +81,7 @@ namespace ai
               ply_data.utility = tmp_ply_data.utility;
               ply_data.move    = moves[i];
               ply_data.move_ok = true;
-              
+
               best_plys.clear();
               best_plys.push_back(ply_data);
 
@@ -103,10 +103,10 @@ namespace ai
               best_plys.push_back(t);
             }
         }
-      
+
       return best_plys[rand () % best_plys.size()];
     }
-    
+
     PlyData AlphaBetaRandom::Min(const ai::Mancala::Board &board, int player, int depth, double alpha, double beta)
     {
       PlyData ply_data(MY_INFINITY);
@@ -115,7 +115,7 @@ namespace ai
           ply_data.utility = this->Evaluate(board, player);
           return ply_data;
         }
-      
+
       int other_player = (player == 1) ? 2 : 1;
       ai::Mancala::Board my_board(board);
       const std::vector<ai::Mancala::MoveData> & moves = my_board.DetermineLegalMoves(other_player);
@@ -131,10 +131,10 @@ namespace ai
               ply_data.utility = tmp_ply_data.utility;
               ply_data.move    = moves[i];
               ply_data.move_ok = true;
-              
+
               best_plys.clear();
               best_plys.push_back(ply_data);
-              
+
               if(ply_data.utility < alpha)
                 { /* parent node has a better child, so this node will not be chosen */
                   break;
@@ -152,9 +152,9 @@ namespace ai
               t.move_ok = true;
               best_plys.push_back(t);
             }
-          
+
         }
-      
+
       return best_plys[rand () % best_plys.size()];
     }
 

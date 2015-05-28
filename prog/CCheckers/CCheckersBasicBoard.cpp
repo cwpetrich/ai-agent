@@ -1,8 +1,8 @@
 /*
  * This is included for your reference, in case you decide to
- * derive from this class.
+ * derive from this class.  A compiled version is available
+ * in the libraries you link to.
  */
-
 #include <ai_ccheckers.h>
 
 #include <cstring>
@@ -13,21 +13,21 @@ namespace ai
   namespace CCheckers
   {
 #ifdef WIN32
-	  static const char *index(const char *s, int c)
-	  {
-		  while(s && *s && *s != c)
+    static const char *index(const char *s, int c)
+    {
+      while(s && *s && *s != c)
         {
           s++;
         }
-		  return s;
-	  }
+      return s;
+    }
 #endif
     struct BoardPoint
     {
       int x;
       int y;
     };
-    
+
     static const BoardPoint player_start[][10] =
       {
         // 1 (bottom)
@@ -52,7 +52,7 @@ namespace ai
         4, // bottom,right to top,left
         3  // top,right to bottom,left
       };
-    
+
     BasicBoard::BasicBoard()
       : number_of_turns(0),
         legal_moves(0),
@@ -61,7 +61,7 @@ namespace ai
     {
       InitBoard();
     }
-    
+
     BasicBoard::BasicBoard(const BasicBoard &board_in)
       : number_of_turns(board_in.number_of_turns),
         legal_moves_valid(board_in.legal_moves_valid),
@@ -71,7 +71,7 @@ namespace ai
     {
       board = board_in.board;
     }
-    
+
     BasicBoard::BasicBoard(const std::string &board_str_in)
       : legal_moves_valid(false),
         legal_moves(0),
@@ -84,7 +84,7 @@ namespace ai
     BasicBoard::~BasicBoard()
     {
     }
-    
+
     bool BasicBoard::Move(int player, const MoveData &move_in, double seconds_in)
     {
       if((IsLegal(player, move_in)) &&
@@ -96,7 +96,7 @@ namespace ai
 
           last_moves[player-1]    = move_in;
           player_times[player-1] += seconds_in;
-	  
+
           number_of_turns ++;
           legal_moves_valid = false;
           return true;
@@ -138,7 +138,7 @@ namespace ai
         }
       return true;
     }
-    
+
     int BasicBoard::HaveWinner() const
     {
       int i;
@@ -152,7 +152,7 @@ namespace ai
         }
       return 0;
     }
-    
+
     const std::vector<MoveData> & BasicBoard::DetermineLegalMoves(int player)
     {
       int try_x;
@@ -164,9 +164,9 @@ namespace ai
         {
           return legal_moves;
         }
-      
+
       legal_moves.resize(0);
-      
+
       for(x=0; x<17; x++)
         {
           for(y=0; y<17; y++)
@@ -257,12 +257,12 @@ namespace ai
     {
       return last_moves;
     }
-    
+
     const std::vector<double> & BasicBoard::GetPlayerTimes() const
     {
       return player_times;
     }
-    
+
     unsigned int BasicBoard::GetTotalMoves() const
     {
       return number_of_turns;
@@ -283,7 +283,7 @@ namespace ai
       unsigned int i,j;
       std::string str;
       char str_tmp[16];
-      
+
       for(i = 0; i < 17; i++)
         {
           for(j = 0; j < 17; j++)
@@ -294,21 +294,21 @@ namespace ai
         }
       std::sprintf(str_tmp, "%d,", board.num_players);
       str += str_tmp;
-      
+
       std::sprintf(str_tmp, "%d,", board.player_turn);
       str += str_tmp;
-      
+
       std::sprintf(str_tmp, "%d,", number_of_turns);
       str += str_tmp;
-      
+
       return str;
     }
-    
+
     void BasicBoard::SetBoardString(const std::string &board_str_in)
     {
       unsigned int i,j;
       const char *str = board_str_in.c_str();
-      
+
       for(i = 0; i < 17; i++)
         {
           for(j = 0; j < 17; j++)
@@ -318,15 +318,15 @@ namespace ai
               str++;
             }
         }
-      
+
       std::sscanf(str, "%d,", &board.num_players);
       str = index(str, ',');
       str++;
-      
+
       std::sscanf(str, "%d,", &board.player_turn);
       str = index(str, ',');
       str++;
-      
+
       std::sscanf(str, "%d,", &number_of_turns);
       str = index(str, ',');
       str++;
@@ -336,12 +336,12 @@ namespace ai
     {
       board.num_players = num_player_in;
     }
-    
+
     int BasicBoard::Forwardness(int player) const
     {
       int h = 0;
       int x,y;
-      
+
       for(x=0; x<17; x++)
         {
           for(y=0; y<17; y++)
@@ -365,16 +365,16 @@ namespace ai
                 }
             }
         }
-      
+
       return h;
     }
-    
-    
+
+
     void BasicBoard::InitBoard()
     {
       unsigned int i,j;
       unsigned int x,y;
-      
+
       /* Mark all as unusable */
       for(x=0; x<17; x++)
         {
@@ -383,7 +383,7 @@ namespace ai
               board.hole[x][y] = -1;
             }
         }
-      
+
       /* Mark usable part of open field */
       for(y=4; y<9; y++)
         {
@@ -392,7 +392,7 @@ namespace ai
               board.hole[x][y] = 0;
             }
         }
-      
+
       for(y=9; y<13; y++)
         {
           for(x=4; x<14+(y-9); x++)
@@ -400,7 +400,7 @@ namespace ai
               board.hole[x][y] = 0;
             }
         }
-      
+
       /* Set Player Starts */
       for(i = 0; i < 6; i++)
         {
@@ -422,7 +422,7 @@ namespace ai
       legal_moves_valid = false;
 
       MarkAllNotVisited();
-      
+
       for(i = 0; i < 6; i++)
         {
           last_moves[i].from_x =
@@ -433,17 +433,17 @@ namespace ai
           player_times[i] = 0.;
         }
     }
-    
-    void BasicBoard::RecursiveVisit(int original_x, int original_y, 
+
+    void BasicBoard::RecursiveVisit(int original_x, int original_y,
                                     int current_x, int current_y)
     {
       int try_x;
       int try_y;
       MoveData d;
-      
+
       try_x = current_x;
       try_y = current_y+2;
-      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2) 
+      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2)
          && Available(try_x, try_y) && (visited[try_x][try_y] == false) )
         {
           visited[try_x][try_y] = true;
@@ -457,7 +457,7 @@ namespace ai
 
       try_x = current_x+2;
       try_y = current_y+2;
-      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2) 
+      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2)
          && Available(try_x, try_y) && (visited[try_x][try_y] == false) )
         {
           visited[try_x][try_y] = true;
@@ -472,7 +472,7 @@ namespace ai
 
       try_x = current_x-2;
       try_y = current_y;
-      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2) 
+      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2)
          && Available(try_x, try_y) && (visited[try_x][try_y] == false) )
         {
           visited[try_x][try_y] = true;
@@ -486,7 +486,7 @@ namespace ai
 
       try_x = current_x+2;
       try_y = current_y;
-      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2) 
+      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2)
          && Available(try_x, try_y) && (visited[try_x][try_y] == false) )
         {
           visited[try_x][try_y] = true;
@@ -500,7 +500,7 @@ namespace ai
 
       try_x = current_x-2;
       try_y = current_y-2;
-      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2) 
+      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2)
          && Available(try_x, try_y) && (visited[try_x][try_y] == false) )
         {
           visited[try_x][try_y] = true;
@@ -514,7 +514,7 @@ namespace ai
 
       try_x = current_x;
       try_y = current_y-2;
-      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2) 
+      if(Occupied((current_x+try_x)/2,(current_y+try_y)/2)
          && Available(try_x, try_y) && (visited[try_x][try_y] == false) )
         {
           visited[try_x][try_y] = true;
@@ -528,7 +528,7 @@ namespace ai
     }
 
 
-    void BasicBoard::MarkAllNotVisited() 
+    void BasicBoard::MarkAllNotVisited()
     {
       int x,y;
       for(x=0; x<17; x++)
@@ -563,6 +563,6 @@ namespace ai
       else
         return false;
     }
-    
+
   }
 }

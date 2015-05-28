@@ -9,7 +9,6 @@ LOCAL_AGENT_SELECT := AgentProgramSelect.cpp
 
 LOCAL_SRC := \
 	$(LOCAL_AGENT_SELECT) \
-	BoostExport.cpp \
 	MancalaAgent.cpp
 
 LOCAL_HEADERS := 
