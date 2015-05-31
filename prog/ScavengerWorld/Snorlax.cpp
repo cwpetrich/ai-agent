@@ -31,41 +31,41 @@ namespace ai
       unsigned int i;
 
       for(i = 0; i < percept->NumAtom(); i++)
-	{
-	  ai::Agent::PerceptAtom a = percept->GetAtom(i);
-	  if(std::strncmp(a.GetName().c_str(), "CELL_", 5) == 0)
-	    {
-	      int id;
-	      double x,y,z;
-				    
-	      std::sscanf(a.GetName().c_str(), "CELL_%d", &id);
-	      const char *v = a.GetValue().c_str();
-	      char *values = new char[std::strlen(v) + 1];
-	      std::strcpy(values, v);
-	      char *s = std::strtok(values, ",");
-	      std::sscanf(s, "%lf", &x);
-	      s = std::strtok(NULL, ",");
-	      std::sscanf(s, "%lf", &y);
-	      s = std::strtok(NULL, ",");
-	      std::sscanf(s, "%lf", &z);
-	      char *north = std::strtok(NULL, ",");
-	      char *south = std::strtok(NULL, ",");
-	      char *east  = std::strtok(NULL, ",");
-	      char *west  = std::strtok(NULL, ",");
-	      std::cout << id << " "
-			<< x << "," << y << "," << z << "  "
-			<< north << " " 
-			<< south << " " 
-			<< east << " " 
-			<< west << " " 
-			<< std::endl;
-	      delete [] values;
-	    }
-	  else
-	    {
-	      std::cout << a.GetName() << ": " << a.GetValue() << std::endl;
-	    }
-	}
+        {
+          ai::Agent::PerceptAtom a = percept->GetAtom(i);
+          if(std::strncmp(a.GetName().c_str(), "CELL_", 5) == 0)
+            {
+              int id;
+              double x,y,z;
+
+              std::sscanf(a.GetName().c_str(), "CELL_%d", &id);
+              const char *v = a.GetValue().c_str();
+              char *values = new char[std::strlen(v) + 1];
+              std::strcpy(values, v);
+              char *s = std::strtok(values, ",");
+              std::sscanf(s, "%lf", &x);
+              s = std::strtok(NULL, ",");
+              std::sscanf(s, "%lf", &y);
+              s = std::strtok(NULL, ",");
+              std::sscanf(s, "%lf", &z);
+              char *north = std::strtok(NULL, ",");
+              char *south = std::strtok(NULL, ",");
+              char *east  = std::strtok(NULL, ",");
+              char *west  = std::strtok(NULL, ",");
+              std::cout << id << " "
+                        << x << "," << y << "," << z << "  "
+                        << north << " "
+                        << south << " "
+                        << east << " "
+                        << west << " "
+                        << std::endl;
+              delete [] values;
+            }
+          else
+            {
+              std::cout << a.GetName() << ": " << a.GetValue() << std::endl;
+            }
+        }
 
 #if 0
 
@@ -79,45 +79,45 @@ namespace ai
 #endif
 
       {
-	int r = rand() % 2;
-	int d = rand() % 4;
-	if(r == 0)
-	  {
-	    switch(d)
-	      {
-	      case 0:
-		action->SetCode(ai::Scavenger::Action::GO_NORTH);
-		break;
-	      case 1:
-		action->SetCode(ai::Scavenger::Action::GO_SOUTH);
-		break;
-	      case 2:
-		action->SetCode(ai::Scavenger::Action::GO_EAST);
-		break;
-	      case 3:
-		action->SetCode(ai::Scavenger::Action::GO_WEST);
-		break;
-	      }
-	  }
-	else
-	  {
-	    action->SetCode(ai::Scavenger::Action::LOOK);
-	    switch(d)
-	      {
-	      case 0:
-		action->SetDirection(ai::Scavenger::Location::NORTH);
-		break;
-	      case 1:
-		action->SetDirection(ai::Scavenger::Location::SOUTH);
-		break;
-	      case 2:
-		action->SetDirection(ai::Scavenger::Location::EAST);
-		break;
-	      case 3:
-		action->SetDirection(ai::Scavenger::Location::WEST);
-		break;
-	      }
-	  }
+        int r = rand() % 2;
+        int d = rand() % 4;
+        if(r == 0)
+          {
+            switch(d)
+              {
+              case 0:
+                action->SetCode(ai::Scavenger::Action::GO_NORTH);
+                break;
+              case 1:
+                action->SetCode(ai::Scavenger::Action::GO_SOUTH);
+                break;
+              case 2:
+                action->SetCode(ai::Scavenger::Action::GO_EAST);
+                break;
+              case 3:
+                action->SetCode(ai::Scavenger::Action::GO_WEST);
+                break;
+              }
+          }
+        else
+          {
+            action->SetCode(ai::Scavenger::Action::LOOK);
+            switch(d)
+              {
+              case 0:
+                action->SetDirection(ai::Scavenger::Location::NORTH);
+                break;
+              case 1:
+                action->SetDirection(ai::Scavenger::Location::SOUTH);
+                break;
+              case 2:
+                action->SetDirection(ai::Scavenger::Location::EAST);
+                break;
+              case 3:
+                action->SetDirection(ai::Scavenger::Location::WEST);
+                break;
+              }
+          }
       }
 
       return action;
