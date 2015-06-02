@@ -23,7 +23,8 @@ echo "Waiting for server to get started"
 sleep 2
 
 # Launch the display
-./ScavengerDisplay >display.log 2>display.err &
+#./ScavengerDisplay >display.log 2>display.err &
+./ScavengerDisplay -d 1 >display.log 2>display.err &
 
 # Launch the agent player
 ./ScavengerAgent -a s -t 0 >agent1.log 2>agent1.err &
