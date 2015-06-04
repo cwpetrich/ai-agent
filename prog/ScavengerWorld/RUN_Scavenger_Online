@@ -18,7 +18,7 @@ fi
 
 # Launch the game server
 world_file=ScavengerWorlds/worlds-2014/online-worlds/y14m09d20p01-small-online-world.txt
-./ScavengerServer -d 0 -s 150 -O 0 -f ${world_file} >server.log 2>server.err &
+./ScavengerServer -d 0 -s 150 -O 0 -f ${world_file} -R 2 >server.log 2>server.err &
 echo "Waiting for server to get started"
 sleep 2
 

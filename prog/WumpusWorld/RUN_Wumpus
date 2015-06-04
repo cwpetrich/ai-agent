@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x WumpusServer ]; then
+    echo "WumpusServer is missing"
+    exit 1
+fi
+if [ ! -x WumpusDisplay ]; then
+    echo "WumpusDisplay is missing"
+    exit 1
+fi
+if [ ! -x WumpusAgent ]; then
+    echo "WumpusAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./WumpusServer -d 0 -s 250 -R 2 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./WumpusDisplay >display.log 2>display.err &
+
+# Launch the agent player
+./WumpusAgent -a S -t 0 >agent1.log 2>agent1.err &
+
+

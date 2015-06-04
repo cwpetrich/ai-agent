@@ -17,7 +17,7 @@ if [ ! -x MancalaAgent ]; then
 fi
 
 # Launch the game server
-./MancalaServer -d 0 -s 150 -a 2 -T 0 >server.log 2>server.err &
+./MancalaServer -d 0 -s 150 -a 2 -T 1 >server.log 2>server.err &
 echo "Waiting for server to get started"
 sleep 2
 
