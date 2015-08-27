@@ -62,8 +62,8 @@ LIB_FILES        := \
 # compiler values
 #
 LDFLAGS  := -L$(AI_LIB_DIR) -laienvironment -laiagent -laisearch -lailocalsearch -laicsp -laipl -laifol -lglut -lGLU -lGL -lpthread
-CXXFLAGS    := -I$(AI_INC_DIR)              -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11 -DDEBUG_LEVEL=31
-DEPCXXFLAGS := -I$(INC_DIR) -I$(AI_INC_DIR) -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11 -DDEBUG_LEVEL=31
+CXXFLAGS    := -I$(AI_INC_DIR)              -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11 -DDEBUG_LEVEL=4
+DEPCXXFLAGS := -I$(INC_DIR) -I$(AI_INC_DIR) -Wall -Werror -DUSE_GLUT $(CXX_DRP) -std=c++11 -DDEBUG_LEVEL=4
 CXX      := g++
 CC       := gcc
 
