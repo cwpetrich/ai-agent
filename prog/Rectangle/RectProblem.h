@@ -11,9 +11,9 @@ namespace cgl
     virtual ~RectProblem();
 
     virtual bool   GoalTest(const ai::Search::State * const state_in) const;
-    virtual bool   FindSuccessors(const ai::Search::State * const state_in,
-				  std::vector<ai::Search::ActionStatePair>
-				  &results_out) const;
+    virtual std::vector<ai::Search::Action *> Actions(const ai::Search::State * const state_in);
+    virtual ai::Search::State *Result(const ai::Search::State * const state_in, const ai::Search::Action * const action_in);
+
     virtual double StepCost(const ai::Search::State  * const state1_in,
 			    const ai::Search::Action * const action_in,
 			    const ai::Search::State  * const state2_in) const;

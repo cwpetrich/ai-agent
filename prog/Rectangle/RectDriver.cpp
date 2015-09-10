@@ -22,26 +22,26 @@ int main()
       std::list<ai::Search::Node *>::const_iterator it;
 
       for(it = solution->begin(); it != solution->end(); it++)
-	{
-	  if((*it)->GetAction())
-	    {
-	      (*it)->GetAction()->Display();
-	    }
-	  if((*it)->GetState())
-	    {
-	      (*it)->GetState()->Display();
-	    }
-	}
+        {
+          if((*it)->GetAction())
+            {
+              (*it)->GetAction()->Display();
+            }
+          if((*it)->GetState())
+            {
+              (*it)->GetState()->Display();
+            }
+        }
       std::cout << "Path Cost: " << solution->back()->GetPathCost() << std::endl;
 
       std::cout << "Nodes generated: " << search->GetNumberNodesGenerated() << std::endl;
       std::cout << "Nodes stored:    " << search->GetMaxNodesStored() << std::endl;
       
       /*
-      it = solution->begin();
-      cgl::RectState *state_ptr = (cgl::RectState *)((*it)->GetState());
-      state_ptr->Display();
-      std::cout << std::endl;
+        it = solution->begin();
+        cgl::RectState *state_ptr = (cgl::RectState *)((*it)->GetState());
+        state_ptr->Display();
+        std::cout << std::endl;
       */
     }
   delete search;

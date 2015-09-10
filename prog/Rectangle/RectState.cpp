@@ -11,6 +11,17 @@ namespace cgl
 	{
 		return !(*this == rhs);
 	}
+	bool RectSquare::operator<(const RectSquare &rhs) const
+	{
+    if(this->x < rhs.x) { return true; }
+    else if(rhs.x < this->x) { return false; }
+    else
+      {
+        if(this->y < rhs.y) { return true; }
+        else if(rhs.y < this->y) { return false; }
+      }
+    return false;
+	}
 	
 	bool RectPiece::operator==(const RectPiece &rhs) const
 	{
@@ -28,6 +39,21 @@ namespace cgl
 	{
 		return !(*this == rhs);
 	}
+	bool RectPiece::operator<(const RectPiece &rhs) const
+	{
+		unsigned int i;
+		for(i = 0; i < sizeof(this->squares)/sizeof(this->squares[0]); i++)
+			{
+				if(this->squares[i] < rhs.squares[i]) { return true; }
+				if(rhs.squares[i] < this->squares[i]) { return false; }
+			}
+		if(this->rotation < rhs.rotation) { return true; }
+		if(rhs.rotation < this->rotation) { return false; }
+		if(this->flip < rhs.flip) { return true; }
+		if(rhs.flip < this->flip) { return false; }
+		
+		return false;
+	}
 
 	
   RectState::RectState(int board_width_in, int board_height_in)
@@ -40,11 +66,11 @@ namespace cgl
     board.resize(board_width);
     for(x = 0; x < board_width; x++)
       {
-	board[x].resize(board_height);
-	for(y = 0; y < board_height; y++)
-	  {
-	    board[x][y] = ' ';
-	  }
+        board[x].resize(board_height);
+        for(y = 0; y < board_height; y++)
+          {
+            board[x][y] = ' ';
+          }
       }
     /*  
      *   x
@@ -339,17 +365,17 @@ namespace cgl
     unsigned int i;
     for(i = 0; i < rhs.pieces.size(); i ++)
       {
-	pieces.push_back(rhs.pieces[i]);
+        pieces.push_back(rhs.pieces[i]);
       }
     int x, y;
     board.resize(board_width);
     for(x = 0; x < board_width; x++)
       {
-	board[x].resize(board_height);
-	for(y = 0; y < board_height; y++)
-	  {
-	    board[x][y] = rhs.board[x][y];
-	  }
+        board[x].resize(board_height);
+        for(y = 0; y < board_height; y++)
+          {
+            board[x][y] = rhs.board[x][y];
+          }
       }
   }
   RectState::~RectState()
@@ -364,12 +390,12 @@ namespace cgl
     std::cout << "+------+" << std::endl;
     for(y = 0; y < board_height; y++)
       {
-	std::cout << "|";
-	for(x = 0; x < board_width; x ++)
-	  {
-	    std::cout << board[x][y];
-	  }
-	std::cout << "|" << std::endl;
+        std::cout << "|";
+        for(x = 0; x < board_width; x ++)
+          {
+            std::cout << board[x][y];
+          }
+        std::cout << "|" << std::endl;
       }
     std::cout << "+------+" << std::endl;
   }
@@ -381,35 +407,54 @@ namespace cgl
     unsigned int i;
     for(i = 0; i < this->pieces.size(); i ++)
       {
-	if(this->pieces[i] != rhs->pieces[i])
-	  {
-	    return false;
-	  }
+        if(this->pieces[i] != rhs->pieces[i])
+          {
+            return false;
+          }
       }
     return true;
   }
 
+  bool RectState::IsLessThan(const ai::Search::State * const state_in) const
+  {
+    const RectState * const rhs = dynamic_cast<const RectState * const>(state_in);
+    
+    unsigned int i;
+    for(i = 0; i < this->pieces.size(); i ++)
+      {
+        if(this->pieces[i] < rhs->pieces[i])
+          {
+            return true;
+          }
+        if(rhs->pieces[i] < this->pieces[i])
+          {
+            return false;
+          }
+      }
+    return false;
+  }
+
   bool RectState::PlacePiece(unsigned int which_piece,
-			     int rotation, int flip, int x, int y)
+                             int rotation, int flip, int x, int y)
   {
     unsigned int i;
     int x1, y1;
     for(i = 0; i < 5; i++) // loop over squares in the piece to be placed
       {
-	Transform(pieces[which_piece].squares[i].x,
-		  pieces[which_piece].squares[i].y,	
-		  rotation, flip, 
-		  x, y,
-		  x1, y1);
+        Transform(pieces[which_piece].squares[i].x,
+                  pieces[which_piece].squares[i].y,	
+                  rotation, flip, 
+                  x, y,
+                  x1, y1);
 
-	if(x1 < 0 || x1 >= board_width || y1 < 0 || y1 >= board_height)
-	  {
-	    return false;
-	  }
-	if(board[x1][y1] != ' ') 
-	  { 
-	    return false; 
-	  }
+        if(x1 < 0 || x1 >= board_width || y1 < 0 || y1 >= board_height)
+          {
+            return false;
+          }
+        if(board[x1][y1] != ' ') 
+          { 
+            return false; 
+          }
       }
     pieces[which_piece].x_orig   = x;
     pieces[which_piece].y_orig   = y;
@@ -419,12 +464,12 @@ namespace cgl
 
     for(i = 0; i < 5; i++)
       {	
-	Transform(pieces[which_piece].squares[i].x,
-		  pieces[which_piece].squares[i].y,	
-		  pieces[which_piece].rotation, pieces[which_piece].flip, 
-		  pieces[which_piece].x_orig, pieces[which_piece].y_orig,
-		  x1, y1);		
-	board[x1][y1] = 'a' + which_piece;
+        Transform(pieces[which_piece].squares[i].x,
+                  pieces[which_piece].squares[i].y,	
+                  pieces[which_piece].rotation, pieces[which_piece].flip, 
+                  pieces[which_piece].x_orig, pieces[which_piece].y_orig,
+                  x1, y1);		
+        board[x1][y1] = 'a' + which_piece;
       }
 	
     return BoardUsable();
@@ -442,63 +487,63 @@ namespace cgl
 
     for(y = 0; y < board_height; y++)
       {
-	for(x = 0; x < board_width; x ++)
-	  {
-	    if(board[x][y] == ' ')
-	      {
-		ok = false;
-		for(i = 0; i < 4; i++)
-		  {
-		    x1 = x + xn[i];
-		    y1 = y + yn[i];
-		    if(x1 >= 0 && x1 < board_width && y1 >= 0 && y1 < board_height)
-		      {
-			if(board[x1][y1] == ' ')
-			  {
-			    ok = true;
-			    break;
-			  }
-		      }
-		  }
-		if(! ok) { return false; }
-	      }
-	  }
+        for(x = 0; x < board_width; x ++)
+          {
+            if(board[x][y] == ' ')
+              {
+                ok = false;
+                for(i = 0; i < 4; i++)
+                  {
+                    x1 = x + xn[i];
+                    y1 = y + yn[i];
+                    if(x1 >= 0 && x1 < board_width && y1 >= 0 && y1 < board_height)
+                      {
+                        if(board[x1][y1] == ' ')
+                          {
+                            ok = true;
+                            break;
+                          }
+                      }
+                  }
+                if(! ok) { return false; }
+              }
+          }
       }
 
     return true;
   }
 
   void RectState::Transform(int x_in, int y_in, int rot_in, int flip_in,
-			    int x_orig_in, int y_orig_in, 
-			    int &x_out, int &y_out) const
+                            int x_orig_in, int y_orig_in, 
+                            int &x_out, int &y_out) const
   {
     switch(rot_in)
       {
       case 0:
-	x_out = x_in;
-	y_out = y_in;
-	break;
+        x_out = x_in;
+        y_out = y_in;
+        break;
       case 1:
-	x_out = -y_in;
-	y_out = x_in;
-	break;
+        x_out = -y_in;
+        y_out = x_in;
+        break;
       case 2:
-	x_out = -x_in;
-	y_out = -y_in;
-	break;
+        x_out = -x_in;
+        y_out = -y_in;
+        break;
       case 3:
-	x_out = y_in;
-	y_out = -x_in;
-	break;
+        x_out = y_in;
+        y_out = -x_in;
+        break;
       }
 
     switch(flip_in)
       {
       case 0:
-	break;
+        break;
       case 1:
-	x_out = -x_out;
-	break;
+        x_out = -x_out;
+        break;
       }
     x_out += x_orig_in;
     y_out += y_orig_in;

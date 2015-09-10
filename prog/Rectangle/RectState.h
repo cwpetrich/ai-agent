@@ -11,6 +11,7 @@ namespace cgl
     int y;
     bool operator==(const RectSquare &rhs) const;
     bool operator!=(const RectSquare &rhs) const;
+    bool operator<(const RectSquare &rhs) const;
   };
 
   class RectPiece
@@ -26,6 +27,7 @@ namespace cgl
     int max_flip;
     bool operator==(const RectPiece &rhs) const;
     bool operator!=(const RectPiece &rhs) const;
+    bool operator<(const RectPiece &rhs) const;
   };
 
   class RectState : public ai::Search::State
@@ -36,6 +38,7 @@ namespace cgl
       virtual ~RectState();
       virtual void Display() const;
       virtual bool IsEqual(const ai::Search::State * const state_in) const;
+      virtual bool IsLessThan(const ai::Search::State * const state_in) const;
       bool PlacePiece(unsigned int which_piece,
 		      int rotation, int flip, int x, int y);
 	
