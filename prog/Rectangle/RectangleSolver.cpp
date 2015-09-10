@@ -38,15 +38,15 @@ bool DoSearch(ai::Search::Algorithm *the_algorithm, std::string &prefix, bool sh
       double cost = 0;
       int depth   = 0;
       for(it = solution->begin(); it != solution->end(); it++)
-	{
-	  cost = (*it)->GetPathCost();
-	  depth = (*it)->GetDepth();
-	}
+        {
+          cost = (*it)->GetPathCost();
+          depth = (*it)->GetDepth();
+        }
 
       if(show_solution)
-	{
-	  the_algorithm->GetSolution().Display();
-	}
+        {
+          the_algorithm->GetSolution().Display();
+        }
       size_t nodes_generated = the_algorithm->GetNumberNodesGenerated();
       size_t nodes_stored    = the_algorithm->GetMaxNodesStored();
       std::cout << prefix << "Results: T " << cost << " " << depth << " " << nodes_generated << " " << nodes_stored << std::endl;
@@ -69,9 +69,9 @@ bool DoSearch(ai::Search::Algorithm *the_algorithm, std::string &prefix, bool sh
 #define R_DONE 2
 #define R_BREAK 3
 int BuildSearchAux(ai::Search::Problem *the_problem,
-		   int the_frontier_type, int the_search_type, int max_depth,
-		   int generation_limit, int store_limit,
-		   bool show_solution)
+                   int the_frontier_type, int the_search_type, int max_depth,
+                   int generation_limit, int store_limit,
+                   bool show_solution)
 {
   ai::Search::Frontier *the_frontier = 0;
   ai::Search::Algorithm *the_algorithm = 0;
@@ -113,8 +113,8 @@ int BuildSearchAux(ai::Search::Problem *the_problem,
 
 template <class StateType, class ProblemType>
 bool BuildSearch(int search_type, int frontier_type, int max_depth, int ids_max,
-		 StateType *initial_state, int generation_limit, int store_limit,
-		 bool show_solution)
+                 StateType *initial_state, int generation_limit, int store_limit,
+                 bool show_solution)
 {
   int start_search = TREE;
   int end_search   = GRAPH;
@@ -129,42 +129,42 @@ bool BuildSearch(int search_type, int frontier_type, int max_depth, int ids_max,
       int start_frontier = BFS;
       int stop_frontier = IDS;
       if(frontier_type != ALL_FRONTIERS)
-	{
-	  start_frontier = frontier_type;
-	  stop_frontier = frontier_type;
-	}
+        {
+          start_frontier = frontier_type;
+          stop_frontier = frontier_type;
+        }
       int the_frontier_type;
       for(the_frontier_type = start_frontier;
-	  the_frontier_type <= stop_frontier;
-	  the_frontier_type ++)
-	{
+          the_frontier_type <= stop_frontier;
+          the_frontier_type ++)
+        {
   
-	  int i;
-	  int max_iterations = 1;
+          int i;
+          int max_iterations = 1;
 	  
-	  if(the_frontier_type == IDS) { max_iterations = ids_max; }
-	  for(i = 0; i < max_iterations; i++)
-	    {
-	      int the_max_depth = max_depth;
-	      if(the_frontier_type == IDS) { the_max_depth = i+1; }
+          if(the_frontier_type == IDS) { max_iterations = ids_max; }
+          for(i = 0; i < max_iterations; i++)
+            {
+              int the_max_depth = max_depth;
+              if(the_frontier_type == IDS) { the_max_depth = i+1; }
 	      
-	      StateType *tmp_initial_state = new StateType(*initial_state);
-	      ProblemType *the_problem = new ProblemType(tmp_initial_state);
-	      int done = BuildSearchAux(the_problem,
-					the_frontier_type, the_search_type, the_max_depth,
-					generation_limit, store_limit,
-					show_solution);
+              StateType *tmp_initial_state = new StateType(*initial_state);
+              ProblemType *the_problem = new ProblemType(tmp_initial_state);
+              int done = BuildSearchAux(the_problem,
+                                        the_frontier_type, the_search_type, the_max_depth,
+                                        generation_limit, store_limit,
+                                        show_solution);
 
-	      if(done == R_ERROR)
-		{
-		  return false;
-		}
-	      else if(done == R_BREAK)
-		{
-		  break;
-		}
-	    }
-	}
+              if(done == R_ERROR)
+                {
+                  return false;
+                }
+              else if(done == R_BREAK)
+                {
+                  break;
+                }
+            }
+        }
     }
   return true;
 }
@@ -237,8 +237,8 @@ int main(int argc, char **argv)
   cgl::RectState *initial_state = new cgl::RectState(board_width, board_height);
   
   BuildSearch<cgl::RectState, cgl::RectProblem>(search_type, frontier_type, max_depth, ids_max,
-						initial_state, generation_limit, store_limit,
-						show_solution);
+                                                initial_state, generation_limit, store_limit,
+                                                show_solution);
   
   delete initial_state;
 
