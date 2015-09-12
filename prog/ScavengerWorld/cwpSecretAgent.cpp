@@ -1,6 +1,4 @@
 #include "cwpSecretAgent.h"
-#include "cwpSecretAgentState.h"
-#include "cwpSecretAgentAction.h"
 #include <cmath>
 #include <cstdio>
 #include <cstring>
@@ -90,29 +88,39 @@ namespace cwp
       double current_x, current_y;
       current_x = model->getCurrX();
       current_y = model->getCurrY();
-      std::ofstream myfile;
-      myfile.open("debugging.txt", std::ofstream::out | std::ofstream::app);
-      myfile << "InputX: " << current_x << "\n";
-      myfile << "InputY: " << current_y << "\n\n";
       cwp::Scavenger::CellData* current_cell = model->getCell(current_x, current_y);
-      myfile.close();
+
+      cwp::Scavenger::Action * new_action = new cwp::Scavenger::Action;
 
       if (current_cell->getCellNorth() == "plain" || current_cell->getCellNorth() == "mud"){
         action->SetCode(ai::Scavenger::Action::GO_NORTH);
+        new_action->updateAction(ai::Scavenger::Action::GO_NORTH);
       }else if (current_cell->getCellEast() == "plain" || current_cell->getCellEast() == "mud"){
         action->SetCode(ai::Scavenger::Action::GO_EAST);
+        new_action->updateAction(ai::Scavenger::Action::GO_EAST);
       }else if (current_cell->getCellWest() == "plain" || current_cell->getCellWest() == "mud"){
         action->SetCode(ai::Scavenger::Action::GO_WEST);
+        new_action->updateAction(ai::Scavenger::Action::GO_WEST);
       }else if (current_cell->getCellSouth() == "plain" || current_cell->getCellSouth() == "mud"){
         action->SetCode(ai::Scavenger::Action::GO_SOUTH);
+        new_action->updateAction(ai::Scavenger::Action::GO_SOUTH);
       }else{
         action->SetCode(ai::Scavenger::Action::QUIT);
+        new_action->updateAction(ai::Scavenger::Action::QUIT);
       }
 
-      // cwp::Scavenger::State * state = new cwp::Scavenger::State;
-      // cwp::Scavenger::Action * action2 = new ai::Scavenger::Action;
-      // state->updateXandY(1000, 2000);
-
+      const cwp::Scavenger::State * const state = new cwp::Scavenger::State(current_cell->getLocX(), current_cell->getLocY(), model->getCharge());
+      double state_x, state_y, state_c;
+      state_x = state->getX();
+      state_y = state->getY();
+      state_c = state->getCharge();
+      std::ofstream myfile;
+      myfile.open("debugging.txt", std::ofstream::out | std::ofstream::app);
+      myfile << "StateX: " << state_x << "\n";
+      myfile << "StateY: " << state_y << "\n";
+      myfile << "StateC: " << state_c << "\n\n";
+      myfile << "Action Taken: " << new_action->getAction() << "\n\n";
+      myfile.close();
       return action;
     }
   }

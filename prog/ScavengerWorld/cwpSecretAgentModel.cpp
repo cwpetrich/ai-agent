@@ -47,17 +47,9 @@ namespace cwp {
 		}
 
 		CellData* SecretAgentModel::getCell(double x, double y){
-			std::ofstream myfile;
-			myfile.open("debugging.txt", std::ofstream::out | std::ofstream::app);
-			myfile << "ParamX: " << x << "\n";
-			myfile << "ParamY: " << y << "\n";
 			CellData* cell = new CellData();
 			CellKey key = CellKey(x, y);
 			cell = known_cells[key];
-			myfile << "CellID: " << cell->getId() << "\n";
-			myfile << "XfromMap: " << cell->getLocX() << "\n";
-			myfile << "YfromMap: " << cell->getLocY() << "\n\n";
-			myfile.close();
 			return cell;
 		}
 

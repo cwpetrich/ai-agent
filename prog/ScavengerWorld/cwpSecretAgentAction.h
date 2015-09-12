@@ -10,6 +10,9 @@ namespace cwp {
 		public:
 			Action();
 			Action(int a);
+			void updateAction(int a);
+			int getAction();
+		protected:
 			int action;
 		};
 

@@ -3,6 +3,8 @@
 
 #include <ai_scavenger.h>
 #include "cwpSecretAgentModel.h"
+#include "cwpSecretAgentAction.h"
+#include "cwpSecretAgentState.h"
 
 namespace cwp
 {

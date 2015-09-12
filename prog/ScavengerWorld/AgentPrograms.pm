@@ -7,7 +7,7 @@ our $aps =
    name => 'SecretAgent',
    key  => 'a',
    header => 'cwpSecretAgent.h',
-   cpp    => ['cwpSecretAgent.cpp', 'cwpSecretAgentModel.cpp'],
+   cpp    => ['cwpSecretAgent.cpp', 'cwpSecretAgentModel.cpp', 'cwpSecretAgentState.cpp', 'cwpSecretAgentAction.cpp'],
    constructor => 'cwp::Scavanger::SecretAgent(opts)',
  },
  {

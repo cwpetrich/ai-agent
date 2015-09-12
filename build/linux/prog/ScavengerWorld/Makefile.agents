@@ -1,3 +1,3 @@
-CXX_SRC := $(CXX_SRC) cwpSecretAgent.cpp cwpSecretAgentModel.cpp Snorlax.cpp Manual.cpp 
+CXX_SRC := $(CXX_SRC) cwpSecretAgent.cpp cwpSecretAgentModel.cpp cwpSecretAgentState.cpp cwpSecretAgentAction.cpp Snorlax.cpp Manual.cpp 
 CXX_HEADERS := $(CXX_HEADERS) 
 REMOTE_SRC := $(REMOTE_SRC) 
