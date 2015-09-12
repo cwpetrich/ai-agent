@@ -1,0 +1,33 @@
+MAKE_DIR := $(shell mkpath="."; count=0; while [ \( ! -e "$$mkpath/Makefile.top" \) -a \( "$$count" -lt 10 \) ]; do mkpath="$$mkpath/.."; count=`echo $$count | awk '{print $$1 + 1;}'`; done; echo $$mkpath;)
+include $(MAKE_DIR)/Makefile.top
+
+LOCAL_PROG    := WumpusAgent
+LOCAL_PART    := WumpusWorld
+LOCAL_SRC_DIR := $(PROG_DIR)/$(LOCAL_PART)
+LOCAL_INC_DIR := $(PROG_DIR)/$(LOCAL_PART)
+LOCAL_AGENT_SELECT := AgentProgramSelect.cpp
+
+LOCAL_SRC := \
+	$(LOCAL_AGENT_SELECT) \
+	WumpusAgent.cpp
+
+LOCAL_HEADERS := 
+
+CXX_HEADERS := \
+	$(LOCAL_HEADERS)
+
+CXX_SRC  := \
+	$(LOCAL_SRC) 
+
+include Makefile.agents
+
+TARGET_HEADERS    := ${CXX_HEADERS:%.h=$(LOCAL_INC_DIR)/%.h}
+TARGET_OBJS       := ${CXX_SRC:%.cpp=$(OBJ_BASE)/%.o}
+TARGET_LIB        := 
+TARGET_PROG       := $(AI_BIN_DIR)/$(LOCAL_PROG)
+
+include $(MAKE_DIR)/Makefile.rules
+include $(MAKE_DIR)/Makefile.dep
+# Local Variables:
+# mode:makefile
+# End:

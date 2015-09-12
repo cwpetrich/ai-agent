@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x TicTacToeServer ]; then
+    echo "TicTacToeServer is missing"
+    exit 1
+fi
+if [ ! -x TicTacToeDisplay ]; then
+    echo "TicTacToeDisplay is missing"
+    exit 1
+fi
+if [ ! -x TicTacToeAgent ]; then
+    echo "TicTacToeAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./TicTacToeServer -d 0 -s 20 -a 2 -T 1 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./TicTacToeDisplay >display.log 2>display.err &
+
+# Launch random as first player
+./TicTacToeAgent -a r -t 0 >agent1.log 2>agent1.err &
+
+# Launch maximum as second player
+./TicTacToeAgent -a m -t 0 >agent2.log 2>agent2.err &
+
+
+

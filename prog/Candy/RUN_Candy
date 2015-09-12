@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x CandyServer ]; then
+    echo "CandyServer is missing"
+    exit 1
+fi
+if [ ! -x CandyDisplay ]; then
+    echo "CandyDisplay is missing"
+    exit 1
+fi
+if [ ! -x CandyAgent ]; then
+    echo "CandyAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./CandyServer -d 0 -s 150 -e 0 -m 50 -R 2 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./CandyDisplay >display.log 2>display.err &
+
+# Launch the agent player
+./CandyAgent -a A -t 0 >agent1.log 2>agent1.err &
+
+

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x MancalaServer ]; then
+    echo "MancalaServer is missing"
+    exit 1
+fi
+if [ ! -x MancalaDisplay ]; then
+    echo "MancalaDisplay is missing"
+    exit 1
+fi
+if [ ! -x MancalaAgent ]; then
+    echo "MancalaAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./MancalaServer -d 0 -s 150 -a 2 -T 1 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./MancalaDisplay >display.log 2>display.err &
+
+# Launch Random as first player
+./MancalaAgent -a r -t 0 >agent1.log 2>agent1.err &
+
+# Launch Maximum as second player
+./MancalaAgent -a m -t 0 >agent2.log 2>agent2.err &
+
