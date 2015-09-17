@@ -1,0 +1,17 @@
+#!/bin/bash
+
+limits="-g 1000000 -m 1000000"
+size="-x 6 -y 10"
+
+./RectangleSolver $size $limits -t 0 -f 0
+./RectangleSolver $size $limits -t 0 -f 1
+./RectangleSolver $size $limits -t 0 -f 2
+./RectangleSolver $size $limits -t 0 -f 3 -l 12
+./RectangleSolver $size $limits -t 0 -f 4 -L 12
+
+
+./RectangleSolver $size $limits -t 1 -f 0
+./RectangleSolver $size $limits -t 1 -f 1
+./RectangleSolver $size $limits -t 1 -f 2
+./RectangleSolver $size $limits -t 1 -f 3 -l 12
+./RectangleSolver $size $limits -t 1 -f 4 -L 12
