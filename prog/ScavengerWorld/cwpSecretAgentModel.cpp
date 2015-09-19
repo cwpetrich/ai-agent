@@ -16,15 +16,15 @@ namespace cwp {
 			curr_z = z;
 		}
 
-		double SecretAgentModel::getCurrX(){
+		double SecretAgentModel::getCurrX() const {
 			return curr_x;
 		}
 
-		double SecretAgentModel::getCurrY(){
+		double SecretAgentModel::getCurrY() const {
 			return curr_y;
 		}
 
-		double SecretAgentModel::getCurrZ(){
+		double SecretAgentModel::getCurrZ() const {
 			return curr_z;
 		}
 
@@ -34,15 +34,15 @@ namespace cwp {
 			goal_z = z;
 		}
 
-		double SecretAgentModel::getGoalX(){
+		double SecretAgentModel::getGoalX() const {
 			return goal_x;
 		}
 
-		double SecretAgentModel::getGoalY(){
+		double SecretAgentModel::getGoalY() const {
 			return goal_y;
 		}
 
-		double SecretAgentModel::getGoalZ(){
+		double SecretAgentModel::getGoalZ() const {
 			return goal_z;
 		}
 
@@ -66,19 +66,19 @@ namespace cwp {
 		void SecretAgentModel::updateCharge(double c){
 			this->charge = c;
 		}
-		double SecretAgentModel::getCharge(){
+		double SecretAgentModel::getCharge() const {
 			return charge;
 		}
 		void SecretAgentModel::updateHitPoints(double hp){
 			this->hit_points = hp;
 		}
-		double SecretAgentModel::getHitPoints(){
+		double SecretAgentModel::getHitPoints() const {
 			return hit_points;
 		}
 		void SecretAgentModel::updateBaseNum(int b){
 			this->base_num = b;
 		}
-		int SecretAgentModel::getBaseNum(){
+		int SecretAgentModel::getBaseNum() const {
 			return base_num;
 		}
 
@@ -89,7 +89,7 @@ namespace cwp {
 		void CellData::updateId(std::string new_id){
 			this->id = new_id;
 		}
-		std::string CellData::getId(){
+		std::string CellData::getId() const {
 			return id;
 		}
 		void CellData::updateCellLocation(double x, double y, double z){
@@ -106,13 +106,13 @@ namespace cwp {
 		void CellData::updateLocZ(double z){
 			this->loc_z = z;
 		}
-		double CellData::getLocX(){
+		double CellData::getLocX() const {
 			return loc_x;
 		}
-		double CellData::getLocY(){
+		double CellData::getLocY() const {
 			return loc_y;
 		}
-		double CellData::getLocZ(){
+		double CellData::getLocZ() const {
 			return loc_z;
 		}
 		void CellData::updateCellInterfaces(std::string n, std::string s, std::string e, std::string w){
@@ -133,16 +133,16 @@ namespace cwp {
 		void CellData::updateCellWest(std::string w){
 			this->west = w;
 		}
-		std::string CellData::getCellNorth(){
+		std::string CellData::getCellNorth() const {
 			return north;
 		}
-		std::string CellData::getCellSouth(){
+		std::string CellData::getCellSouth() const {
 			return south;
 		}
-		std::string CellData::getCellEast(){
+		std::string CellData::getCellEast() const {
 			return east;
 		}
-		std::string CellData::getCellWest(){
+		std::string CellData::getCellWest() const {
 			return west;
 		}
 
@@ -161,37 +161,37 @@ namespace cwp {
 			this->y = y;
 		}
 
-		double CellKey::getX(){
+		double CellKey::getX() const {
 			return x;
 		}
 
-		double CellKey::getY(){
+		double CellKey::getY() const {
 			return y;
 		}
 
-		bool operator==(CellKey lkey, CellKey rkey){
-			if (fabs(lkey.getX() - rkey.getX()) < 0.00001 && fabs(lkey.getY() - rkey.getY()) < 0.00001){
+		bool CellKey::operator==(CellKey rkey) const {
+			if (fabs(this->getX() - rkey.getX()) < 0.00001 && fabs(this->getY() - rkey.getY()) < 0.00001){
 				return true;
 			}else{
 				return false;
 			}
 		}
 
-		bool operator<(CellKey lkey, CellKey rkey){
-			if (lkey.getY() < rkey.getY() || (lkey.getX() < rkey.getX() && (fabs(lkey.getY() - rkey.getY()) < 0.00001))) {
-				return true;
-			}else{
+		bool CellKey::operator<(CellKey rkey) const {
+			if (fabs(this->getX() - rkey.getX()) < 0.00001 && fabs(this->getY() - rkey.getY()) < 0.00001){
 				return false;
 			}
-		}
-
-		bool operator>=(CellKey lkey, CellKey rkey){
-			if (((fabs(lkey.getX() - rkey.getX()) < 0.000001) && (fabs(lkey.getY() - rkey.getY()) < 0.00001)) ||  rkey.getY() < lkey.getY() || (rkey.getX() < lkey.getX() && (fabs(lkey.getY() - rkey.getY()) < 0.00001))) {
+			if (this->getX() < rkey.getX()){
 				return true;
-			}else{
+			}else if(rkey.getX() < this->getX()){
 				return false;
+			}else{
+				if (this->getY() < rkey.getY()){
+					return true;
+				}else{
+					return false;
+				}
 			}
 		}
-
 	}
 }

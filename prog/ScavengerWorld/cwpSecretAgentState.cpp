@@ -6,11 +6,6 @@ namespace cwp {
 
 		State::State(){}
 
-		// State::State(double x, double y){
-		// 	this->x = x;
-		// 	this->y = y;
-		// }
-
 		State::State(double x, double y, double c){
 			this->x = x;
 			this->y = y;
@@ -18,23 +13,6 @@ namespace cwp {
 		}
 
 		State::~State(){}
-
-		// void State::updateXandY(double x, double y) const {
-		// 	this->x = x;
-		// 	this->y = y;
-		// }
-
-		// void State::updateX(double x) const {
-		// 	this->x = x;
-		// }
-
-		// void State::updateY(double y) const {
-		// 	this->y = y;
-		// }
-
-		// void State::updateCharge(double c) const {
-		// 	this->charge = c;
-		// }
 
 		double State::getX() const {
 			return x;
@@ -59,7 +37,7 @@ namespace cwp {
 		}
 
 		bool State::operator==(const State rhs) const {
-			if (fabs(this->getX() - rhs.getX()) < 0.00001 && fabs(this->getY() - rhs.getY()) < 0.00001){
+			if (fabs(this->getX() - rhs.getX()) < 0.00001 && fabs(this->getY() - rhs.getY()) < 0.00001 && fabs(this->getCharge() - rhs.getCharge()) < 0.00001){
 				return true;
 			}else{
 				return false;
@@ -67,10 +45,27 @@ namespace cwp {
 		}
 
 		bool State::operator<(const State rhs) const {
-			if (this->getCharge() < rhs.getCharge()){
-				return true;
-			}else{
+			if (fabs(this->getX() - rhs.getX()) < 0.00001 && fabs(this->getY() - rhs.getY()) < 0.00001 && fabs(this->getCharge() - rhs.getCharge()) < 0.00001){
 				return false;
+			}
+			if (this->getX() < rhs.getX()){
+				return true;
+			}else if(rhs.getX() < this->getX()){
+				return false;
+			}else{
+				if (this->getY() < rhs.getY()){
+					return true;
+				}else if(rhs.getY() < this->getY()){
+					return false;
+				}else{
+					if (this->getCharge() < rhs.getCharge()){
+						return true;
+					}else if(rhs.getCharge() < this->getCharge()){
+						return false;
+					}else{
+						return false;
+					}
+				}
 			}
 		}
 	}

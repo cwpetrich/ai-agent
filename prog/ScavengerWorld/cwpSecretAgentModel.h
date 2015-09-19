@@ -15,23 +15,23 @@ namespace cwp {
 		public:
 			CellData();
 			void updateId(std::string new_id);
-			std::string getId();
+			std::string getId() const;
 			void updateCellLocation(double x, double y, double z);
 			void updateLocX(double x);
 			void updateLocY(double y);
 			void updateLocZ(double z);
-			double getLocX();
-			double getLocY();
-			double getLocZ();
+			double getLocX() const;
+			double getLocY() const;
+			double getLocZ() const;
 			void updateCellInterfaces(std::string n, std::string s, std::string e, std::string w);
 			void updateCellNorth(std::string n);
 			void updateCellSouth(std::string s);
 			void updateCellEast(std::string e);
 			void updateCellWest(std::string w);
-			std::string getCellNorth();
-			std::string getCellSouth();
-			std::string getCellEast();
-			std::string getCellWest();
+			std::string getCellNorth() const;
+			std::string getCellSouth() const;
+			std::string getCellEast() const;
+			std::string getCellWest() const;
 		private:
 			std::string id;
 			double loc_x, loc_y, loc_z;
@@ -43,8 +43,10 @@ namespace cwp {
 			CellKey(double x, double y);
 			void updateX(double x);
 			void updateY(double y);
-			double getX();
-			double getY();
+			bool operator==(CellKey rkey) const;
+			bool operator<(CellKey rkey) const;
+			double getX() const;
+			double getY() const;
 		private:
 			double x, y;
 		};
@@ -56,19 +58,19 @@ namespace cwp {
 			CellData* getCell(double x, double y);
 			void updateCell(std::string id, double x, double y, double z, std::string north, std::string south, std::string east, std::string west);
 			void updateCurrLocation(double x, double y, double z);
-			double getCurrX();
-			double getCurrY();
-			double getCurrZ();
+			double getCurrX() const;
+			double getCurrY() const;
+			double getCurrZ() const;
 			void updateCharge(double c);
-			double getCharge();
+			double getCharge() const;
 			void updateHitPoints(double hp);
-			double getHitPoints();
+			double getHitPoints() const;
 			void updateBaseNum(int b);
-			int getBaseNum();
+			int getBaseNum() const;
 			void updateGoalLocation(double x, double y, double z);
-			double getGoalX();
-			double getGoalY();
-			double getGoalZ();
+			double getGoalX() const;
+			double getGoalY() const;
+			double getGoalZ() const;
 
 		protected:
 		private:
@@ -76,10 +78,6 @@ namespace cwp {
 			int base_num;
 			double curr_x, curr_y, curr_z, charge, hit_points, goal_x, goal_y, goal_z;
 		};
-
-		bool operator==(CellKey &lkey, CellKey &rkey);
-		bool operator>=(CellKey &lkey, CellKey &rkey);
-		bool operator<(CellKey &lkey, CellKey &rkey);
 		
 	}
 }

@@ -9,11 +9,11 @@ namespace cwp {
 			this->action = a;
 		}
 
-		void Action::updateAction(int a){
+		void Action::SetCode(int a){
 			this->action = a;
 		}
 
-		int Action::getAction(){
+		int Action::getAction() const{
 			return action;
 		}
 	}

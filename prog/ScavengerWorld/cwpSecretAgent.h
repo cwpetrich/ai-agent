@@ -5,6 +5,7 @@
 #include "cwpSecretAgentModel.h"
 #include "cwpSecretAgentAction.h"
 #include "cwpSecretAgentState.h"
+#include "cwpSecretAgentProblem.h"
 
 namespace cwp
 {
@@ -18,7 +19,7 @@ namespace cwp
       virtual ai::Agent::Action * Program(const ai::Agent::Percept * percept);
     protected:
     private:
-      cwp::Scavenger::SecretAgentModel* model;
+      cwp::Scavenger::SecretAgentModel * model;
     };
   }
 }
