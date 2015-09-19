@@ -34,59 +34,9 @@ namespace cwp
     {
 
       ai::Scavenger::Action *action = new ai::Scavenger::Action;
-      std::stringstream ss1;
+      model->gatherData(percept);
 
-      int agent_base;
-      double agent_x, agent_y, agent_z, agent_hp, agent_charge, agent_goal_x, agent_goal_y, agent_goal_z;
-
-      ss1.str(percept->GetAtom("BASE").GetValue()); ss1.clear();
-      ss1 >> agent_base;
-      model->updateBaseNum(agent_base);
-
-      ss1.str(percept->GetAtom("X_LOC").GetValue()); ss1.clear();
-      ss1 >> agent_x;
-      ss1.str(percept->GetAtom("Y_LOC").GetValue()); ss1.clear();
-      ss1 >> agent_y;
-      ss1.str(percept->GetAtom("Z_LOC").GetValue()); ss1.clear();
-      ss1 >> agent_z;
-      model->updateCurrLocation(agent_x, agent_y, agent_z);
-
-      ss1.str(percept->GetAtom("CHARGE").GetValue()); ss1.clear();
-      ss1 >> agent_charge;
-      model->updateCharge(agent_charge);
-
-      ss1.str(percept->GetAtom("HP").GetValue()); ss1.clear();
-      ss1 >> agent_hp;
-      model->updateHitPoints(agent_hp);
-
-      std::string agent_goal_loc = percept->GetAtom("GOAL_LOC").GetValue();
-      ss1.str(agent_goal_loc); ss1.clear();
-      ss1 >> agent_goal_x; ss1.ignore();
-      ss1 >> agent_goal_y; ss1.ignore();
-      ss1 >> agent_goal_z; ss1.ignore();
-      model->updateGoalLocation(agent_goal_x, agent_goal_y, agent_goal_z);
-
-      for (uint i = 0; i < percept->NumAtom(); i++){
-        if (percept->GetAtom(i).GetName().substr(0, 5) == "CELL_"){
-		      std::stringstream ss2;
-        	double cell_x, cell_y, cell_z;
-      		std::string cell_north, cell_south, cell_east, cell_west;
-
-        	std::string value = percept->GetAtom(i).GetValue();
-	        ss2.str(value); ss2.clear();
-	        ss2 >> cell_x; ss2.ignore();
-	        ss2 >> cell_y; ss2.ignore();
-	        ss2 >> cell_z; ss2.ignore();
-	        std::getline(ss2, cell_north, ',');
-	        std::getline(ss2, cell_south, ',');
-	        std::getline(ss2, cell_east, ',');
-	        std::getline(ss2, cell_west, ',');
-
-	        model->updateCell(percept->GetAtom(i).GetName().substr(5), cell_x, cell_y, cell_z, cell_north, cell_south, cell_east, cell_west);
-        }
-      }
-
-      cwp::Scavenger::State * initial_state = new cwp::Scavenger::State(0.0, 0.0, 100.0);
+      cwp::Scavenger::State * initial_state = new cwp::Scavenger::State(model->getCurrX(), model->getCurrY(), model->getCharge());
       cwp::Scavenger::Problem * problem = new cwp::Scavenger::Problem(dynamic_cast<ai::Search::State *>(initial_state), model);
       
       ai::Search::Frontier *fringe  = new ai::Search::DFFrontier;
@@ -95,31 +45,26 @@ namespace cwp
       if(search1->Search()) {
         std::list<ai::Search::Node *> *solution = search1->GetSolution().GetList();
         std::list<ai::Search::Node *>::const_iterator it;
-        std::vector<cwp::Scavenger::Action *> solution_actions;
         std::ofstream debug_file;
         debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
 
         for(it = solution->begin(); it != solution->end(); it++) {
           if((*it)->GetAction()) {
             (*it)->GetAction()->Display();
-            solution_actions.push_back(dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction()));
+            model->addActionToGoal(dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction()));
           }
         }
         debug_file << "Actions: " << "\n";
-        for (uint i = 0; i < solution_actions.size(); i++){
-          switch (solution_actions[i]->getAction()){
-            case ai::Scavenger::Action::GO_NORTH: debug_file << "north -> " << solution_actions[i]->getAction() << std::endl; break;
-            case ai::Scavenger::Action::GO_EAST: debug_file << "east -> " << solution_actions[i]->getAction() << std::endl; break;
-            case ai::Scavenger::Action::GO_WEST: debug_file << "west -> " << solution_actions[i]->getAction() << std::endl; break;
-            case ai::Scavenger::Action::GO_SOUTH: debug_file << "south -> " << solution_actions[i]->getAction() << std::endl; break;
-            case ai::Scavenger::Action::QUIT: debug_file << "quit -> " << solution_actions[i]->getAction() << std::endl; break;
+        while(cwp::Scavenger::Action * next_action = model->getNextActionToGoal()){
+          switch (next_action->getAction()){
+            case ai::Scavenger::Action::GO_NORTH: debug_file << "north -> " << next_action->getAction() << std::endl; break;
+            case ai::Scavenger::Action::GO_EAST: debug_file << "east -> " << next_action->getAction() << std::endl; break;
+            case ai::Scavenger::Action::GO_WEST: debug_file << "west -> " << next_action->getAction() << std::endl; break;
+            case ai::Scavenger::Action::GO_SOUTH: debug_file << "south -> " << next_action->getAction() << std::endl; break;
+            case ai::Scavenger::Action::QUIT: debug_file << "quit -> " << next_action->getAction() << std::endl; break;
           }
         }
         debug_file << "Charge Left: " << model->getCharge() - solution->back()->GetPathCost() << std::endl;
-        // debug_file << "\nStates: " << "\n";
-        // for (int i = 0; i < solution_states.size(); i++){
-        //   debug_file << solution_states[i]->get
-        // }
 
         debug_file << "Path Cost: " << solution->back()->GetPathCost() << std::endl;
 
@@ -161,19 +106,6 @@ namespace cwp
       //   action->SetCode(ai::Scavenger::Action::QUIT);
       //   new_action->SetCode(ai::Scavenger::Action::QUIT);
       // }
-
-      // const cwp::Scavenger::State * const state = new cwp::Scavenger::State(current_cell->getLocX(), current_cell->getLocY(), model->getCharge());
-      // double state_x, state_y, state_c;
-      // state_x = state->getX();
-      // state_y = state->getY();
-      // state_c = state->getCharge();
-      // std::ofstream myfile;
-      // myfile.open("debugging.txt", std::ofstream::out | std::ofstream::app);
-      // myfile << "StateX: " << state_x << "\n";
-      // myfile << "StateY: " << state_y << "\n";
-      // myfile << "StateC: " << state_c << "\n\n";
-      // myfile << "Action Taken: " << new_action->getAction() << "\n\n";
-      // myfile.close();
       return action;
     }
   }

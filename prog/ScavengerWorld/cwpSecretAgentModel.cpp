@@ -82,6 +82,66 @@ namespace cwp {
 			return base_num;
 		}
 
+		void SecretAgentModel::gatherData(const ai::Agent::Percept * percept){
+			std::stringstream ss1;
+
+      ss1.str(percept->GetAtom("BASE").GetValue()); ss1.clear();
+      ss1 >> base_num;
+
+      ss1.str(percept->GetAtom("X_LOC").GetValue()); ss1.clear();
+      ss1 >> curr_x;
+      ss1.str(percept->GetAtom("Y_LOC").GetValue()); ss1.clear();
+      ss1 >> curr_y;
+      ss1.str(percept->GetAtom("Z_LOC").GetValue()); ss1.clear();
+      ss1 >> curr_z;
+
+      ss1.str(percept->GetAtom("CHARGE").GetValue()); ss1.clear();
+      ss1 >> charge;
+
+      ss1.str(percept->GetAtom("HP").GetValue()); ss1.clear();
+      ss1 >> hit_points;
+
+      std::string agent_goal_loc = percept->GetAtom("GOAL_LOC").GetValue();
+      ss1.str(agent_goal_loc); ss1.clear();
+      ss1 >> goal_x; ss1.ignore();
+      ss1 >> goal_y; ss1.ignore();
+      ss1 >> goal_z; ss1.ignore();
+
+      for (uint i = 0; i < percept->NumAtom(); i++){
+        if (percept->GetAtom(i).GetName().substr(0, 5) == "CELL_"){
+		      std::stringstream ss2;
+        	double cell_x, cell_y, cell_z;
+      		std::string cell_north, cell_south, cell_east, cell_west;
+
+        	std::string value = percept->GetAtom(i).GetValue();
+	        ss2.str(value); ss2.clear();
+	        ss2 >> cell_x; ss2.ignore();
+	        ss2 >> cell_y; ss2.ignore();
+	        ss2 >> cell_z; ss2.ignore();
+	        std::getline(ss2, cell_north, ',');
+	        std::getline(ss2, cell_south, ',');
+	        std::getline(ss2, cell_east, ',');
+	        std::getline(ss2, cell_west, ',');
+
+	        this->updateCell(percept->GetAtom(i).GetName().substr(5), cell_x, cell_y, cell_z, cell_north, cell_south, cell_east, cell_west);
+        }
+      }
+		}
+
+		void SecretAgentModel::addActionToGoal(cwp::Scavenger::Action * action){
+			actions_to_goal.push(action);
+		}
+
+		cwp::Scavenger::Action * SecretAgentModel::getNextActionToGoal(){
+			if(actions_to_goal.empty()){
+				return NULL;
+			}else{
+				cwp::Scavenger::Action *action = actions_to_goal.front();
+				actions_to_goal.pop();
+				return action;
+			}
+		}
+
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 		CellData::CellData(){}

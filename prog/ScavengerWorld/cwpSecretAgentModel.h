@@ -1,11 +1,14 @@
 #pragma once
 
+#include "cwpSecretAgentAction.h"
+#include <ai_scavenger.h>
 #include <vector>
 #include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <string>
 #include <map>
+#include <queue>
 
 namespace cwp {
 
@@ -71,7 +74,11 @@ namespace cwp {
 			double getGoalX() const;
 			double getGoalY() const;
 			double getGoalZ() const;
-
+			void gatherData(const ai::Agent::Percept * percept);
+			void addActionToGoal(cwp::Scavenger::Action * action);
+			cwp::Scavenger::Action* getNextActionToGoal();
+			std::queue<cwp::Scavenger::Action *> actions_to_goal;
+			bool searched;
 		protected:
 		private:
 			std::map<CellKey, CellData*> known_cells;
