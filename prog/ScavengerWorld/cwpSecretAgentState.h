@@ -14,10 +14,6 @@ namespace cwp {
 			~State();
 			bool operator<(const State rhs) const;
 			bool operator==(const State rhs) const;
-			// void updateXandY(double x, double y) const;
-			// void updateX(double x) const;
-			// void updateY(double y) const;
-			// void updateCharge(double c) const;
 			bool IsEqual(const ai::Search::State * const state_in) const;
 			bool IsLessThan(const ai::Search::State * const state_in) const;
 			double getX() const;

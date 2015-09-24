@@ -77,10 +77,10 @@ namespace cwp {
 			void gatherData(const ai::Agent::Percept * percept);
 			void addActionToGoal(cwp::Scavenger::Action * action);
 			cwp::Scavenger::Action* getNextActionToGoal();
-			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			bool searched;
 		protected:
 		private:
+			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			std::map<CellKey, CellData*> known_cells;
 			int base_num;
 			double curr_x, curr_y, curr_z, charge, hit_points, goal_x, goal_y, goal_z;
