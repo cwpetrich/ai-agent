@@ -43,64 +43,36 @@ namespace cwp
       cwp::Scavenger::State * initial_state = new cwp::Scavenger::State(model->getCurrX(), model->getCurrY(), model->getCharge());
       cwp::Scavenger::Problem * problem = new cwp::Scavenger::Problem(dynamic_cast<ai::Search::State *>(initial_state), model);
       
-      ai::Search::Frontier *fringe  = new ai::Search::BFFrontier;
-      ai::Search::Tree *search1 = new ai::Search::Tree(problem, fringe);
+      ai::Search::Frontier *fringe  = new ai::Search::UCFrontier;
+      ai::Search::Graph *search = new ai::Search::Graph(problem, fringe);
 
       if(model->searched == false){
 
-        if(search1->Search()) {
-          std::list<ai::Search::Node *> *solution = search1->GetSolution().GetList();
+        if(search->Search()) {
+          std::list<ai::Search::Node *> *solution = search->GetSolution().GetList();
           std::list<ai::Search::Node *>::const_iterator it;
 
-          debug_file << "Actions: " << std::endl;
+          // debug_file << "Actions: " << std::endl;
           for(it = solution->begin(); it != solution->end(); it++) {
             if((*it)->GetAction()) {
               (*it)->GetAction()->Display();
               cwp::Scavenger::Action* next_action = dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction());
-              debug_file << next_action->getAction() << std::endl;
+              // debug_file << next_action->getAction() << std::endl;
               model->addActionToGoal(next_action);
             }
           }
+          debug_file << "Path Cost: " << solution->back()->GetPathCost() << std::endl;
+          debug_file << "Nodes generated: " << search->GetNumberNodesGenerated() << std::endl;
+          debug_file << "Nodes stored:    " << search->GetMaxNodesStored() << std::endl;
           debug_file << std::endl;
         }
         model->searched = true;
       }
-
-      if(cwp::Scavenger::Action * next_action = model->getNextActionToGoal()){
-        action->SetCode(next_action->getAction());
-        debug_file << "Action: " << next_action->getAction() << std::endl;
-        debug_file << "Charge: " << model->getCharge() << std::endl;
+      cwp::Scavenger::Action * next_action = model->getNextActionToGoal();
+      if (next_action == NULL){
+        action->SetCode(ai::Scavenger::Action::QUIT);
       }else{
-        if(fabs(model->getCurrX() - 0.0) < 0.00001 && fabs(model->getCurrY() - 0.0) < 0.00001){
-          debug_file << "Charge: " << model->getCharge() << std::endl;
-          debug_file << "Hit Points: " << model->getHitPoints() << std::endl;
-          debug_file << "CurrentX: " << model->getCurrX() << std::endl;
-          debug_file << "CurrentY: " << model->getCurrY() << std::endl;
-          debug_file << "CurrentZ: " << model->getCurrZ() << std::endl;
-          action->SetCode(ai::Scavenger::Action::QUIT);
-        }else{
-          model->updateGoalLocation(0.0, 0.0, 0.0);
-          cwp::Scavenger::State * initial_state = new cwp::Scavenger::State(model->getCurrX(), model->getCurrY(), model->getCharge());
-          cwp::Scavenger::Problem * problem = new cwp::Scavenger::Problem(dynamic_cast<ai::Search::State *>(initial_state), model);
-          
-          ai::Search::Frontier *fringe  = new ai::Search::BFFrontier;
-          ai::Search::Tree *search1 = new ai::Search::Tree(problem, fringe);
-          if(search1->Search()) {
-            std::list<ai::Search::Node *> *solution = search1->GetSolution().GetList();
-            std::list<ai::Search::Node *>::const_iterator it;
-            
-
-            for(it = solution->begin(); it != solution->end(); it++) {
-              if((*it)->GetAction()) {
-                (*it)->GetAction()->Display();
-                model->addActionToGoal(dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction()));
-              }
-            }
-            debug_file << "Charge Left: " << model->getCharge() - solution->back()->GetPathCost() << std::endl;
-
-            debug_file << "Path Cost: " << solution->back()->GetPathCost() << std::endl;
-          }
-        }
+        action->SetCode(next_action->getAction());
       }
       return action;
     }
