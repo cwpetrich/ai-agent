@@ -6,7 +6,10 @@ namespace cwp {
 
 	namespace Scavenger {
 
-		SecretAgentModel::SecretAgentModel(){}
+		SecretAgentModel::SecretAgentModel(){
+			this->searched = false;
+			this->direction = -1;
+		}
 
 		SecretAgentModel::~SecretAgentModel(){}
 
@@ -53,6 +56,22 @@ namespace cwp {
 			return cell;
 		}
 
+		bool SecretAgentModel::isCellVisited(double x, double y){
+			CellData* cell = new CellData();
+			CellKey key = CellKey(x, y);
+			cell = known_cells[key];
+			if (cell->isVisited()){
+				return true;
+			}else{
+				if (cell->getCurrX() && cell->getCurrY() && cell->getCurrZ() && cell->getCellNorth() && cell->getCellEast() && cell->getCellWest() && cell->getCellSouth()){
+					cell->markVisited();
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+
 		void SecretAgentModel::updateCell(std::string id, double x, double y, double z, std::string north, std::string south, std::string east, std::string west){
 			CellData* cell = new CellData();
 			CellKey key = CellKey(x, y);
@@ -84,6 +103,15 @@ namespace cwp {
 
 		void SecretAgentModel::gatherData(const ai::Agent::Percept * percept){
 			std::stringstream ss1;
+
+			if (this->getLookDirection() != -1){
+				ss1.str(percept->GetAtom("LOOK").GetValue()); ss1.clear();
+				std::ofstream debug_file;
+      	debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
+				debug_file << ss1 << std::endl;
+				debug_file.close();
+				this->setLookDirection(-1);
+			}
 
       ss1.str(percept->GetAtom("BASE").GetValue()); ss1.clear();
       ss1 >> base_num;
@@ -204,6 +232,14 @@ namespace cwp {
 		}
 		std::string CellData::getCellWest() const {
 			return west;
+		}
+
+		bool CellData::isVisited() const {
+			return visited;
+		}
+
+		bool CellData::markVisited() {
+			this->visited = true;
 		}
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

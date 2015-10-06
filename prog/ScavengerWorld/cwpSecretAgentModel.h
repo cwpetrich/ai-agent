@@ -35,7 +35,10 @@ namespace cwp {
 			std::string getCellSouth() const;
 			std::string getCellEast() const;
 			std::string getCellWest() const;
+			void markVisited();
+			bool isVisited() const;
 		private:
+			bool visited
 			std::string id;
 			double loc_x, loc_y, loc_z;
 			std::string north, south, east, west;
@@ -59,6 +62,7 @@ namespace cwp {
 			SecretAgentModel();
 			~SecretAgentModel();
 			CellData* getCell(double x, double y);
+			bool isCellVisited(double x, double y);
 			void updateCell(std::string id, double x, double y, double z, std::string north, std::string south, std::string east, std::string west);
 			void updateCurrLocation(double x, double y, double z);
 			double getCurrX() const;
@@ -77,9 +81,14 @@ namespace cwp {
 			void gatherData(const ai::Agent::Percept * percept);
 			void addActionToGoal(cwp::Scavenger::Action * action);
 			cwp::Scavenger::Action* getNextActionToGoal();
-			bool searched;
+			void updateSearching(bool s);
+			bool isSearching() const;
+			void updateLookDirection(int d);
+			int getLookDirection() const;
 		protected:
 		private:
+			bool searching;
+			int direction;
 			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			std::map<CellKey, CellData*> known_cells;
 			int base_num;

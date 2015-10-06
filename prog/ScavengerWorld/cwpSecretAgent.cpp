@@ -55,16 +55,16 @@ namespace cwp
           // debug_file << "Actions: " << std::endl;
           for(it = solution->begin(); it != solution->end(); it++) {
             if((*it)->GetAction()) {
-              (*it)->GetAction()->Display();
+              // (*it)->GetAction()->Display();
               cwp::Scavenger::Action* next_action = dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction());
               // debug_file << next_action->getAction() << std::endl;
               model->addActionToGoal(next_action);
             }
           }
-          debug_file << "Path Cost: " << solution->back()->GetPathCost() << std::endl;
-          debug_file << "Nodes generated: " << search->GetNumberNodesGenerated() << std::endl;
-          debug_file << "Nodes stored:    " << search->GetMaxNodesStored() << std::endl;
-          debug_file << std::endl;
+          // debug_file << "Path Cost: " << solution->back()->GetPathCost() << std::endl;
+          // debug_file << "Nodes generated: " << search->GetNumberNodesGenerated() << std::endl;
+          // debug_file << "Nodes stored:    " << search->GetMaxNodesStored() << std::endl;
+          // debug_file << std::endl;
         }
         model->searched = true;
       }
@@ -74,6 +74,7 @@ namespace cwp
       }else{
         action->SetCode(next_action->getAction());
       }
+      debug_file.close();
       return action;
     }
   }
