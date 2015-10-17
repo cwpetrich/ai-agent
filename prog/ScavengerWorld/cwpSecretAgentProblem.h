@@ -11,7 +11,7 @@ namespace cwp {
 
 		class Problem : public ai::Search::Problem {
 		public:
-			Problem(ai::Search::State * initial_state, cwp::Scavenger::SecretAgentModel * const model);
+			Problem(ai::Search::State * initial_state, cwp::Scavenger::SecretAgentModel * const model, bool to_base);
 			virtual ~Problem();
       virtual std::vector<ai::Search::Action *> Actions(const ai::Search::State * const state_in);
       virtual bool GoalTest(const ai::Search::State * const state_in) const;
@@ -22,6 +22,7 @@ namespace cwp {
       								const ai::Search::State * const state2_in) const;
 
 		protected:
+			bool to_base;
 			cwp::Scavenger::SecretAgentModel * model;
       cwp::Scavenger::State * initial_state;
     private:

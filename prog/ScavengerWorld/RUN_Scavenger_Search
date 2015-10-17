@@ -26,6 +26,6 @@ sleep 2
 ./ScavengerDisplay >display.log 2>display.err &
 
 # Launch the agent player
-./ScavengerAgent -a s -t 0 >agent1.log 2>agent1.err &
+./ScavengerAgent -a a -t 0 >agent1.log 2>agent1.err &
 
 

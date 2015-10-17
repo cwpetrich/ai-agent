@@ -37,8 +37,10 @@ namespace cwp {
 			std::string getCellWest() const;
 			void markVisited();
 			bool isVisited() const;
+			bool isPassable() const;
+			bool isSafe() const;
 		private:
-			bool visited
+			bool visited;
 			std::string id;
 			double loc_x, loc_y, loc_z;
 			std::string north, south, east, west;
@@ -62,6 +64,8 @@ namespace cwp {
 			SecretAgentModel();
 			~SecretAgentModel();
 			CellData* getCell(double x, double y);
+			CellData* getClosestUnvisitedCell(double x, double y);
+			std::map<cwp::Scavenger::CellKey, cwp::Scavenger::CellData*> getKnownCells();
 			bool isCellVisited(double x, double y);
 			void updateCell(std::string id, double x, double y, double z, std::string north, std::string south, std::string east, std::string west);
 			void updateCurrLocation(double x, double y, double z);
@@ -81,19 +85,25 @@ namespace cwp {
 			void gatherData(const ai::Agent::Percept * percept);
 			void addActionToGoal(cwp::Scavenger::Action * action);
 			cwp::Scavenger::Action* getNextActionToGoal();
+			bool actionQueueEmpty();
 			void updateSearching(bool s);
 			bool isSearching() const;
+			bool isUndiscoveredDirections(double x, double y);
+			ai::Scavenger::Location::Direction getNextUndiscoveredDirection(double x, double y);
 			void updateLookDirection(int d);
 			int getLookDirection() const;
 		protected:
 		private:
-			bool searching;
 			int direction;
 			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			std::map<CellKey, CellData*> known_cells;
 			int base_num;
 			double curr_x, curr_y, curr_z, charge, hit_points, goal_x, goal_y, goal_z;
 		};
+
+		std::ostream& operator<<(std::ostream& os, CellData* cell);
+		std::ostream& operator<<(std::ostream& os, CellKey key);
+
 		
 	}
 }

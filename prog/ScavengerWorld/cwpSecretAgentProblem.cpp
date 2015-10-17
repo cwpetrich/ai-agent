@@ -6,11 +6,12 @@
 namespace cwp {
 	namespace Scavenger {
 
-		Problem::Problem(ai::Search::State * initial_state, cwp::Scavenger::SecretAgentModel * const model)
+		Problem::Problem(ai::Search::State * initial_state, cwp::Scavenger::SecretAgentModel * const model, bool to_base)
 		:ai::Search::Problem(initial_state)
 		{
 			this->initial_state = dynamic_cast<cwp::Scavenger::State * >(initial_state);
 			this->model = model;
+			this->to_base = to_base;
 		}
 
 		Problem::~Problem(){}
@@ -93,7 +94,13 @@ namespace cwp {
 
 		bool Problem::GoalTest(const ai::Search::State * const state_in) const {
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
-			return (fabs(model->getGoalX() - state->getX()) < 0.00001 && fabs(model->getGoalY() - state->getY()) < 0.00001 && state->getCharge() > 0 );
+			std::ofstream debug_file;
+			debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			if (to_base){
+				return (fabs(0.0 - state->getX()) < 0.00001 && fabs(0.0 - state->getY()) < 0.00001 && state->getCharge() > 0 );
+			}else{
+				return (fabs(model->getGoalX() - state->getX()) < 0.00001 && fabs(model->getGoalY() - state->getY()) < 0.00001 && state->getCharge() > 0 );
+			}
 		}
 
 		double Problem::StepCost(const ai::Search::State * const state1_in, const ai::Search::Action * const action_in, const ai::Search::State * const state2_in) const{
@@ -104,13 +111,13 @@ namespace cwp {
 			cwp::Scavenger::CellData* cell2 = model->getCell(state2->getX(), state2->getY());
 			std::string interface = "quit";
 			double interface_cost = 0.0;
-			if (action->getAction() == ai::Scavenger::Action::GO_NORTH){
+			if (action->getAction() == ai::Scavenger::Action::GO_NORTH) {
 				interface = cell1->getCellNorth();
-			}else if(action->getAction() == ai::Scavenger::Action::GO_EAST){
+			} else if (action->getAction() == ai::Scavenger::Action::GO_EAST) {
 				interface = cell1->getCellEast();
-			}else if(action->getAction() == ai::Scavenger::Action::GO_WEST){
+			} else if (action->getAction() == ai::Scavenger::Action::GO_WEST) {
 				interface = cell1->getCellWest();
-			}else if(action->getAction() == ai::Scavenger::Action::GO_SOUTH){
+			} else if (action->getAction() == ai::Scavenger::Action::GO_SOUTH) {
 				interface = cell1->getCellSouth();
 			} else {
 				interface = "quit";
