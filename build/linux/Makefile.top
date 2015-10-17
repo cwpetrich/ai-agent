@@ -70,8 +70,9 @@ CC       := gcc
 #
 # required libraries
 #
-UBUNTU_PACKAGES := libglu1-mesa-dev mesa-common-dev libxext-dev g++ libxxf86vm-dev libxi-dev freeglut3-dev
-UBUNTU_PACKAGE_COUNT := 7
+
+UBUNTU_PACKAGES := libglu1-mesa-dev mesa-common-dev libxext-dev g++ libxxf86vm-dev libxi-dev freeglut3-dev libgl1-mesa-dev
+UBUNTU_PACKAGE_COUNT := 8
 
 #
 # make values
