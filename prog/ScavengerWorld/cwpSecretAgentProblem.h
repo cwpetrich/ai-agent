@@ -20,7 +20,7 @@ namespace cwp {
       virtual double StepCost(const ai::Search::State * const state1_in,
       								const ai::Search::Action * const action_in,
       								const ai::Search::State * const state2_in) const;
-
+      virtual double Heuristic(const ai::Search::State  * const state_in) const;
 		protected:
 			bool to_base;
 			cwp::Scavenger::SecretAgentModel * model;

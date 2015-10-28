@@ -9,6 +9,10 @@ namespace cwp {
 		Problem::Problem(ai::Search::State * initial_state, cwp::Scavenger::SecretAgentModel * const model, bool to_base)
 		:ai::Search::Problem(initial_state)
 		{
+			std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			// debug_file << "Start of Problem::Problem" << std::endl;
+			debug_file.close();
 			this->initial_state = dynamic_cast<cwp::Scavenger::State * >(initial_state);
 			this->model = model;
 			this->to_base = to_base;
@@ -18,6 +22,10 @@ namespace cwp {
 
 		std::vector<ai::Search::Action *> Problem::Actions(const ai::Search::State * const state_in)
 		{
+			// std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			// debug_file << "Start of Problem::Actions" << std::endl;
+			// debug_file.close();
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
 			double x = state->getX();
 			double y = state->getY();
@@ -46,9 +54,12 @@ namespace cwp {
 		}
 
 		ai::Search::State * Problem::Result(const ai::Search::State * const state_in, const ai::Search::Action * const action_in){
+			// std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			// debug_file << "Start of Problem::Result" << std::endl;
+			// debug_file.close();
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
 			const cwp::Scavenger::Action * const action = dynamic_cast<const cwp::Scavenger::Action * const>(action_in);
-			std::ofstream debug_file;
 
 			double x = state->getX();
 			double y = state->getY();
@@ -93,9 +104,11 @@ namespace cwp {
 		}
 
 		bool Problem::GoalTest(const ai::Search::State * const state_in) const {
+			// std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			// debug_file << "Start of Problem::GoalTest" << std::endl;
+			// debug_file.close();
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
-			std::ofstream debug_file;
-			debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
 			if (to_base){
 				return (fabs(0.0 - state->getX()) < 0.00001 && fabs(0.0 - state->getY()) < 0.00001 && state->getCharge() > 0 );
 			}else{
@@ -104,6 +117,10 @@ namespace cwp {
 		}
 
 		double Problem::StepCost(const ai::Search::State * const state1_in, const ai::Search::Action * const action_in, const ai::Search::State * const state2_in) const{
+			// std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			// debug_file << "Start of Problem::StepCost" << std::endl;
+			// debug_file.close();
 			const cwp::Scavenger::State * const state1 = dynamic_cast<const cwp::Scavenger::State * const>(state1_in);
 			const cwp::Scavenger::State * const state2 = dynamic_cast<const cwp::Scavenger::State * const>(state2_in);
 			const cwp::Scavenger::Action * const action = dynamic_cast<const cwp::Scavenger::Action * const>(action_in);
@@ -137,6 +154,19 @@ namespace cwp {
 				interface_cost = 0.0;
 			}
 			return (interface_cost + ((cell2->getLocZ() - cell1->getLocZ())/1000));
+		}
+
+		double Problem::Heuristic(const ai::Search::State * const state_in) const{
+			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
+			double distance = 0.0;
+			if (to_base){
+				distance += fabs(0.0 - state->getX());
+				distance += fabs(0.0 - state->getY());
+			} else {
+				distance += fabs(model->getGoalX() - state->getX());
+				distance += fabs(model->getGoalY() - state->getY());
+			}
+			return distance;
 		}
 
 	}
