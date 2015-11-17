@@ -18,15 +18,10 @@ namespace cwp {
 		public:
 			CellData();
 			void updateId(std::string new_id);
-			std::string getId() const;
 			void updateCellLocation(double x, double y, double z);
-			void updateLocX(double x);
-			void updateLocY(double y);
-			void updateLocZ(double z);
 			double getLocX() const;
 			double getLocY() const;
 			double getLocZ() const;
-			void updateCellInterfaces(std::string n, std::string s, std::string e, std::string w);
 			void updateCellNorth(std::string n);
 			void updateCellSouth(std::string s);
 			void updateCellEast(std::string e);
@@ -65,18 +60,12 @@ namespace cwp {
 			~SecretAgentModel();
 			CellData* getCell(double x, double y);
 			CellData* getClosestUnvisitedCell(double x, double y);
-			std::map<cwp::Scavenger::CellKey, cwp::Scavenger::CellData*> getKnownCells();
 			bool isCellVisited(double x, double y);
-			void updateCell(std::string id, double x, double y, double z, std::string north, std::string south, std::string east, std::string west);
-			void updateCurrLocation(double x, double y, double z);
 			double getCurrX() const;
 			double getCurrY() const;
 			double getCurrZ() const;
-			void updateCharge(double c);
 			double getCharge() const;
-			void updateHitPoints(double hp);
 			double getHitPoints() const;
-			void updateBaseNum(int b);
 			int getBaseNum() const;
 			void updateGoalLocation(double x, double y, double z);
 			double getGoalX() const;
@@ -86,12 +75,11 @@ namespace cwp {
 			void addActionToGoal(cwp::Scavenger::Action * action);
 			cwp::Scavenger::Action* getNextActionToGoal();
 			bool actionQueueEmpty();
-			void updateSearching(bool s);
-			bool isSearching() const;
 			bool isUndiscoveredDirections(double x, double y);
 			ai::Scavenger::Location::Direction getNextUndiscoveredDirection(double x, double y);
 			void updateLookDirection(int d);
 			int getLookDirection() const;
+			bool chargeAgent() const;
 		protected:
 		private:
 			int direction;

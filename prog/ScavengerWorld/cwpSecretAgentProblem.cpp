@@ -22,10 +22,6 @@ namespace cwp {
 
 		std::vector<ai::Search::Action *> Problem::Actions(const ai::Search::State * const state_in)
 		{
-			// std::ofstream debug_file;
-			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
-			// debug_file << "Start of Problem::Actions" << std::endl;
-			// debug_file.close();
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
 			double x = state->getX();
 			double y = state->getY();
@@ -54,10 +50,6 @@ namespace cwp {
 		}
 
 		ai::Search::State * Problem::Result(const ai::Search::State * const state_in, const ai::Search::Action * const action_in){
-			// std::ofstream debug_file;
-			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
-			// debug_file << "Start of Problem::Result" << std::endl;
-			// debug_file.close();
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
 			const cwp::Scavenger::Action * const action = dynamic_cast<const cwp::Scavenger::Action * const>(action_in);
 
@@ -91,11 +83,11 @@ namespace cwp {
 			} else if (interface == "mud"){
 				interface_cost = 2.0;
 			} else if (interface == "rock"){
-				interface_cost = 2.0;
+				interface_cost = 1.0;
 			} else if (interface == "wall"){
-				interface_cost = 2.0;
+				interface_cost = 1.0;
 			} else if (interface == "cliff"){
-				interface_cost = 2.0;
+				interface_cost = 1.0;
 			} else {
 				interface_cost = 0.0;
 			}
@@ -104,10 +96,6 @@ namespace cwp {
 		}
 
 		bool Problem::GoalTest(const ai::Search::State * const state_in) const {
-			// std::ofstream debug_file;
-			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
-			// debug_file << "Start of Problem::GoalTest" << std::endl;
-			// debug_file.close();
 			const cwp::Scavenger::State * const state = dynamic_cast<const cwp::Scavenger::State * const>(state_in);
 			if (to_base){
 				return (fabs(0.0 - state->getX()) < 0.00001 && fabs(0.0 - state->getY()) < 0.00001 && state->getCharge() > 0 );
@@ -117,10 +105,6 @@ namespace cwp {
 		}
 
 		double Problem::StepCost(const ai::Search::State * const state1_in, const ai::Search::Action * const action_in, const ai::Search::State * const state2_in) const{
-			// std::ofstream debug_file;
-			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
-			// debug_file << "Start of Problem::StepCost" << std::endl;
-			// debug_file.close();
 			const cwp::Scavenger::State * const state1 = dynamic_cast<const cwp::Scavenger::State * const>(state1_in);
 			const cwp::Scavenger::State * const state2 = dynamic_cast<const cwp::Scavenger::State * const>(state2_in);
 			const cwp::Scavenger::Action * const action = dynamic_cast<const cwp::Scavenger::Action * const>(action_in);
@@ -145,11 +129,11 @@ namespace cwp {
 			} else if (interface == "mud"){
 				interface_cost = 2.0;
 			} else if (interface == "rock"){
-				interface_cost = 2.0;
+				interface_cost = 1.0;
 			} else if (interface == "wall"){
-				interface_cost = 2.0;
+				interface_cost = 1.0;
 			} else if (interface == "cliff"){
-				interface_cost = 2.0;
+				interface_cost = 1.0;
 			} else {
 				interface_cost = 0.0;
 			}
