@@ -118,20 +118,83 @@ namespace cwp {
 		}
 
 		void SecretAgentModel::gatherData(const ai::Agent::Percept * percept){
+			std::ofstream debug_file;
+      debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
 			std::stringstream ss1;
 
-      ss1.str(percept->GetAtom("BASE").GetValue()); ss1.clear();
-      ss1 >> base_num;
+			ss1.str(percept->GetAtom("BASE").GetValue()); ss1.clear();
+			ss1 >> base_num;
 
-      ss1.str(percept->GetAtom("X_LOC").GetValue()); ss1.clear();
-      ss1 >> curr_x;
-      ss1.str(percept->GetAtom("Y_LOC").GetValue()); ss1.clear();
-      ss1 >> curr_y;
-      ss1.str(percept->GetAtom("Z_LOC").GetValue()); ss1.clear();
-      ss1 >> curr_z;
-      
+			ss1.str(percept->GetAtom("X_LOC").GetValue()); ss1.clear();
+			ss1 >> curr_x;
+			ss1.str(percept->GetAtom("Y_LOC").GetValue()); ss1.clear();
+			ss1 >> curr_y;
+			ss1.str(percept->GetAtom("Z_LOC").GetValue()); ss1.clear();
+			ss1 >> curr_z;
+
+			if (object_to_pick_up != ""){
+				for (uint i = 0; i < percept->NumAtom(); i++){
+					std::string atom_name;
+					std::string object_id;
+					if(percept->GetAtom(i).GetName().substr(0, 7) == "HOPPER_"){
+						atom_name = percept->GetAtom(i).GetName();
+						ss1.str(percept->GetAtom(atom_name).GetValue()); ss1.clear();
+						ss1 >> object_id;
+						if(object_id == object_to_pick_up){
+							cwp::Scavenger::Object * object = getObject(object_id);
+							object->markPickedUp();
+							object_to_pick_up = "";
+						}
+					}
+					else if(percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
+						atom_name = percept->GetAtom(i).GetName();
+						ss1.str(percept->GetAtom(atom_name).GetValue()); ss1.clear();
+						ss1 >> object_id;
+						cwp::Scavenger::Object * object = getObject(object_id);
+						if (object->wasExamined()){
+							
+						}
+
+					}
+				}
+			}
+
+			object_to_examine = "";
+			for (uint i = 0; i < percept->NumAtom(); i++){
+				if (percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
+					std::string object_name = percept->GetAtom(i).GetName();
+					std::string object_id;
+					ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
+					ss1 >> object_id;
+
+					cwp::Scavenger::Object * object = getObject(object_id);
+					if (object->getId().length() == 0){
+						object->updateId(object_id);
+					}
+					if (object->wasExamined()){
+						object_to_pick_up = object_id;
+					}else{
+						object_to_examine = object_id;
+					}
+				}
+			}
+
+      std::string examine = percept->GetAtom("EXAMINE").GetValue();
+      if (examine != ""){
+				std::string id, color, shape, size;
+	      ss1.str(examine); ss1.clear();
+	      ss1 >> id; ss1.ignore();
+	      ss1 >> color; ss1.ignore();
+	      ss1 >> shape; ss1.ignore();
+	      ss1 >> size; ss1.ignore();
+	      cwp::Scavenger::Object * object = getObject(id);
+      	object->updateAttributes(color, shape, size);
+      	object->markExamined();
+      }
+
+
 			cwp::Scavenger::CellData * current_cell = getCell(curr_x, curr_y);
-      current_cell->updateCellLocation(curr_x, curr_y, curr_z);
+			current_cell->updateCellLocation(curr_x, curr_y, curr_z);
 			if (getLookDirection() == ai::Scavenger::Location::NORTH || getLookDirection() == ai::Scavenger::Location::EAST || getLookDirection() == ai::Scavenger::Location::WEST || getLookDirection() == ai::Scavenger::Location::SOUTH) {
 				std::string interface;
 				ss1.str(percept->GetAtom("LOOK").GetValue()); ss1.clear();
@@ -139,36 +202,38 @@ namespace cwp {
 				cwp::Scavenger::CellData * neighbor_cell;
 				switch(getLookDirection()) {
 					case ai::Scavenger::Location::NORTH:
-						current_cell->updateCellNorth(interface);
-						neighbor_cell = getCell(curr_x, curr_y + 1000);
-						neighbor_cell->updateCellLocation(curr_x, curr_y + 1000, curr_z);
-						neighbor_cell->updateCellSouth(interface);
-						break;
+					current_cell->updateCellNorth(interface);
+					neighbor_cell = getCell(curr_x, curr_y + 1000);
+					neighbor_cell->updateCellLocation(curr_x, curr_y + 1000, curr_z);
+					neighbor_cell->updateCellSouth(interface);
+					break;
 					case ai::Scavenger::Location::SOUTH:
-						current_cell->updateCellSouth(interface);
-						neighbor_cell = getCell(curr_x, curr_y - 1000);
-						neighbor_cell->updateCellLocation(curr_x, curr_y - 1000, curr_z);
-						neighbor_cell->updateCellNorth(interface);
-						break;
+					current_cell->updateCellSouth(interface);
+					neighbor_cell = getCell(curr_x, curr_y - 1000);
+					neighbor_cell->updateCellLocation(curr_x, curr_y - 1000, curr_z);
+					neighbor_cell->updateCellNorth(interface);
+					break;
 					case ai::Scavenger::Location::EAST:
-						current_cell->updateCellEast(interface);
-						neighbor_cell = getCell(curr_x + 1000, curr_y);
-						neighbor_cell->updateCellLocation(curr_x + 1000, curr_y, curr_z);
-						neighbor_cell->updateCellWest(interface);
-						break;
+					current_cell->updateCellEast(interface);
+					neighbor_cell = getCell(curr_x + 1000, curr_y);
+					neighbor_cell->updateCellLocation(curr_x + 1000, curr_y, curr_z);
+					neighbor_cell->updateCellWest(interface);
+					break;
 					case ai::Scavenger::Location::WEST:
-						current_cell->updateCellWest(interface);
-						neighbor_cell = getCell(curr_x - 1000, curr_y);
-						neighbor_cell->updateCellLocation(curr_x - 1000, curr_y, curr_z);
-						neighbor_cell->updateCellEast(interface);
-						break;
+					current_cell->updateCellWest(interface);
+					neighbor_cell = getCell(curr_x - 1000, curr_y);
+					neighbor_cell->updateCellLocation(curr_x - 1000, curr_y, curr_z);
+					neighbor_cell->updateCellEast(interface);
+					break;
 				}
 			}
-      ss1.str(percept->GetAtom("CHARGE").GetValue()); ss1.clear();
-      ss1 >> charge;
 
-      ss1.str(percept->GetAtom("HP").GetValue()); ss1.clear();
-      ss1 >> hit_points;
+			debug_file << objects_found.size() << std::endl;
+			ss1.str(percept->GetAtom("CHARGE").GetValue()); ss1.clear();
+			ss1 >> charge;
+
+			ss1.str(percept->GetAtom("HP").GetValue()); ss1.clear();
+			ss1 >> hit_points;
 		}
 
 		void SecretAgentModel::addActionToGoal(cwp::Scavenger::Action * action){
@@ -227,9 +292,12 @@ namespace cwp {
 			{
 				direction = ai::Scavenger::Location::EAST;
 			}
-			else
+			else if(interface_west != "plain" && interface_west != "mud" && interface_west != "rocks" && interface_west != "cliff" && interface_west != "wall")
 			{
 				direction = ai::Scavenger::Location::WEST;
+			}
+			else {
+				direction = ai::Scavenger::Location::NORTH;
 			}
 			return direction;
 		}
@@ -248,6 +316,33 @@ namespace cwp {
 			} else {
 				return false;
 			}
+		}
+
+		cwp::Scavenger::Object* SecretAgentModel::getObject(std::string id){
+			cwp::Scavenger::Object * object = new cwp::Scavenger::Object();
+			std::pair<std::map<std::string, cwp::Scavenger::Object*>::iterator, bool> existing_object;
+			existing_object = objects_found.insert(std::pair<std::string, cwp::Scavenger::Object*>(id, object));
+			return existing_object.first->second;
+		}
+
+		std::string SecretAgentModel::getNextObjectToExamine(){
+			std::string object_id = unexamined_objects.front();
+			unexamined_objects.pop();
+			return object_id;
+		}
+
+		bool SecretAgentModel::unexaminedObjectsEmpty(){
+			return unexamined_objects.empty();
+		}
+
+		std::string SecretAgentModel::getNextObjectToPickUp(){
+			std::string object_id = objects_to_pick_up.front();
+			objects_to_pick_up.pop();
+			return object_id;
+		}
+
+		bool SecretAgentModel::objectsToPickUpEmtpy(){
+			return objects_to_pick_up.empty();
 		}
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -404,6 +499,14 @@ namespace cwp {
 
 		std::ostream& operator<<(std::ostream& os, CellKey rkey) {
 			os << "CellKey ->" << "\nX -> " << rkey.getX() << "\nY -> " << rkey.getY();
+			return os;
+		}
+
+		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Object * object) {
+			os << "Ojbect ->" << "\n ID -> " << object->getId() << "\ncolor -> " << object->getAttribute("color");
+			os << "\nshape -> " << object->getAttribute("shape") << "\nsize -> " << object->getAttribute("size");
+			os << "\nexamined -> " << object->wasExamined() << "\npicked up -> " << object->wasPickedUp();
+			os << "\ndeposited -> " << object->wasDeposited();
 			return os;
 		}
 	}

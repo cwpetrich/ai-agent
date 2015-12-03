@@ -43,20 +43,40 @@ namespace cwp
       model->gatherData(percept);
       
       if (model->isUndiscoveredDirections(model->getCurrX(), model->getCurrY())) {
-        debug_file << "else if (isUndiscoveredDirections(CurrX, CurrY))" << std::endl;
+        debug_file << "if (isUndiscoveredDirections(CurrX, CurrY))" << std::endl;
         action->SetCode(ai::Scavenger::Action::LOOK);
         ai::Scavenger::Location::Direction direction = model->getNextUndiscoveredDirection(model->getCurrX(), model->getCurrY());
         model->updateLookDirection(direction);
         action->SetDirection(direction);
+        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
+        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
         return action;
       }
-      else if (model->chargeAgent()) {
-        debug_file << "else if (chargeAgent)" << std::endl;
+      if (!model->unexaminedObjectsEmpty()) {
+        debug_file << "if (!unexaminedObjectsEmpty())" << std::endl;
+        action->SetObjectId(model->getNextObjectToExamine());
+        action->SetCode(ai::Scavenger::Action::EXAMINE);
+        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
+        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
+        return action;
+      }
+      if (!model->objectsToPickUpEmtpy()){
+        debug_file << "if (!objectsToPickUpEmtpy())" << std::endl;
+        action->SetObjectId(model->getNextObjectToPickUp());
+        action->SetCode(ai::Scavenger::Action::PICKUP);
+        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
+        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
+        return action;
+      }
+      if (model->chargeAgent()) {
+        debug_file << "if (chargeAgent)" << std::endl;
         action->SetCode(ai::Scavenger::Action::RECHARGE);
+        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
+        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
         return action;
       }
       if (model->actionQueueEmpty()) {
-        debug_file << "else if (actionQueueEmpty)" << std::endl;
+        debug_file << "if (actionQueueEmpty)" << std::endl;
         cwp::Scavenger::CellData * closest_unvisited_cell = model->getClosestUnvisitedCell(model->getCurrX(), model->getCurrY());
         if (model->getCurrX() == 0.0 && model->getCurrY() == 0.0 && closest_unvisited_cell->getLocX() == 0.0 && closest_unvisited_cell->getLocY() == 0.0){
           debug_file << "If at base and closest unvisted cell is base" << std::endl;

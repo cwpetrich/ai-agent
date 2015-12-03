@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cwpSecretAgentAction.h"
+#include "cwpSecretAgentObject.h"
 #include <ai_scavenger.h>
 #include <vector>
 #include <cmath>
@@ -77,21 +78,33 @@ namespace cwp {
 			bool actionQueueEmpty();
 			bool isUndiscoveredDirections(double x, double y);
 			ai::Scavenger::Location::Direction getNextUndiscoveredDirection(double x, double y);
+			cwp::Scavenger::Object* getObject(std::string id);
+			std::string getNextObjectToExamine();
+			std::string getNextObjectToPickUp();
+			bool isUnexaminedObjects();
+			bool unexaminedObjectsEmpty();
+			bool objectsToPickUpEmtpy();
 			void updateLookDirection(int d);
 			int getLookDirection() const;
 			bool chargeAgent() const;
 		protected:
 		private:
 			int direction;
+			std::string object_to_examine;
+			std::string object_to_pick_up;
+			std::queue<std::string> objects_to_pick_up;
+			std::map<std::string, cwp::Scavenger::Object *> objects_found;
+
 			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			std::map<CellKey, CellData*> known_cells;
+
 			int base_num;
 			double curr_x, curr_y, curr_z, charge, hit_points, goal_x, goal_y, goal_z;
 		};
 
 		std::ostream& operator<<(std::ostream& os, CellData* cell);
 		std::ostream& operator<<(std::ostream& os, CellKey key);
-
+		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Object * object);
 		
 	}
 }
