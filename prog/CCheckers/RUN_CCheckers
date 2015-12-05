@@ -25,7 +25,7 @@ sleep 2
 ./CCheckersDisplay >display.log 2>display.err &
 
 # Launch Dumbo1 as first player
-./CCheckersAgent -a d -t 0 >agent1.log 2>agent1.err &
+./CCheckersAgent -a c -t 0 >agent1.log 2>agent1.err &
 
 # Launch RandomPick as second player
 ./CCheckersAgent -a r -t 0 >agent2.log 2>agent2.err &

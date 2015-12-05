@@ -4,6 +4,13 @@
 our $aps =
 [
  {
+   name => 'CWPPlayer',
+   key  => 'c',
+   header => 'CWPPlayer.h',
+   cpp    => ['CWPPlayer.cpp'],
+   constructor => 'ai::sample::CWPPlayer()',
+ },
+ {
    name => 'RandomPick',
    key  => 'r',
    header => 'RandomPick.h',

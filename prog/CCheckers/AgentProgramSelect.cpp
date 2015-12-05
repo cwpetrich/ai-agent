@@ -1,6 +1,7 @@
 
 #include <ai_agent.h>
 
+#include "CWPPlayer.h"
 #include "RandomPick.h"
 #include "Dumbo1.h"
 #include "Dumbo2.h"
@@ -16,6 +17,9 @@ namespace ai
       AgentProgram *agent_program = 0;
       switch(opts->GetArgChr("agent"))
         {
+        case 'c':
+          agent_program = new ai::sample::CWPPlayer(opts);
+          break;
         case 'r':
           agent_program = new ai::Sample::RandomPick();
           break;
@@ -34,6 +38,7 @@ namespace ai
 
         default:
           std::cout << "Unknown agent program " << std::endl
+                    << "c : CWPPlayer" << std::endl
                     << "r : RandomPick" << std::endl
                     << "d : Dumbo1" << std::endl
                     << "D : Dumbo2" << std::endl
