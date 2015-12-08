@@ -8,6 +8,7 @@ namespace cwp {
 
 		SecretAgentModel::SecretAgentModel(){
 			this->direction = -1;
+			this->hopper_full = false;
 		}
 
 		SecretAgentModel::~SecretAgentModel(){}
@@ -95,14 +96,7 @@ namespace cwp {
 
 		bool SecretAgentModel::isCellVisited(double x, double y){
 			CellData * existing_cell = getCell(x, y);
-			if(existing_cell->isVisited()){
-				return true;
-			}
-			if(x == getCurrX() && y == getCurrY() && !isUndiscoveredDirections(x, y)){
-				existing_cell->markVisited();
-				return true;
-			}
-			return false;
+			return existing_cell->isVisited();
 		}
 
 		double SecretAgentModel::getCharge() const {
@@ -132,54 +126,43 @@ namespace cwp {
 			ss1.str(percept->GetAtom("Z_LOC").GetValue()); ss1.clear();
 			ss1 >> curr_z;
 
-			if (object_to_pick_up != ""){
-				for (uint i = 0; i < percept->NumAtom(); i++){
-					std::string atom_name;
-					std::string object_id;
-					if(percept->GetAtom(i).GetName().substr(0, 7) == "HOPPER_"){
-						atom_name = percept->GetAtom(i).GetName();
-						ss1.str(percept->GetAtom(atom_name).GetValue()); ss1.clear();
-						ss1 >> object_id;
-						if(object_id == object_to_pick_up){
-							cwp::Scavenger::Object * object = getObject(object_id);
-							object->markPickedUp();
-							object_to_pick_up = "";
-						}
-					}
-					else if(percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
-						atom_name = percept->GetAtom(i).GetName();
-						ss1.str(percept->GetAtom(atom_name).GetValue()); ss1.clear();
-						ss1 >> object_id;
-						cwp::Scavenger::Object * object = getObject(object_id);
-						if (object->wasExamined()){
-							
-						}
+			cwp::Scavenger::CellData * current_cell = getCell(curr_x, curr_y);
+			current_cell->updateCellLocation(curr_x, curr_y, curr_z);
 
-					}
+			std::string cell_interface;
+			ss1.str(percept->GetAtom("LOOK").GetValue()); ss1.clear();
+			ss1 >> cell_interface;
+			if (cell_interface != ""){
+				cwp::Scavenger::CellData * neighbor_cell;
+				switch(getLookDirection()) {
+					case ai::Scavenger::Location::NORTH:
+						current_cell->updateCellNorth(cell_interface);
+						neighbor_cell = getCell(curr_x, curr_y + 1000);
+						neighbor_cell->updateCellLocation(curr_x, curr_y + 1000, curr_z);
+						neighbor_cell->updateCellSouth(cell_interface);
+						break;
+					case ai::Scavenger::Location::SOUTH:
+						current_cell->updateCellSouth(cell_interface);
+						neighbor_cell = getCell(curr_x, curr_y - 1000);
+						neighbor_cell->updateCellLocation(curr_x, curr_y - 1000, curr_z);
+						neighbor_cell->updateCellNorth(cell_interface);
+						break;
+					case ai::Scavenger::Location::EAST:
+						current_cell->updateCellEast(cell_interface);
+						neighbor_cell = getCell(curr_x + 1000, curr_y);
+						neighbor_cell->updateCellLocation(curr_x + 1000, curr_y, curr_z);
+						neighbor_cell->updateCellWest(cell_interface);
+						break;
+					case ai::Scavenger::Location::WEST:
+						current_cell->updateCellWest(cell_interface);
+						neighbor_cell = getCell(curr_x - 1000, curr_y);
+						neighbor_cell->updateCellLocation(curr_x - 1000, curr_y, curr_z);
+						neighbor_cell->updateCellEast(cell_interface);
+						break;
 				}
 			}
 
-			object_to_examine = "";
-			for (uint i = 0; i < percept->NumAtom(); i++){
-				if (percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
-					std::string object_name = percept->GetAtom(i).GetName();
-					std::string object_id;
-					ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
-					ss1 >> object_id;
-
-					cwp::Scavenger::Object * object = getObject(object_id);
-					if (object->getId().length() == 0){
-						object->updateId(object_id);
-					}
-					if (object->wasExamined()){
-						object_to_pick_up = object_id;
-					}else{
-						object_to_examine = object_id;
-					}
-				}
-			}
-
-      std::string examine = percept->GetAtom("EXAMINE").GetValue();
+			std::string examine = percept->GetAtom("EXAMINE").GetValue();
       if (examine != ""){
 				std::string id, color, shape, size;
 	      ss1.str(examine); ss1.clear();
@@ -192,43 +175,47 @@ namespace cwp {
       	object->markExamined();
       }
 
-
-			cwp::Scavenger::CellData * current_cell = getCell(curr_x, curr_y);
-			current_cell->updateCellLocation(curr_x, curr_y, curr_z);
-			if (getLookDirection() == ai::Scavenger::Location::NORTH || getLookDirection() == ai::Scavenger::Location::EAST || getLookDirection() == ai::Scavenger::Location::WEST || getLookDirection() == ai::Scavenger::Location::SOUTH) {
-				std::string interface;
-				ss1.str(percept->GetAtom("LOOK").GetValue()); ss1.clear();
-				ss1 >> interface;
-				cwp::Scavenger::CellData * neighbor_cell;
-				switch(getLookDirection()) {
-					case ai::Scavenger::Location::NORTH:
-					current_cell->updateCellNorth(interface);
-					neighbor_cell = getCell(curr_x, curr_y + 1000);
-					neighbor_cell->updateCellLocation(curr_x, curr_y + 1000, curr_z);
-					neighbor_cell->updateCellSouth(interface);
-					break;
-					case ai::Scavenger::Location::SOUTH:
-					current_cell->updateCellSouth(interface);
-					neighbor_cell = getCell(curr_x, curr_y - 1000);
-					neighbor_cell->updateCellLocation(curr_x, curr_y - 1000, curr_z);
-					neighbor_cell->updateCellNorth(interface);
-					break;
-					case ai::Scavenger::Location::EAST:
-					current_cell->updateCellEast(interface);
-					neighbor_cell = getCell(curr_x + 1000, curr_y);
-					neighbor_cell->updateCellLocation(curr_x + 1000, curr_y, curr_z);
-					neighbor_cell->updateCellWest(interface);
-					break;
-					case ai::Scavenger::Location::WEST:
-					current_cell->updateCellWest(interface);
-					neighbor_cell = getCell(curr_x - 1000, curr_y);
-					neighbor_cell->updateCellLocation(curr_x - 1000, curr_y, curr_z);
-					neighbor_cell->updateCellEast(interface);
-					break;
+			std::list<std::string> object_ids_in_percept;
+			for (uint i = 0; i < percept->NumAtom(); i++){
+				if (percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
+					std::string object_name = percept->GetAtom(i).GetName();
+					std::string object_id;
+					ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
+					ss1 >> object_id;
+					object_ids_in_percept.push_back(object_id);
+					cwp::Scavenger::Object * object = getObject(object_id);
+					debug_file << object << std::endl;
+					updateObjectForAction(object_id);
+					if (object->isExamined()){
+						updateActionForObject(ai::Scavenger::Action::PICKUP);
+					} else {
+						updateActionForObject(ai::Scavenger::Action::EXAMINE);
+					}
+				}
+				if (percept->GetAtom(i).GetName().substr(0, 7) == "HOPPER_"){
+					std::string object_name = percept->GetAtom(i).GetName();
+					std::string object_id;
+					ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
+					ss1 >> object_id;
+					cwp::Scavenger::Object * object = getObject(object_id);
+					object->markInHopper();
 				}
 			}
 
-			debug_file << objects_found.size() << std::endl;
+			std::string full = percept->GetAtom("PICKUP").GetValue();
+			if (full == "Full"){
+				updateObjectForAction("");
+				updateHopperStatus(true);
+			} else {
+				updateHopperStatus(false);
+			}
+
+			if(!isUndiscoveredDirections(curr_x, curr_y) && object_ids_in_percept.empty()){
+				CellData * cell = getCell(curr_x, curr_y);
+				cell->markVisited();
+			}
+
+			// debug_file << objects_found.size() << std::endl;
 			ss1.str(percept->GetAtom("CHARGE").GetValue()); ss1.clear();
 			ss1 >> charge;
 
@@ -255,49 +242,54 @@ namespace cwp {
 		}
 
 		bool SecretAgentModel::isUndiscoveredDirections(double x, double y) {
+			// std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
+			bool undiscovered_directions = false;
 			CellData * existing_cell = getCell(x, y);
 			std::string interface_north = existing_cell->getCellNorth();
 			std::string interface_south = existing_cell->getCellSouth();
 			std::string interface_east = existing_cell->getCellEast();
 			std::string interface_west = existing_cell->getCellWest();
-			if (interface_north != "plain" && interface_north != "mud" && interface_north != "rocks" && interface_north != "cliff" && interface_north != "wall") {
-				return true;
-			} else if (interface_south != "plain" && interface_south != "mud" && interface_south != "rocks" && interface_south != "cliff" && interface_south != "wall") {
-				return true;
-			} else if (interface_east != "plain" && interface_east != "mud" && interface_east != "rocks" && interface_east != "cliff" && interface_east != "wall") {
-				return true;
-			} else if (interface_west != "plain" && interface_west != "mud" && interface_west != "rocks" && interface_west != "cliff" && interface_west != "wall") {
-				return true;
-			} else {
-				return false;	
+			// debug_file << "interface_north -> " << interface_north << "\ninterface_south -> " << interface_south;
+			// debug_file << "\ninterface_east -> " << interface_east << "\ninterface_west -> " << interface_west << std::endl;
+			if (interface_north == "") {
+				// debug_file << "NORTH" << std::endl;
+				undiscovered_directions = true;
+			} else if (interface_south == "") {
+				// debug_file << "SOUTH" << std::endl;
+				undiscovered_directions = true;
+			} else if (interface_east == "") {
+				// debug_file << "EAST" << std::endl;
+				undiscovered_directions = true;
+			} else if (interface_west == "") {
+				// debug_file << "WEST" << std::endl;
+				undiscovered_directions = true;
 			}
+			return undiscovered_directions;
 		}
 
 		ai::Scavenger::Location::Direction SecretAgentModel::getNextUndiscoveredDirection(double x, double y) {
-			ai::Scavenger::Location::Direction direction;
+			ai::Scavenger::Location::Direction direction = ai::Scavenger::Location::NORTH;
 			CellData * existing_cell = getCell(x, y);
 			std::string interface_north = existing_cell->getCellNorth();
 			std::string interface_south = existing_cell->getCellSouth();
 			std::string interface_east = existing_cell->getCellEast();
 			std::string interface_west = existing_cell->getCellWest();
-			if(interface_north != "plain" && interface_north != "mud" && interface_north != "rocks" && interface_north != "cliff" && interface_north != "wall")
+			if(interface_north == "")
 			{
 				direction = ai::Scavenger::Location::NORTH;
 			}
-			else if(interface_south != "plain" && interface_south != "mud" && interface_south != "rocks" && interface_south != "cliff" && interface_south != "wall")
+			else if(interface_south == "")
 			{
 				direction = ai::Scavenger::Location::SOUTH;
 			}
-			else if(interface_east != "plain" && interface_east != "mud" && interface_east != "rocks" && interface_east != "cliff" && interface_east != "wall")
+			else if(interface_east == "")
 			{
 				direction = ai::Scavenger::Location::EAST;
 			}
-			else if(interface_west != "plain" && interface_west != "mud" && interface_west != "rocks" && interface_west != "cliff" && interface_west != "wall")
+			else if(interface_west == "")
 			{
 				direction = ai::Scavenger::Location::WEST;
-			}
-			else {
-				direction = ai::Scavenger::Location::NORTH;
 			}
 			return direction;
 		}
@@ -319,40 +311,70 @@ namespace cwp {
 		}
 
 		cwp::Scavenger::Object* SecretAgentModel::getObject(std::string id){
-			cwp::Scavenger::Object * object = new cwp::Scavenger::Object();
+			cwp::Scavenger::Object * object = new cwp::Scavenger::Object(id);
 			std::pair<std::map<std::string, cwp::Scavenger::Object*>::iterator, bool> existing_object;
 			existing_object = objects_found.insert(std::pair<std::string, cwp::Scavenger::Object*>(id, object));
 			return existing_object.first->second;
 		}
 
-		std::string SecretAgentModel::getNextObjectToExamine(){
-			std::string object_id = unexamined_objects.front();
-			unexamined_objects.pop();
-			return object_id;
+		void SecretAgentModel::updateObjectForAction(std::string object_id){
+			this->object_for_action = object_id;
 		}
 
-		bool SecretAgentModel::unexaminedObjectsEmpty(){
-			return unexamined_objects.empty();
+		void SecretAgentModel::updateActionForObject(int action){
+			this->action_for_object = action;
 		}
 
-		std::string SecretAgentModel::getNextObjectToPickUp(){
-			std::string object_id = objects_to_pick_up.front();
-			objects_to_pick_up.pop();
-			return object_id;
+		std::string SecretAgentModel::getObjectForAction(){
+			return object_for_action;
 		}
 
-		bool SecretAgentModel::objectsToPickUpEmtpy(){
-			return objects_to_pick_up.empty();
+		int SecretAgentModel::getActionForObject(){
+			return action_for_object;
+		}
+
+		void SecretAgentModel::updateHopperStatus(bool full){
+			this->hopper_full = full;
+		}
+
+		bool SecretAgentModel::hopperFull() const {
+			return hopper_full;
+		}
+
+		bool SecretAgentModel::depositObjects() const{
+			if (getCurrX() == 0.0 && getCurrY() == 0.0){
+				std::map<std::string, cwp::Scavenger::Object*>::const_iterator it;
+				for (it = objects_found.begin(); it != objects_found.end(); it++){
+					if (it->second->isInHopper()){
+						return true;
+					}
+				}
+				return false;
+			} else {
+				return false;
+			}
 		}
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 		CellData::CellData(){
 			this->visited = false;
+			this->north = "";
+			this->south = "";
+			this->east = "";
+			this->west = "";
+			this->id = "";
+			this->loc_x = -1.0;
+			this->loc_y = -1.0;
+			this->loc_z = -1.0;
 		}
 
 		void CellData::updateId(std::string new_id){
 			this->id = new_id;
+		}
+
+		std::string CellData::getId(){
+			return id;
 		}
 
 		void CellData::updateCellLocation(double x, double y, double z){
@@ -441,14 +463,6 @@ namespace cwp {
 			return safe;
 		}
 
-		std::ostream& operator<<(std::ostream& os, CellData* cell) {
-			os << "CellData ->";
-			os << "\nX -> " << cell->getLocX() << ", Y -> " << cell->getLocY() << ", Z -> " << cell->getLocZ();
-			os << "\nNorth - > " << cell->getCellNorth() << ", South -> " << cell->getCellSouth();
-			os << ", East -> " << cell->getCellEast() << ", West -> " << cell->getCellWest();
-			return os;
-		}
-
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 		CellKey::CellKey(double x, double y){
@@ -505,8 +519,16 @@ namespace cwp {
 		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Object * object) {
 			os << "Ojbect ->" << "\n ID -> " << object->getId() << "\ncolor -> " << object->getAttribute("color");
 			os << "\nshape -> " << object->getAttribute("shape") << "\nsize -> " << object->getAttribute("size");
-			os << "\nexamined -> " << object->wasExamined() << "\npicked up -> " << object->wasPickedUp();
-			os << "\ndeposited -> " << object->wasDeposited();
+			os << "\nexamined -> " << object->isExamined() << "\npicked up -> " << object->isInHopper();
+			os << "\ndeposited -> " << object->isDeposited();
+			return os;
+		}
+
+		std::ostream& operator<<(std::ostream& os, CellData* cell) {
+			os << "Cell ->";
+			os << "\nX -> " << cell->getLocX() << "\nY -> " << cell->getLocY() << "\nZ -> " << cell->getLocZ();
+			os << "\nNorth - > " << cell->getCellNorth() << "\nSouth -> " << cell->getCellSouth();
+			os << "\nEast -> " << cell->getCellEast() << "\nWest -> " << cell->getCellWest();
 			return os;
 		}
 	}

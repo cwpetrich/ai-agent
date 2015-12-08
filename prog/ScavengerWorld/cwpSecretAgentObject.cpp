@@ -5,14 +5,14 @@ namespace cwp {
 
 		Object::Object(){
 			this->examined = false;
-			this->picked_up = false;
+			this->in_hopper = false;
 			this->deposited = false;
 		}
 
 		Object::Object(std::string id){
 			this->id = id;
 			this->examined = false;
-			this->picked_up = false;
+			this->in_hopper = false;
 			this->deposited = false;
 		}
 
@@ -43,28 +43,28 @@ namespace cwp {
 			}
 		}
 
-		bool Object::wasDeposited(){
-			return this->deposited;
-		}
-
-		void Object::markPickedUp(){
-			this->picked_up = true;
-		}
-
-		bool Object::wasPickedUp(){
-			return this->picked_up;
-		}
-
 		void Object::markDeposited(){
 			this->deposited = true;
 		}
 
-		bool Object::wasExamined(){
-			return this->examined;
+		bool Object::isDeposited(){
+			return this->deposited;
+		}
+
+		void Object::markInHopper(){
+			this->in_hopper = true;
+		}
+
+		bool Object::isInHopper(){
+			return this->in_hopper;
 		}
 
 		void Object::markExamined(){
 			this->examined = true;
+		}
+
+		bool Object::isExamined(){
+			return this->examined;
 		}
 
 	}

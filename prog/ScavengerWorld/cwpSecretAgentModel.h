@@ -19,6 +19,7 @@ namespace cwp {
 		public:
 			CellData();
 			void updateId(std::string new_id);
+			std::string getId();
 			void updateCellLocation(double x, double y, double z);
 			double getLocX() const;
 			double getLocY() const;
@@ -79,25 +80,25 @@ namespace cwp {
 			bool isUndiscoveredDirections(double x, double y);
 			ai::Scavenger::Location::Direction getNextUndiscoveredDirection(double x, double y);
 			cwp::Scavenger::Object* getObject(std::string id);
-			std::string getNextObjectToExamine();
-			std::string getNextObjectToPickUp();
-			bool isUnexaminedObjects();
-			bool unexaminedObjectsEmpty();
-			bool objectsToPickUpEmtpy();
+			void updateObjectForAction(std::string object_id);
+			void updateActionForObject(int action);
+			std::string getObjectForAction();
+			int getActionForObject();
 			void updateLookDirection(int d);
 			int getLookDirection() const;
 			bool chargeAgent() const;
+			void updateHopperStatus(bool full);
+			bool isHopperFull() const;
+			bool depositObjects() const;
 		protected:
 		private:
 			int direction;
-			std::string object_to_examine;
-			std::string object_to_pick_up;
-			std::queue<std::string> objects_to_pick_up;
+			int action_for_object;
+			bool hopper_full;
+			std::string object_for_action;
 			std::map<std::string, cwp::Scavenger::Object *> objects_found;
-
 			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			std::map<CellKey, CellData*> known_cells;
-
 			int base_num;
 			double curr_x, curr_y, curr_z, charge, hit_points, goal_x, goal_y, goal_z;
 		};

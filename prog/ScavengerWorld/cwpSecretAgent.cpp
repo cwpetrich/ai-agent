@@ -35,15 +35,20 @@ namespace cwp
 
       std::ofstream debug_file;
       debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
+      debug_file << std::endl;
       debug_file << "BEGINNING OF PROGRAM" << std::endl;
       debug_file << "Charge: " << model->getCharge() << std::endl;
-      debug_file << "isUndiscoveredDirections: " << model->isUndiscoveredDirections(model->getCurrX(), model->getCurrY()) << std::endl;
 
       ai::Scavenger::Action *action = new ai::Scavenger::Action;
       model->gatherData(percept);
+
+      debug_file << "current_cell in agent.cpp" << std::endl;
+      cwp::Scavenger::CellData * cell = model->getCell(model->getCurrX(), model->getCurrY());
+      debug_file << cell << std::endl;
       
       if (model->isUndiscoveredDirections(model->getCurrX(), model->getCurrY())) {
         debug_file << "if (isUndiscoveredDirections(CurrX, CurrY))" << std::endl;
+        debug_file << "CurrX: " << model->getCurrX() << " CurrY: " << model->getCurrY() << std::endl;
         action->SetCode(ai::Scavenger::Action::LOOK);
         ai::Scavenger::Location::Direction direction = model->getNextUndiscoveredDirection(model->getCurrX(), model->getCurrY());
         model->updateLookDirection(direction);
@@ -52,21 +57,21 @@ namespace cwp
         debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
         return action;
       }
-      if (!model->unexaminedObjectsEmpty()) {
-        debug_file << "if (!unexaminedObjectsEmpty())" << std::endl;
-        action->SetObjectId(model->getNextObjectToExamine());
-        action->SetCode(ai::Scavenger::Action::EXAMINE);
+      if (model->getObjectForAction() != ""){
+        debug_file << "if (model->getObjectForAction() != '')" << std::endl;
+        debug_file << "object -> " << model->getObjectForAction() << " action -> " << model->getActionForObject() << std::endl;
+        action->SetObjectId(model->getObjectForAction());
+        action->SetCode(model->getActionForObject());
+        model->updateObjectForAction("");
+        model->updateActionForObject(-1);
         debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
         debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
         return action;
       }
-      if (!model->objectsToPickUpEmtpy()){
-        debug_file << "if (!objectsToPickUpEmtpy())" << std::endl;
-        action->SetObjectId(model->getNextObjectToPickUp());
-        action->SetCode(ai::Scavenger::Action::PICKUP);
-        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
-        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
-        return action;
+      if (model->depositObjects()){
+        debug_file << "if (model->depositObjects())" << std::endl;
+        
+        action->SetCode(ai::Scavenger::Action::Deposit);
       }
       if (model->chargeAgent()) {
         debug_file << "if (chargeAgent)" << std::endl;
