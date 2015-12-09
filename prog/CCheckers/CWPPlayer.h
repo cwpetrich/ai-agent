@@ -3,17 +3,25 @@
 
 #include <ai_ccheckers.h>
 
-namespace ai
+namespace cwp
 {
-  namespace sample
+  namespace Checkers
   {
+    struct MinMaxData {
+      ai::CCheckers::MoveData move;
+      int value;
+    };
+
+
     class CWPPlayer : public ai::Agent::AgentProgram
     {
     public:
+      CWPPlayer();
       CWPPlayer(ai::Agent::Options *opts);
       ~CWPPlayer();
       virtual ai::Agent::Action * Program(const ai::Agent::Percept * percept);
-      ai::Agent::Action * Max(const ai::Agent::Percept * percept);
+      MinMaxData Max(int player, ai::CCheckers::BasicBoard * board, int depth);
+      MinMaxData Min(int player, ai::CCheckers::BasicBoard * board, int depth);
     protected:
     private:
     };

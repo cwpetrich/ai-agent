@@ -18,7 +18,7 @@ namespace ai
       switch(opts->GetArgChr("agent"))
         {
         case 'c':
-          agent_program = new ai::sample::CWPPlayer(opts);
+          agent_program = new cwp::Checkers::CWPPlayer(opts);
           break;
         case 'r':
           agent_program = new ai::Sample::RandomPick();

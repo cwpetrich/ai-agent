@@ -8,7 +8,7 @@ our $aps =
    key  => 'c',
    header => 'CWPPlayer.h',
    cpp    => ['CWPPlayer.cpp'],
-   constructor => 'ai::sample::CWPPlayer()',
+   constructor => 'cwp::Checkers::CWPPlayer(opts)',
  },
  {
    name => 'RandomPick',
