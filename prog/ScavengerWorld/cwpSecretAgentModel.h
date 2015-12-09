@@ -14,6 +14,9 @@
 namespace cwp {
 
 	namespace Scavenger {
+		enum AgentMode {
+			RETURN, SEARCH, LOOK, EXAMINE, PICKUP, DEPOSIT, CHARGE
+		};
 
 		class CellData {
 		public:
@@ -36,6 +39,7 @@ namespace cwp {
 			bool isVisited() const;
 			bool isPassable() const;
 			bool isSafe() const;
+
 		private:
 			bool visited;
 			std::string id;
@@ -77,25 +81,29 @@ namespace cwp {
 			void addActionToGoal(cwp::Scavenger::Action * action);
 			cwp::Scavenger::Action* getNextActionToGoal();
 			bool actionQueueEmpty();
-			bool isUndiscoveredDirections(double x, double y);
 			ai::Scavenger::Location::Direction getNextUndiscoveredDirection(double x, double y);
 			cwp::Scavenger::Object* getObject(std::string id);
-			void updateObjectForAction(std::string object_id);
-			void updateActionForObject(int action);
-			std::string getObjectForAction();
-			int getActionForObject();
 			void updateLookDirection(int d);
 			int getLookDirection() const;
-			bool chargeAgent() const;
-			void updateHopperStatus(bool full);
-			bool isHopperFull() const;
-			bool depositObjects() const;
+			bool hopperIsFull();
+			std::string getObjectToExamine();
+			std::string getObjectToPickup();
+			std::string getObjectToDeposit();
+			bool Charge();
+			bool Look();
+			bool Examine();
+			bool Pickup();
+			bool Deposit();
+			bool Move();
+			bool SearchCell();
+			bool SearchBase();
+
 		protected:
 		private:
 			int direction;
-			int action_for_object;
 			bool hopper_full;
-			std::string object_for_action;
+			std::list<std::string> objects_in_cell;
+			std::list<std::string> objects_in_hopper;
 			std::map<std::string, cwp::Scavenger::Object *> objects_found;
 			std::queue<cwp::Scavenger::Action *> actions_to_goal;
 			std::map<CellKey, CellData*> known_cells;

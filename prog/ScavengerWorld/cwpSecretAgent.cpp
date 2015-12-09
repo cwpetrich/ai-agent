@@ -42,59 +42,72 @@ namespace cwp
       ai::Scavenger::Action *action = new ai::Scavenger::Action;
       model->gatherData(percept);
 
-      debug_file << "current_cell in agent.cpp" << std::endl;
-      cwp::Scavenger::CellData * cell = model->getCell(model->getCurrX(), model->getCurrY());
-      debug_file << cell << std::endl;
-      
-      if (model->isUndiscoveredDirections(model->getCurrX(), model->getCurrY())) {
-        debug_file << "if (isUndiscoveredDirections(CurrX, CurrY))" << std::endl;
-        debug_file << "CurrX: " << model->getCurrX() << " CurrY: " << model->getCurrY() << std::endl;
+      if (model->Move()){
+        debug_file << "if (model->Move())" << std::endl;
+        action->SetCode(model->getNextActionToGoal()->getAction());
+        return action;
+      }
+      if (model->Charge()){
+        debug_file << "if (model->Charge())" << std::endl;
+        action->SetCode(ai::Scavenger::Action::RECHARGE);
+        return action;
+      }
+      if (model->SearchBase()){
+        debug_file << "if (model->SearchBase())" << std::endl;
+        ai::Search::Graph *search = SearchFromXYToGoalOrBase(model->getCurrX(), model->getCurrY(), model->getCharge(), true);
+        if (search->Search()){
+          std::list<ai::Search::Node *> *solution = search->GetSolution().GetList();
+          std::list<ai::Search::Node *>::const_iterator it;
+          for(it = solution->begin(); it != solution->end(); it++) {
+            if((*it)->GetAction()) {
+              model->addActionToGoal(dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction()));
+            }
+          }
+          action->SetCode(model->getNextActionToGoal()->getAction());
+        }
+        else {
+          action->SetCode(ai::Scavenger::Action::QUIT);
+        }
+        return action;
+      }
+      if (model->Look()){
+        debug_file << "if (model->Look())" << std::endl;
         action->SetCode(ai::Scavenger::Action::LOOK);
         ai::Scavenger::Location::Direction direction = model->getNextUndiscoveredDirection(model->getCurrX(), model->getCurrY());
         model->updateLookDirection(direction);
         action->SetDirection(direction);
-        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
-        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
         return action;
       }
-      if (model->getObjectForAction() != ""){
-        debug_file << "if (model->getObjectForAction() != '')" << std::endl;
-        debug_file << "object -> " << model->getObjectForAction() << " action -> " << model->getActionForObject() << std::endl;
-        action->SetObjectId(model->getObjectForAction());
-        action->SetCode(model->getActionForObject());
-        model->updateObjectForAction("");
-        model->updateActionForObject(-1);
-        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
-        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
+      if (model->Examine()){
+        debug_file << "if (model->Examine())" << std::endl;
+        action->SetCode(ai::Scavenger::Action::EXAMINE);
+        action->SetObjectId(model->getObjectToExamine());
         return action;
       }
-      if (model->depositObjects()){
-        debug_file << "if (model->depositObjects())" << std::endl;
-        
-        action->SetCode(ai::Scavenger::Action::Deposit);
-      }
-      if (model->chargeAgent()) {
-        debug_file << "if (chargeAgent)" << std::endl;
-        action->SetCode(ai::Scavenger::Action::RECHARGE);
-        debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
-        debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
+      if (model->Pickup()){
+        debug_file << "if (model->Pickup())" << std::endl;
+        action->SetCode(ai::Scavenger::Action::PICKUP);
+        action->SetObjectId(model->getObjectToPickup());
         return action;
       }
-      if (model->actionQueueEmpty()) {
-        debug_file << "if (actionQueueEmpty)" << std::endl;
+      if (model->Deposit()){
+        debug_file << "if (model->Deposit())" << std::endl;
+        action->SetCode(ai::Scavenger::Action::DEPOSIT);
+        action->SetObjectId(model->getObjectToDeposit());
+        return action;
+      }
+      if (model->SearchCell()){
+        debug_file << "if (model->SearchCell())" << std::endl;
         cwp::Scavenger::CellData * closest_unvisited_cell = model->getClosestUnvisitedCell(model->getCurrX(), model->getCurrY());
         if (model->getCurrX() == 0.0 && model->getCurrY() == 0.0 && closest_unvisited_cell->getLocX() == 0.0 && closest_unvisited_cell->getLocY() == 0.0){
-          debug_file << "If at base and closest unvisted cell is base" << std::endl;
           action->SetCode(ai::Scavenger::Action::QUIT);
         }
         else {
-          debug_file << "not at base or closest cell isn't base" << std::endl;
           model->updateGoalLocation(closest_unvisited_cell->getLocX(), closest_unvisited_cell->getLocY(), closest_unvisited_cell->getLocZ());
           ai::Search::Graph *search = SearchFromXYToGoalOrBase(model->getCurrX(), model->getCurrY(), model->getCharge() - 5.0, false);
           std::list<ai::Search::Node *> * solution;
           cwp::Scavenger::State * cuc_state;
           if (search->Search()){
-            debug_file << "Successful search to unvisited cell" << std::endl;
             solution = search->GetSolution().GetList();
             if (solution->size() == 1){
               cuc_state = dynamic_cast<cwp::Scavenger::State *>(solution->front()->GetState());
@@ -104,7 +117,6 @@ namespace cwp
             }
             search = SearchFromXYToGoalOrBase(cuc_state->getX(), cuc_state->getY(), cuc_state->getCharge() - 5.0, true);
             if (search->Search()){
-              debug_file << "Successful search to base from unvisited cell" << std::endl;
               std::list<ai::Search::Node *>::const_iterator it;
               for(it = solution->begin(); it != solution->end(); it++) {
                 if((*it)->GetAction()) {
@@ -114,10 +126,8 @@ namespace cwp
               action->SetCode(model->getNextActionToGoal()->getAction());
             }
             else {
-              debug_file << "Unsuccessful search to base from unvisited cell" << std::endl;
               search = SearchFromXYToGoalOrBase(model->getCurrX(), model->getCurrY(), model->getCharge(), true);
               if (search->Search()){
-                debug_file << "Successful search to base form current cell" << std::endl;
                 solution = search->GetSolution().GetList();
                 std::list<ai::Search::Node *>::const_iterator it;
                 for(it = solution->begin(); it != solution->end(); it++) {
@@ -128,17 +138,14 @@ namespace cwp
                 action->SetCode(model->getNextActionToGoal()->getAction());
               }
               else {
-                debug_file << "Unsuccessful search to base from current cell" << std::endl;
                 search = SearchFromXYToGoalOrBase(model->getCurrX(), model->getCurrY(), model->getCharge(), false);
                 action->SetCode(ai::Scavenger::Action::QUIT);
               }
             }
           }
           else {
-            debug_file << "Unsuccessful search from current cell to unvisted cell" << std::endl;
             search = SearchFromXYToGoalOrBase(model->getCurrX(), model->getCurrY(), model->getCharge(), true);
             if (search->Search()){
-              debug_file << "Successful search from current cell to base" << std::endl;
               solution = search->GetSolution().GetList();
               std::list<ai::Search::Node *>::const_iterator it;
               for(it = solution->begin(); it != solution->end(); it++) {
@@ -149,18 +156,14 @@ namespace cwp
               action->SetCode(model->getNextActionToGoal()->getAction());
             }
             else {
-              debug_file << "Unsuccessful search from current cell to base" << std::endl;
               action->SetCode(ai::Scavenger::Action::QUIT);
             }
           }
         }
-      }
-      else {
-        debug_file << "if (!actionQueueEmpty)" << std::endl;
-        action->SetCode(model->getNextActionToGoal()->getAction());
+      } else {
+        action->SetCode(ai::Scavenger::Action::NOOP);
       }
       debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
-      debug_file << "action->GetDirection(): " << action->GetDirection() << std::endl;
       return action;
     }
 
