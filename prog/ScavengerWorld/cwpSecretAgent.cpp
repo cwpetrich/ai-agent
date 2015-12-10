@@ -33,27 +33,27 @@ namespace cwp
     ai::Agent::Action * SecretAgent::Program(const ai::Agent::Percept * percept)
     {
 
-      std::ofstream debug_file;
-      debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
-      debug_file << std::endl;
-      debug_file << "BEGINNING OF PROGRAM" << std::endl;
-      debug_file << "Charge: " << model->getCharge() << std::endl;
+      // std::ofstream debug_file;
+      // debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
+      // debug_file << std::endl;
+      // debug_file << "BEGINNING OF PROGRAM" << std::endl;
+      // debug_file << "Charge: " << model->getCharge() << std::endl;
 
       ai::Scavenger::Action *action = new ai::Scavenger::Action;
       model->gatherData(percept);
 
       if (model->Move()){
-        debug_file << "if (model->Move())" << std::endl;
+        // debug_file << "if (model->Move())" << std::endl;
         action->SetCode(model->getNextActionToGoal()->getAction());
         return action;
       }
       if (model->Charge()){
-        debug_file << "if (model->Charge())" << std::endl;
+        // debug_file << "if (model->Charge())" << std::endl;
         action->SetCode(ai::Scavenger::Action::RECHARGE);
         return action;
       }
       if (model->SearchBase()){
-        debug_file << "if (model->SearchBase())" << std::endl;
+        // debug_file << "if (model->SearchBase())" << std::endl;
         ai::Search::Graph *search = SearchFromXYToGoalOrBase(model->getCurrX(), model->getCurrY(), model->getCharge(), true);
         if (search->Search()){
           std::list<ai::Search::Node *> *solution = search->GetSolution().GetList();
@@ -71,33 +71,33 @@ namespace cwp
         return action;
       }
       if (model->Look()){
-        debug_file << "if (model->Look())" << std::endl;
+        // debug_file << "if (model->Look())" << std::endl;
         action->SetCode(ai::Scavenger::Action::LOOK);
         ai::Scavenger::Location::Direction direction = model->getNextUndiscoveredDirection(model->getCurrX(), model->getCurrY());
         model->updateLookDirection(direction);
         action->SetDirection(direction);
         return action;
       }
-      if (model->Examine()){
-        debug_file << "if (model->Examine())" << std::endl;
-        action->SetCode(ai::Scavenger::Action::EXAMINE);
-        action->SetObjectId(model->getObjectToExamine());
-        return action;
-      }
       if (model->Pickup()){
-        debug_file << "if (model->Pickup())" << std::endl;
+        // debug_file << "if (model->Pickup())" << std::endl;
         action->SetCode(ai::Scavenger::Action::PICKUP);
         action->SetObjectId(model->getObjectToPickup());
         return action;
       }
+      if (model->Examine()){
+        // debug_file << "if (model->Examine())" << std::endl;
+        action->SetCode(ai::Scavenger::Action::EXAMINE);
+        action->SetObjectId(model->getObjectToExamine());
+        return action;
+      }
       if (model->Deposit()){
-        debug_file << "if (model->Deposit())" << std::endl;
+        // debug_file << "if (model->Deposit())" << std::endl;
         action->SetCode(ai::Scavenger::Action::DEPOSIT);
         action->SetObjectId(model->getObjectToDeposit());
         return action;
       }
       if (model->SearchCell()){
-        debug_file << "if (model->SearchCell())" << std::endl;
+        // debug_file << "if (model->SearchCell())" << std::endl;
         cwp::Scavenger::CellData * closest_unvisited_cell = model->getClosestUnvisitedCell(model->getCurrX(), model->getCurrY());
         if (model->getCurrX() == 0.0 && model->getCurrY() == 0.0 && closest_unvisited_cell->getLocX() == 0.0 && closest_unvisited_cell->getLocY() == 0.0){
           action->SetCode(ai::Scavenger::Action::QUIT);
@@ -163,7 +163,7 @@ namespace cwp
       } else {
         action->SetCode(ai::Scavenger::Action::NOOP);
       }
-      debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
+      // debug_file << "action->GetCode(): " << action->GetCode() << std::endl;
       return action;
     }
 

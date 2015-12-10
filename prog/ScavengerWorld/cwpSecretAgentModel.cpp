@@ -52,8 +52,8 @@ namespace cwp {
 		}
 
 		CellData* SecretAgentModel::getClosestUnvisitedCell(double x, double y){
-			std::ofstream debug_file;
-			debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
+			// std::ofstream debug_file;
+			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
 			CellData* closest_cell = NULL;
 			double min = 1000000.00;
 			std::map<CellKey, CellData*>::iterator iter;
@@ -63,6 +63,15 @@ namespace cwp {
 						double a = fabs(iter->first.getX() - x);
 						double b = fabs(iter->first.getY() - y);
 						double c = sqrt(a*a + b*b);
+						// if (fabs(c - min) < 0.00001){
+						// 	double x_from_base = fabs(iter->first.getX());
+						// 	double y_from_base = fabs(iter->first.getY());
+						// 	double d_from_base = sqrt(x_from_base*x_from_base + y_from_base*y_from_base);
+						// 	if (d_from_base > min){
+						// 		min = d_from_base;
+						// 		closest_cell = iter->second;
+						// 	}
+						// }
 						if (c < min) {
 							min = c;
 							closest_cell = iter->second;
@@ -70,24 +79,24 @@ namespace cwp {
 					}
 				}
 			}
-			if (closest_cell == NULL) {
-				debug_file << "closest_cell == NULL" << std::endl;
-				double min = 1000000.00;
-				std::map<CellKey, CellData*>::iterator iter;
-				for (iter = known_cells.begin(); iter != known_cells.end(); iter++) {
-					if (!isCellVisited(iter->first.getX(), iter->first.getY())) {
-						if (iter->second->isPassable()) {
-							double a = fabs(iter->first.getX() - x);
-							double b = fabs(iter->first.getY() - y);
-							double c = sqrt(a*a + b*b);
-							if (c < min) {
-								min = c;
-								closest_cell = iter->second;
-							}
-						}
-					}
-				}
-			}
+			// if (closest_cell == NULL) {
+				// debug_file << "closest_cell == NULL" << std::endl;
+			// 	double min = 1000000.00;
+			// 	std::map<CellKey, CellData*>::iterator iter;
+			// 	for (iter = known_cells.begin(); iter != known_cells.end(); iter++) {
+			// 		if (!isCellVisited(iter->first.getX(), iter->first.getY())) {
+			// 			if (iter->second->isPassable()) {
+			// 				double a = fabs(iter->first.getX() - x);
+			// 				double b = fabs(iter->first.getY() - y);
+			// 				double c = sqrt(a*a + b*b);
+			// 				if (c < min) {
+			// 					min = c;
+			// 					closest_cell = iter->second;
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// }
 			if (closest_cell == NULL){
 				closest_cell = getCell(0.0, 0.0);
 			}
@@ -112,8 +121,8 @@ namespace cwp {
 		}
 
 		void SecretAgentModel::gatherData(const ai::Agent::Percept * percept){
-			std::ofstream debug_file;
-      debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
+			// std::ofstream debug_file;
+      // debug_file.open("debug.txt", std::ofstream::out | std::ofstream::app);
 			std::stringstream ss1;
 
 			ss1.str(percept->GetAtom("BASE").GetValue()); ss1.clear();
@@ -137,13 +146,26 @@ namespace cwp {
 				ss1.str(percept->GetAtom("LOOK").GetValue()); ss1.clear();
 				ss1 >> look;
 
-				ss1.str(percept->GetAtom("EXAMINE").GetValue()); ss1.clear();
-				ss1 >> examine;
+				examine = percept->GetAtom("EXAMINE").GetValue();
 
-				ss1.str(percept->GetAtom("PICKUP").GetValue()); ss1.clear();
+				if (examine != ""){
+					// debug_file << examine << std::endl;
+					std::string id, color, shape, size;
+		      ss1.str(examine); ss1.clear();
+		      ss1 >> id; ss1.ignore();
+		      ss1 >> color; ss1.ignore();
+		      ss1 >> shape; ss1.ignore();
+		      ss1 >> size; ss1.ignore();
+		      cwp::Scavenger::Object * object = getObject(id);
+	      	object->updateAttributes(color, shape, size);
+	      	object->markExamined();
+	      }
+
+				pickup = percept->GetAtom("PICKUP").GetValue();
 				ss1 >> pickup;
 
 				if (look != ""){
+					// debug_file << look << std::endl;
 					cwp::Scavenger::CellData * neighbor_cell;
 					switch(getLookDirection()) {
 						case ai::Scavenger::Location::NORTH:
@@ -173,46 +195,36 @@ namespace cwp {
 					}
 				}
 
-	      if (examine != ""){
-					std::string id, color, shape, size;
-		      ss1.str(examine); ss1.clear();
-		      ss1 >> id; ss1.ignore();
-		      ss1 >> color; ss1.ignore();
-		      ss1 >> shape; ss1.ignore();
-		      ss1 >> size; ss1.ignore();
-		      cwp::Scavenger::Object * object = getObject(id);
-	      	object->updateAttributes(color, shape, size);
-	      	object->markExamined();
-	      }
-
-	      std::list<std::string> tmp_objects_in_cell;
-	      std::list<std::string> tmp_objects_in_hopper;
-				for (uint i = 0; i < percept->NumAtom(); i++){
-					std::string object_name;
-					std::string object_id;
-					if (percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
-						object_name = percept->GetAtom(i).GetName();
-						ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
-						ss1 >> object_id;
-						tmp_objects_in_cell.push_back(object_id);
-					}
-					if (percept->GetAtom(i).GetName().substr(0, 7) == "HOPPER_"){
-						object_name = percept->GetAtom(i).GetName();
-						ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
-						ss1 >> object_id;
-						tmp_objects_in_hopper.push_back(object_id);
-					}
-				}
-
-				std::swap(tmp_objects_in_cell, objects_in_cell);
-				std::swap(tmp_objects_in_hopper, objects_in_hopper);
-
-				if (pickup == ""){
-					hopper_full = false;
-				} else {
+				if (pickup == "Full"){
+					// debug_file << "PICKUP -> " << pickup << std::endl;
 					hopper_full = true;
+				} else {
+					// debug_file << "PICKUP -> " << pickup << std::endl;
+					hopper_full = false;
 				}
 			}
+
+			std::list<std::string> tmp_objects_in_cell;
+      std::list<std::string> tmp_objects_in_hopper;
+			for (uint i = 0; i < percept->NumAtom(); i++){
+				std::string object_name;
+				std::string object_id;
+				if (percept->GetAtom(i).GetName().substr(0, 7) == "OBJECT_"){
+					object_name = percept->GetAtom(i).GetName();
+					ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
+					ss1 >> object_id;
+					tmp_objects_in_cell.push_back(object_id);
+				}
+				if (percept->GetAtom(i).GetName().substr(0, 7) == "HOPPER_"){
+					object_name = percept->GetAtom(i).GetName();
+					ss1.str(percept->GetAtom(object_name).GetValue()); ss1.clear();
+					ss1 >> object_id;
+					tmp_objects_in_hopper.push_back(object_id);
+				}
+			}
+
+			std::swap(tmp_objects_in_cell, objects_in_cell);
+			std::swap(tmp_objects_in_hopper, objects_in_hopper);
 
 			if(!Look() && !Examine() && !Pickup()){
 				current_cell->markVisited();
