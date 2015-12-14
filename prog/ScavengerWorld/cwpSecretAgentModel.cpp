@@ -55,23 +55,14 @@ namespace cwp {
 			// std::ofstream debug_file;
 			// debug_file.open("debug.txt", std::ofstream::app | std::ofstream::out);
 			CellData* closest_cell = NULL;
-			double min = 1000000.00;
+			double min = 99999999.00;
 			std::map<CellKey, CellData*>::iterator iter;
 			for (iter = known_cells.begin(); iter != known_cells.end(); iter++) {
-				if (!isCellVisited(iter->first.getX(), iter->first.getY())) {
+				if (!iter->second->isVisited()) {
 					if (iter->second->isSafe()) {
 						double a = fabs(iter->first.getX() - x);
 						double b = fabs(iter->first.getY() - y);
 						double c = sqrt(a*a + b*b);
-						// if (fabs(c - min) < 0.00001){
-						// 	double x_from_base = fabs(iter->first.getX());
-						// 	double y_from_base = fabs(iter->first.getY());
-						// 	double d_from_base = sqrt(x_from_base*x_from_base + y_from_base*y_from_base);
-						// 	if (d_from_base > min){
-						// 		min = d_from_base;
-						// 		closest_cell = iter->second;
-						// 	}
-						// }
 						if (c < min) {
 							min = c;
 							closest_cell = iter->second;
@@ -164,6 +155,14 @@ namespace cwp {
 				pickup = percept->GetAtom("PICKUP").GetValue();
 				ss1 >> pickup;
 
+				if (pickup == "Full"){
+					// debug_file << "PICKUP -> " << pickup << std::endl;
+					hopper_full = true;
+				} else {
+					// debug_file << "PICKUP -> " << pickup << std::endl;
+					hopper_full = false;
+				}
+
 				if (look != ""){
 					// debug_file << look << std::endl;
 					cwp::Scavenger::CellData * neighbor_cell;
@@ -193,14 +192,6 @@ namespace cwp {
 							neighbor_cell->updateCellEast(look);
 							break;
 					}
-				}
-
-				if (pickup == "Full"){
-					// debug_file << "PICKUP -> " << pickup << std::endl;
-					hopper_full = true;
-				} else {
-					// debug_file << "PICKUP -> " << pickup << std::endl;
-					hopper_full = false;
 				}
 			}
 
@@ -503,6 +494,10 @@ namespace cwp {
 			return safe;
 		}
 
+		bool CellData::isBase() const {
+			return (this->loc_x == 0.0 && this->loc_y == 0.0);
+		}
+
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 		CellKey::CellKey(double x, double y){
@@ -557,7 +552,7 @@ namespace cwp {
 		}
 
 		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Object * object) {
-			os << "Ojbect ->" << "\n ID -> " << object->getId() << "\ncolor -> " << object->getAttribute("color");
+			os << "Ojbect ->" << "\nID -> " << object->getId() << "\ncolor -> " << object->getAttribute("color");
 			os << "\nshape -> " << object->getAttribute("shape") << "\nsize -> " << object->getAttribute("size");
 			os << "\nexamined -> " << object->isExamined() << "\npicked up -> " << object->isInHopper();
 			os << "\ndeposited -> " << object->isDeposited();
@@ -569,6 +564,16 @@ namespace cwp {
 			os << "\nX -> " << cell->getLocX() << "\nY -> " << cell->getLocY() << "\nZ -> " << cell->getLocZ();
 			os << "\nNorth - > " << cell->getCellNorth() << "\nSouth -> " << cell->getCellSouth();
 			os << "\nEast -> " << cell->getCellEast() << "\nWest -> " << cell->getCellWest();
+			return os;
+		}
+
+		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::State * state) {
+			os << "State ->" << "\nX -> " << state->getX() << "\nY -> " << state->getY() << "\nCharge -> " << state->getCharge();
+			return os;
+		}
+
+		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Action * action) {
+			os << "Action -> " << action->getAction();
 			return os;
 		}
 	}

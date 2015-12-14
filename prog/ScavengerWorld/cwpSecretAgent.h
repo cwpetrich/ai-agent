@@ -17,7 +17,9 @@ namespace cwp
       SecretAgent(ai::Agent::Options *opts);
       ~SecretAgent();
       virtual ai::Agent::Action * Program(const ai::Agent::Percept * percept);
-      ai::Search::Graph * SearchFromXYToGoalOrBase(double x, double y, double charge, bool to_base);
+      ai::Search::Graph * SearchFromCurrentCellToBase();
+      ai::Search::Graph * SearchFromCurrentCellToUnvisitedCell();
+      ai::Search::Graph * SearchFromAnotherCellToBase(double x, double y, double charge);
     protected:
     private:
       cwp::Scavenger::SecretAgentModel * model;

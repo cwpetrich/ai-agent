@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cwpSecretAgentAction.h"
+#include "cwpSecretAgentState.h"
 #include "cwpSecretAgentObject.h"
 #include <ai_scavenger.h>
 #include <vector>
@@ -39,6 +40,7 @@ namespace cwp {
 			bool isVisited() const;
 			bool isPassable() const;
 			bool isSafe() const;
+			bool isBase() const;
 
 		private:
 			bool visited;
@@ -114,6 +116,8 @@ namespace cwp {
 		std::ostream& operator<<(std::ostream& os, CellData* cell);
 		std::ostream& operator<<(std::ostream& os, CellKey key);
 		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Object * object);
+		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::State * state);
+		std::ostream& operator<<(std::ostream& os, cwp::Scavenger::Action * action);
 		
 	}
 }
