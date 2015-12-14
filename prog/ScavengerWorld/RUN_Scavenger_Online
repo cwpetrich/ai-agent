@@ -17,8 +17,8 @@ if [ ! -x ScavengerAgent ]; then
 fi
 
 # Launch the game server
-world_file=ScavengerWorlds/worlds-2014/online-worlds/y14m09d20p01-large-online-world.txt
-./ScavengerServer -D 0 -t 0 -d 0 -s 1000000 -O 0 -f ${world_file} -R 2 >server.log 2>server.err &
+world_file=ScavengerWorlds/worlds-2014/online-worlds/y14m09d20p02-large-online-world.txt
+./ScavengerServer -D 0 -t 0 -d 0 -s 9999999 -O 0 -f ${world_file} -R 2 >server.log 2>server.err &
 echo "Waiting for server to get started"
 sleep 2
 

@@ -158,20 +158,7 @@ namespace cwp
                 action->SetCode(ai::Scavenger::Action::NOOP);
               }
             } else {
-              search = SearchFromCurrentCellToBase();
-              if (search->Search()){
-                solution = search->GetSolution().GetList();
-                for(it = solution->begin(); it != solution->end(); it++){
-                  if((*it)->GetAction()){
-                    model->addActionToGoal(dynamic_cast<cwp::Scavenger::Action *>((*it)->GetAction()));
-                  }
-                }
-                if(!model->actionQueueEmpty()){
-                  action->SetCode(model->getNextActionToGoal()->getAction());
-                } else {
-                  action->SetCode(ai::Scavenger::Action::NOOP);
-                }
-              }
+              action->SetCode(ai::Scavenger::Action::QUIT);
             }
           } else {
             action->SetCode(ai::Scavenger::Action::QUIT);
@@ -189,7 +176,7 @@ namespace cwp
             } else {
               cu_cell_state = dynamic_cast<cwp::Scavenger::State*>(solution->back()->GetState());
             }
-            ai::Search::Graph * search2 = SearchFromAnotherCellToBase(cu_cell_state->getX(), cu_cell_state->getY(), cu_cell_state->getCharge());
+            ai::Search::Graph * search2 = SearchFromAnotherCellToBase(cu_cell_state->getX(), cu_cell_state->getY(), cu_cell_state->getCharge() - 5.0);
             if(search2->Search()){
               for(it = solution->begin(); it != solution->end(); it++){
                 if((*it)->GetAction()){
